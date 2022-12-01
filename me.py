@@ -1,13 +1,17 @@
 from flask import Flask, render_template      
-import streamlit as st
+import re
 app = Flask(__name__)
 
-@app.route("/")
+#@app.route("/")
 def home():
     return render_template("home.html")
+ 
+@app.route('/<id>')
+def success(id):
+    return render_template("home.html",name=id)
     
 @app.route("/salvador")
 def salvador():
     return "Hello, Salvador"
 
-st.write(app.run())
+app.run(port=1234)
