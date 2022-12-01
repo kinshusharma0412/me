@@ -9,6 +9,5 @@ def home():
 @app.route("/salvador")
 def salvador():
     return "Hello, Salvador"
-    
-if __name__ == "__main__":
-    app.run(port=8887)
+
+app.run(port=8887)
