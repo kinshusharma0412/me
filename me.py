@@ -14,4 +14,4 @@ def success(id):
 def salvador():
     return "Hello, Salvador"
 
-app.run(port=1234)
+app.run()
