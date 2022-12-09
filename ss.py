@@ -86,5 +86,5 @@ def login3(testname):
 
 
 if __name__ == '__main__':
-    app.run(debug=False,port=8887)
+    app.run(debug=False,host='0.0.0.0' , port=5000)
     #site="https://dev.to/curiouspaul1/building-a-quizgenerator-with-flask-and-fauna-257p"

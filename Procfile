@@ -1,1 +1,1 @@
-mohitbot: python3 me.py
+mohitbot: python3 ss.py
