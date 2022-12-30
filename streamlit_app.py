@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-import re, requests 
+import re, requests ,os
 app = Client("my_account",
 bot_token="1877489613:AAHxVB0xYjWfHF5YdpuwwQ-MkGVgb0QH_mg",
 api_id="13682659",
@@ -19,7 +19,7 @@ async def hello(client, message):
     except:
     	t.append(810)
     	t.append(412.5)
-    mess=" Request URL: "+url+"\nhtmlPageHeight: "+str(t[1])+"\nhtmlPageWidth: "+str(t[2])
+    mess="htmlPageHeight: "+str(t[1])+"\nhtmlPageWidth: "+str(t[2])
     await app.send_message(chat_id=message.chat.id, text=mess)
     site='https://avepdf.com/en/file/load-from-http'
     null=None
