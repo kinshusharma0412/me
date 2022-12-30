@@ -1,0 +1,44 @@
+from pyrogram import Client, filters
+import re
+app = Client("my_account"
+bot_token="1877489613:AAHxVB0xYjWfHF5YdpuwwQ-MkGVgb0QH_mg",
+api_id="13682659",
+api_hash="b984d240c5258407ea911f042c9d75f6")
+
+
+@app.on_message(filters.private,filters.regex("http"))
+async def hello(client, message):
+    t=re.split("\n", message.text)
+    try:
+    	t[1]=int(t[1])
+    	try:
+    	    t[2]=int(t[2])
+    	except:
+    	    t[2]=412.5
+    except:
+    	t[1]=810
+    	t[2]=412.5
+    mess=" Request URL: "+url+"\nhtmlPageHeight: "+str(t[1])+"\nhtmlPageWidth: "+str(t[2])
+    await app.send_message(chat_id=message.chat.id, text=mess)
+    site='https://avepdf.com/en/file/load-from-http'
+    null=None
+    true=True
+    url=use = request.args["fname"]
+    data={"uri":[url],"processedContextId":null,"toolId":"355FE458-BC5C-43B7-B94C-9372637C84CD","PdfParameters":{"htmlPageHeight":t[1],"htmlPageWidth":t[2],"htmlPageMarginTop":0,"htmlPageMarginBottom":0,"htmlPageMarginLeft":0,"htmlPageMarginRight":0,"htmlEmulationMedia":3,"htmlPreferOnePage":true}}
+    #print(requests.post(site,json=data).json())
+    data ={"processedContextId":requests.post(site,json=data).json()["processedContextId"]}
+    site='https://avepdf.com/en/tools/convert-to-pdf-action'
+    file=requests.post(site,json=data)
+    #print(file.url)
+    #from urllib.parse import urlencode
+    #print(site+"?"+urlencode(data))
+    site="https://avepdf.com/en/file/downloadClient/"+file.json()["processedContextId"]+"?filename=html-to-pdf.pdf"
+    print(site)
+    data=requests.get(site)
+    with open(os.getcwd()+"/@polls_quiz.pdf", 'wb') as s:
+        s.write(data.content)
+    path = os.getcwd()+"/@polls_quiz.pdf"
+    await app.send_document(message.chat.id, os.getcwd()+"/@polls_quiz.pdf")
+
+
+app.run()
