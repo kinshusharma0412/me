@@ -14,10 +14,10 @@ async def hello(client, message):
     	try:
     	    t[2]=int(t[2])
     	except:
-    	    t[2]=412.5
+    	    t.append(412.5)
     except:
-    	t[1]=810
-    	t[2]=412.5
+    	t.append(810)
+    	t.append(412.5)
     mess=" Request URL: "+url+"\nhtmlPageHeight: "+str(t[1])+"\nhtmlPageWidth: "+str(t[2])
     await app.send_message(chat_id=message.chat.id, text=mess)
     site='https://avepdf.com/en/file/load-from-http'
