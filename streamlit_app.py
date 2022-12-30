@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 import re, requests ,os
 app = Client("my_account",
-bot_token="1877489613:AAHxVB0xYjWfHF5YdpuwwQ-MkGVgb0QH_mg",
+bot_token="1431722823:AAHk_VOD0WgepQ1us7eucQm3UQRYacHzmQM",
 api_id="13682659",
 api_hash="b984d240c5258407ea911f042c9d75f6")
 
@@ -38,7 +38,7 @@ async def hello(client, message):
     data=requests.get(site)
     with open(os.getcwd()+"/@polls_quiz.pdf", 'wb') as s:
         s.write(data.content)
-    path = '/app/soojh/downloads/'+"/@polls_quiz.pdf"
+    path = os.getcwd()+"/@polls_quiz.pdf"
     await app.send_document(message.chat.id, path)
 
 
