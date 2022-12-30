@@ -1,5 +1,6 @@
 requests
 bs4
+pysocks
 TgCrypto
 pymongo
 git+https://github.com/rthalley/dnspython
