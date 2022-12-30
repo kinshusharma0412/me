@@ -6,7 +6,7 @@ api_id="13682659",
 api_hash="b984d240c5258407ea911f042c9d75f6")
 
 
-@app.on_message(filters.private,filters.regex("http"))
+@app.on_message(filters.private & filters.regex("http"))
 async def hello(client, message):
     t=re.split("\n", message.text)
     url=t[0]
