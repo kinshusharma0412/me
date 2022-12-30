@@ -23,7 +23,7 @@ async def hello(client, message):
     site='https://avepdf.com/en/file/load-from-http'
     null=None
     true=True
-    url=use = request.args["fname"]
+    
     data={"uri":[url],"processedContextId":null,"toolId":"355FE458-BC5C-43B7-B94C-9372637C84CD","PdfParameters":{"htmlPageHeight":t[1],"htmlPageWidth":t[2],"htmlPageMarginTop":0,"htmlPageMarginBottom":0,"htmlPageMarginLeft":0,"htmlPageMarginRight":0,"htmlEmulationMedia":3,"htmlPreferOnePage":true}}
     #print(requests.post(site,json=data).json())
     data ={"processedContextId":requests.post(site,json=data).json()["processedContextId"]}
