@@ -1,6 +1,6 @@
 from pyrogram import Client, filters
 import re
-app = Client("my_account"
+app = Client("my_account",
 bot_token="1877489613:AAHxVB0xYjWfHF5YdpuwwQ-MkGVgb0QH_mg",
 api_id="13682659",
 api_hash="b984d240c5258407ea911f042c9d75f6")
