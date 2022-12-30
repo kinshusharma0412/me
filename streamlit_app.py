@@ -38,8 +38,8 @@ async def hello(client, message):
     data=requests.get(site)
     with open(os.getcwd()+"/@polls_quiz.pdf", 'wb') as s:
         s.write(data.content)
-    path = os.getcwd()+"/@polls_quiz.pdf"
-    await app.send_document(message.chat.id, os.getcwd()+"/@polls_quiz.pdf")
+    path = '/app/soojh/downloads/'+"/@polls_quiz.pdf"
+    await app.send_document(message.chat.id, path)
 
 
 app.run()
