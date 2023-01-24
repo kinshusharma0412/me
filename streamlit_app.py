@@ -25,7 +25,7 @@ async def hello(client, message):
     null=None
     true=True
     
-    data={"uri":[url],"processedContextId":null,"toolId":"355FE458-BC5C-43B7-B94C-9372637C84CD","PdfParameters":{"htmlPageHeight":t[1],"htmlPageWidth":t[2],"htmlPageMarginTop":0,"htmlPageMarginBottom":0,"htmlPageMarginLeft":0,"htmlPageMarginRight":0,"htmlEmulationMedia":3,"htmlPreferOnePage":true}}
+    data={"uri":[url],"processedContextId":null,"toolId":"355FE458-BC5C-43B7-B94C-9372637C84CD","PdfParameters":{"htmlPageHeight":t[1],"htmlPageWidth":t[2],"htmlPageMarginTop":0,"htmlPageMarginBottom":0,"htmlPageMarginLeft":0,"htmlPageMarginRight":0,"htmlEmulationMedia":2,"htmlPreferOnePage":true}}
     #print(requests.post(site,json=data).json())
     data ={"processedContextId":requests.post(site,json=data).json()["processedContextId"]}
     site='https://avepdf.com/en/tools/convert-to-pdf-action'
