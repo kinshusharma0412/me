@@ -4,3 +4,4 @@ pysocks
 TgCrypto
 pymongo
 git+https://github.com/rthalley/dnspython
+fitz
