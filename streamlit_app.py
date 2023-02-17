@@ -1,2 +1,2 @@
 import os
-os.system("python3 aa.py")
+os.system("python3 -m aa.py")
