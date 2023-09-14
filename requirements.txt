@@ -1,3 +1,4 @@
+streamlit
 python-telegram-bot==12.8
 xlsxwriter
 pymongo
@@ -20,4 +21,3 @@ cloudinary
 bs4
 pyaes==1.6.1
 pysocks==1.7.1
-streamlit
