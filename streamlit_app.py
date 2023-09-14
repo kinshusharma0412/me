@@ -12,7 +12,7 @@ st.set_page_config()
 ph = st.empty()
 N = len(db)*30
 if query["id"][0]+query["user"][0] not in os.environ:
-	os.environ[query["id"][0]+query["user"][0]]=N
+	os.environ[query["id"][0]+query["user"][0]]=str(N)
 
 	
 for x in db:
@@ -24,12 +24,12 @@ for x in db:
 
 st.write("Thanks")
 st.write(query["id"][0])
-if os.environ[query["id"][0]+query["user"][0]]>0:
-	for secs in range(os.environ[query["id"][0]+query["user"][0]],-1,-1):
+if int(os.environ[query["id"][0]+query["user"][0]])>0:
+	for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
-		os.environ[query["id"][0]+query["user"][0]]=secs-2
+		os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
 		if secs<1:
 			ph.metric("Times Up!!")
 
