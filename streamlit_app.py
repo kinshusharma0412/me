@@ -3,6 +3,7 @@ from quickstart import Drive_OCR
 import time
 query=st.experimental_get_query_params()
 #db=Drive_OCR("").google_spreadsheet_get("13Aw2HghuOauGAjnxgD5YvBYo7Ysda-TprTJ_BLHuIPA","A:N")
+print(query["id"])
 db=Drive_OCR("").google_spreadsheet_get(query["id"],"A:N")
 
 st.set_page_config()
