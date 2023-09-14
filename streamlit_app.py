@@ -19,8 +19,8 @@ for x in db:
 	st.selectbox(x[0],z)
 
 st.write("Thanks")
-@st.experimental_memo
-def timer(M):
+@st.cache_data
+def timer(N):
 	for secs in range(N,0,-1):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
