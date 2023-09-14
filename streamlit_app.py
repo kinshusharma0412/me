@@ -23,7 +23,7 @@ for x in db:
 	st.selectbox(x[0],z)
 
 st.write("Thanks")
-st.write(query.id)
+st.write(query["id"])
 if st.session_state[query["id"]+query["user"]]>0:
 	for secs in range(st.session_state[query["id"]+query["user"]],-1,-1):
 		mm, ss = secs//60, secs%60
