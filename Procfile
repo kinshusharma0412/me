@@ -1,0 +1,1 @@
+All: python streamlit_app.py
