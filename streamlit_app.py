@@ -7,10 +7,7 @@ st.set_page_config()
 
 ph = st.empty()
 N = len(db)*30
-for secs in range(N,0,-1):
-    mm, ss = secs//60, secs%60
-    ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
-    time.sleep(1)
+
 
 for x in db:
 	z=[]
@@ -23,7 +20,11 @@ for x in db:
 #st.write("slider", slider_val, "checkbox", checkbox_val)
 
 st.write("Thanks")
-        
+for secs in range(N,0,-1):
+    mm, ss = secs//60, secs%60
+    ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+    time.sleep(1)
+    
 #import os
 
 #os.system("python -m venv .venv & pip install streamlit")
