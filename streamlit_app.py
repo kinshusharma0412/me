@@ -21,11 +21,14 @@ for x in db:
 
 st.write("Thanks")
 st.write(query)
-for secs in range(st.session_state["timer"],0,-1):
+if st.session_state["timer"]>0:
+	for secs in range(st.session_state["timer"],0,-1):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
 		st.session_state["timer"]=secs-2
+		if secs<1:
+			ph.metric("Times Up!!")
 
-timer()
+
     
