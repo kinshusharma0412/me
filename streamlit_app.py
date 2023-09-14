@@ -11,8 +11,8 @@ st.set_page_config()
 
 ph = st.empty()
 N = len(db)*30
-if query["id"]+query["user"] not in st.session_state:
-	st.session_state[query["id"]+query["user"]]=N
+if query["id"][0]+query["user"] not in st.session_state:
+	st.session_state[query["id"][0]+query["user"]]=N
 
 	
 for x in db:
@@ -24,12 +24,12 @@ for x in db:
 
 st.write("Thanks")
 st.write(query["id"][0])
-if st.session_state[query["id"]+query["user"]]>0:
-	for secs in range(st.session_state[query["id"]+query["user"]],-1,-1):
+if st.session_state[query["id"][0]+query["user"]]>0:
+	for secs in range(st.session_state[query["id"][0]+query["user"]],-1,-1):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
-		st.session_state[query["id"]+query["user"]]=secs-2
+		st.session_state[query["id"][0]+query["user"]]=secs-2
 		if secs<1:
 			ph.metric("Times Up!!")
 
