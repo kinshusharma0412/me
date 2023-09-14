@@ -7,7 +7,7 @@ st.set_page_config()
 
 ph = st.empty()
 N = len(db)*30
-if ["timer"] not in st.session_state:
+if "timer" not in st.session_state:
 	st.session_state["timer"]=N
 
 	
