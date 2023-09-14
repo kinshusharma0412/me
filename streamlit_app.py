@@ -25,7 +25,7 @@ def timer(N):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
-		st.session_state["timer"]=secs
+		st.session_state["timer"]=secs-1
 
 timer(st.session_state["timer"])
     
