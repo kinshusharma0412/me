@@ -7,8 +7,10 @@ st.set_page_config()
 
 ph = st.empty()
 N = len(db)*30
-st.session_state["timer"]=N
+if ["timer"] not in st.session_state:
+	st.session_state["timer"]=N
 
+	
 for x in db:
 	z=[]
 	for y in x[1:-3]:
