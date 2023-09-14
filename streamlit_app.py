@@ -7,7 +7,7 @@ st.set_page_config()
 
 ph = st.empty()
 N = len(db)*30
-
+st.session_state["timer"]=N
 
 for x in db:
 	z=[]
@@ -18,10 +18,12 @@ for x in db:
 
 st.write("Thanks")
 @st.experimental_memo
-def timer(N):
+def timer(M):
 	for secs in range(N,0,-1):
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
-timer(N)
+		st.session_state["timer"]=N
+
+timer(st.session_state["timer"])
     
