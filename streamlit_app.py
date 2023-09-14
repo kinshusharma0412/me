@@ -11,22 +11,17 @@ N = len(db)*30
 
 for x in db:
 	z=[]
-	for y in x[1:-1]:
+	for y in x[1:-3]:
 		if y!="":
 			z.append(y)
 	st.selectbox(x[0],z)
-#submitted = st.form_submit_button("Submit")
-#if submitted:
-#st.write("slider", slider_val, "checkbox", checkbox_val)
 
 st.write("Thanks")
-for secs in range(N,0,-1):
-    mm, ss = secs//60, secs%60
-    ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
-    time.sleep(1)
+@st.experimental_memo
+def timer(N):
+	for secs in range(N,0,-1):
+		mm, ss = secs//60, secs%60
+		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+		time.sleep(1)
+timer(N)
     
-#import os
-
-#os.system("python -m venv .venv & pip install streamlit")
-#os.system("python aa.py")
-#os.system("/home/adminuser/venv/bin/python aa.py")
