@@ -14,13 +14,14 @@ N = len(db)*30
 if query["id"][0]+query["user"][0] not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]]=str(N)
 
-	
+btn=[]	
 for x in db:
 	z=[]
 	for y in x[1:-3]:
 		if y!="":
 			z.append(y)
-	st.selectbox(x[0],z)
+	
+	btn.append(st.selectbox(x[0],z))
 
 st.write("Thanks")
 st.write(query["id"][0])
@@ -31,7 +32,10 @@ if int(os.environ[query["id"][0]+query["user"][0]])>0:
 		time.sleep(1)
 		os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
 		if secs<1:
-			ph.metric("Times Up!!")
+			ph.write("Times Up!!")
+			ph.write(btn)
+else:
+	ph.write(btn)
 
 
     
