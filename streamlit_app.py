@@ -166,12 +166,12 @@ elif int(sub[i])==4:
 				mark-=1
 		
 		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
-	st.write(marks)
+	
 	new_result={}
 	for key in sorted(marks, key=lambda x: (marks[x]['Time']), reverse=True):
-		st.write(key)
+		
 		new_result[key] = marks[key]
-	st.write(new_result)
+	
 	new_result2={}
 	for key in sorted(new_result, key=lambda x: (new_result[x]['Marks']), reverse=True):
 		st.write(key)
@@ -181,7 +181,7 @@ elif int(sub[i])==4:
 	tab=[]	
 	for x in new_result2.keys():
 		tab.append([new_result2[x]["Name"],new_result2[x]["Time"],new_result2[x]["Marks"]])
-	st.write(new_result2)
+	
 	df = pd.DataFrame(tab,
 columns=["Name","Time","Marks"])
 	st.table(df)
