@@ -130,13 +130,13 @@ elif int(sub[i])==3:
 		for y in range(len(db[x][1:-3])):
 			if db2[i][x+4]==y:
 				if db2[i][x+4]==db[x][-1]:
-					st.write("      :green["+db[x][y]+"]")
+					st.write("      :green["+db[x][y+1]+"]")
 				else:
-					st.write("      :red["+db[x][y]+"]")
+					st.write("      :red["+db[x][1+y]+"]")
 			elif db2[i][x+4]==db[x][-1]:
-				st.write("      :green["+db[x][y]+"]")
+				st.write("      :green["+db[x][y+1]+"]")
 			else:
-				st.write(db[x][y])
+				st.write(db[x][y+1])
 			
 		st.write("   :rainbow["+db[x][y]+"]")
 	
