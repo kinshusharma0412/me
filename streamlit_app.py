@@ -27,6 +27,19 @@ for x in db:
 
 st.write("Thanks")
 st.write(query["id"][0])
+
+db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+ids=[]
+for x in db2:
+	ids.append(x[1])
+
+data=["Name",query["user"][0]]
+for x in btn:
+	data.append(btn)
+if query["user"] not in ids:
+	Drive_OCR("").google_spreadsheet_update("1UlOdBum1_aolah0grnTfmmWobElvf8O7Un9-Z_aekYQ","Sheet2!A:"+cell2, "USER_ENTERED",data)
+	
+	
 if int(os.environ[query["id"][0]+query["user"][0]])>0:
 	for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
 		mm, ss = secs//60, secs%60
@@ -38,16 +51,6 @@ if int(os.environ[query["id"][0]+query["user"][0]])>0:
 			ph.write(btn)
 else:
 	ph.write(btn)
-db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-ids=[]
-for x in db2:
-	ids.append(x[1])
-
-data=["Name",query["user"][0]]
-for x in btn:
-	data.append(btn)
-if query["user"] not in ids:
-	Drive_OCR("").google_spreadsheet_update("1UlOdBum1_aolah0grnTfmmWobElvf8O7Un9-Z_aekYQ","Sheet2!A:"+cell2, "USER_ENTERED",data)
 		
 
     
