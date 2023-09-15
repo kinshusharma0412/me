@@ -35,11 +35,11 @@ for x in db2:
 
 data=["Name",query["user"][0],N]
 for x in btn:
-	data.append(btn)
+	data.append(x)
 st.write(data)
-st.write(db2)
+db2.append(data)
 if query["user"][0] not in ids:
-	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",data)
+	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",[db2])
 	
 	
 if int(os.environ[query["id"][0]+query["user"][0]])>0:
