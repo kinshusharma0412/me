@@ -8,11 +8,10 @@ db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 ids=[]
-for x in db2:
-	ids.append(x[1])
 sub=[]
 for x in db2:
-	sub.append(x[3])
+	ids.append(x[1])
+	sub.append(x[3])	
 i=0
 for x in ids:
 	if str(query["user"][0]) ==str(x):
@@ -21,7 +20,7 @@ for x in ids:
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
-if subsub[i]==0:
+if sub[i]==0:
 	st.set_page_config()
 	ph = st.empty()
 	
