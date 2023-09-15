@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
@@ -9,7 +10,7 @@ cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 ids=[]
 sub=[]
-st.set_page_config()
+
 for x in db2:
 	ids.append(x[1])
 	sub.append(x[3])	
