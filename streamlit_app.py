@@ -74,7 +74,7 @@ if int(sub[i])==0:
 			data.append(x)
 		db2.append(data)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.write(db2)
+		#st.write(db2)
 	else:
 		#st.write(i)
 		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
@@ -83,7 +83,7 @@ if int(sub[i])==0:
 		
 		
 		#st.write(db2)
-		print(str(db2))
+		#print(str(db2))
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		
 		
