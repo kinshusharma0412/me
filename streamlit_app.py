@@ -1,9 +1,6 @@
 import streamlit as st
 import streamlit as st
 from streamlit_js_eval import streamlit_js_eval
-
-
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 #st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
