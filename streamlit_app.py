@@ -133,7 +133,7 @@ elif int(sub[i])==3:
 					st.write("      :green["+db[x][y+1]+"]")
 				else:
 					st.write("      :red["+db[x][1+y]+"]")
-			if int(y)==int(db[x][-1]):
+			elif int(y)==int(db[x][-1]):
 				st.write("      :red["+db[x][y+1]+"]")
 			else:
 				st.write(db[x][y+1])
