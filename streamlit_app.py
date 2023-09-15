@@ -123,7 +123,16 @@ elif int(sub[i])==1:
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
+	if st.button(':rainbow[Rank List]'):
+		db2[i][3]=4
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()
 elif int(sub[i])==3:
+	if st.button(':rainbow[Rank List]'):
+		db2[i][3]=4
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()
+	
 	for x in range(len(db)):
 		st.write(":red["+db[x][0]+"]")
 		tt=""
@@ -143,10 +152,7 @@ elif int(sub[i])==3:
 		st.write(tt)
 		
 		st.write("   :rainbow["+db[x][11]+"]")
-	if st.button(':rainbow[Rank List]'):
-		db2[i][3]=4
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+	
 elif int(sub[i])==4:
 	if st.button(':rainbow[View your Answer key]'):
 		db2[i][3]=3
