@@ -173,7 +173,7 @@ elif int(sub[i])==4:
 	for key in sorted(new_result, key=lambda x: result[x]['Marks'], reverse=True):
 		new_result2[key] = new_result[key]
 	df = pd.DataFrame(new_result2,
-columns=["Name","Time","Marks"]))
+columns=["Name","Time","Marks"])
 	st.table(df)
 	
 	
