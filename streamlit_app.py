@@ -33,7 +33,7 @@ ids=[]
 for x in db2:
 	ids.append(x[1])
 
-data=["Name",query["user"][0]]
+data=["Name",query["user"][0],N]
 for x in btn:
 	data.append(btn)
 if query["user"] not in ids:
