@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit as st
-
+import pandas as pd
 #st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
@@ -164,6 +164,16 @@ elif int(sub[i])==4:
 				pass
 			else:
 				mark-=1
-		marks[db2[x][1]]=mark
-	st.write(marks)
+		db2[x][2]
+		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":db2[x][2]}
+	new_result={}
+	for key in sorted(result, key=lambda x: result[x]['Marks'], reverse=True):
+		new_result[key] = marks[key]
+	new_result2={}
+	for key in sorted(new_result, key=lambda x: result[x]['Marks'], reverse=True):
+		new_result2[key] = new_result[key]
+	df = pd.DataFrame(new_result2,
+columns=["Name","Time","Marks"]))
+	st.table(df)
+	
 	
