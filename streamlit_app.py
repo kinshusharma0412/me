@@ -177,7 +177,7 @@ elif int(sub[i])==4:
 				pass
 			else:
 				mark-=1
-			st.write(mark)
+			#st.write(mark)
 		
 		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
 	
