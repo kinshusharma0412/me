@@ -21,7 +21,7 @@ for x in ids:
 	if str(query["user"][0]) ==str(x):
 		break
 	i+=1
-st.write(sub)
+
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
@@ -41,7 +41,7 @@ if int(sub[i])==0:
 		
 		btn.append(st.selectbox(x[0],z))
 	
-	st.write("Thanks")
+	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
 		db2[i][3]=1
@@ -68,13 +68,13 @@ if int(sub[i])==0:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.write(db2)
 	else:
-		st.write(i)
+		#st.write(i)
 		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
 		for x in btn:
 			db2[i].append(x)
 		
 		
-		st.write(db2)
+		#st.write(db2)
 		print(str(db2))
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		
@@ -91,13 +91,13 @@ if int(sub[i])==0:
 			if secs<1:
 				ph.write("Times Up!!")
 				time.sleep(5)
+				db2[i][2]=secs
 				db2[i][3]=1
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 				st.experimental_rerun()
 	else:
 		ph.write(btn)
-elif int(sub[i])==1:
-	st.write("attempt sucessful")
+
 elif int(sub[i])==2:
 	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 	if path:
@@ -105,6 +105,8 @@ elif int(sub[i])==2:
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
+elif int(sub[i])==1:
+	st.write("attempt sucessful")
 
 
     
