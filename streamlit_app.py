@@ -32,15 +32,23 @@ if int(sub[i])==0:
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
-	btn=[]	
+	btn2=[]	
 	for x in db:
 		z=[]
 		for y in x[1:-3]:
 			if y!="":
 				z.append(y)
 		
-		btn.append(st.selectbox(x[0],z))
-	
+		btn2.append(st.selectbox(x[0],z))
+	btn=[]
+	for x in range(len(btn2)):
+		j=0
+		for y in bd[x][1:-3]:
+			if y==btn2[x]:
+				break
+			j+=1
+		btn.append(j)
+	st.write(btn)
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
