@@ -1,11 +1,11 @@
 import streamlit as st
 import streamlit as st
 
---st.set_page_config()
+#st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
---db=Drive_OCR("").google_spreadsheet_get("13Aw2HghuOauGAjnxgD5YvBYo7Ysda-TprTJ_BLHuIPA","A:N")
+#db=Drive_OCR("").google_spreadsheet_get("13Aw2HghuOauGAjnxgD5YvBYo7Ysda-TprTJ_BLHuIPA","A:N")
 print(query)
 db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
@@ -26,7 +26,7 @@ N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
 if int(sub[i])==0:
-	--st.set_page_config()
+	#st.set_page_config()
 	ph = st.empty()
 	
 	if query["id"][0]+query["user"][0] not in os.environ:
@@ -53,7 +53,7 @@ if int(sub[i])==0:
 		btn.append(j+1)
 	st.write(btn)
 	st.write("Thanks for Attempting Quiz")
-	--st.button("Reset", type="primary")
+	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
 		db2[i][3]=1
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
@@ -77,16 +77,16 @@ if int(sub[i])==0:
 			data.append(x)
 		db2.append(data)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		--st.write(db2)
+		#st.write(db2)
 	else:
-		--st.write(i)
+		#st.write(i)
 		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
 		for x in btn:
 			db2[i].append(x)
 		
 		
-		--st.write(db2)
-		--print(str(db2))
+		#st.write(db2)
+		#print(str(db2))
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		
 		
@@ -133,13 +133,13 @@ elif int(sub[i])==3:
 				pass
 			elif int(db2[i][x+4])==y:
 				if int(db2[i][x+4])==int(db[x][-1]):
-					tt+="----:green["+db[x][y+1]+"]  \n"
+					tt+="--:green["+db[x][y+1]+"]  \n"
 				else:
-					tt+="----:red["+db[x][y+1]+"]  \n"
+					tt+="--:red["+db[x][y+1]+"]  \n"
 			elif int(y)==int(db[x][-1]):
-				tt+="----:red["+db[x][y+1]+"]  \n"
+				tt+="--:red["+db[x][y+1]+"]  \n"
 			else:
-				tt+="--"+db[x][y+1]+"  \n"
+				tt+="-"+db[x][y+1]+"  \n"
 		st.write(tt)
 		
 		st.write("   :rainbow["+db[x][11]+"]")
