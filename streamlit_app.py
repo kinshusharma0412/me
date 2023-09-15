@@ -1,6 +1,6 @@
 import streamlit as st
 import streamlit as st
-from streamlit_js_eval import streamlit_js_eval
+
 #st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
@@ -92,7 +92,7 @@ if int(sub[i])==0:
 				time.sleep(5)
 				db2[i][3]=1
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-				streamlit_js_eval(js_expressions="parent.window.location.reload()")
+				st.experimental_rerun()
 	else:
 		ph.write(btn)
 elif int(sub[i])==1:
@@ -103,7 +103,7 @@ elif int(sub[i])==2:
 		
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		streamlit_js_eval(js_expressions="parent.window.location.reload()")
+		st.experimental_rerun()
 
 
     
