@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit.server.server import Server
 #st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
@@ -97,8 +98,10 @@ elif int(sub[i])==1:
 elif int(sub[i])==2:
 	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 	if path:
-		st.write("click"+path)
+		
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		Server.get_current()._reloader.reload()
+
 
     
