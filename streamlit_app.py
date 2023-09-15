@@ -155,8 +155,8 @@ elif int(sub[i])==4:
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
-	mraks={}
 	
+	marks={}
 	for x in range(len(db2)):
 		mark=0
 		for y in range(len(db2[x][-len(db):])):
