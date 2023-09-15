@@ -24,7 +24,7 @@ N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
 if int(sub[i])==0:
-	st.set_page_config()
+	#st.set_page_config()
 	ph = st.empty()
 	
 	if query["id"][0]+query["user"][0] not in os.environ:
