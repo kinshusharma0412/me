@@ -131,7 +131,7 @@ elif int(sub[i])==3:
 			
 			if db[x][y+1]=="":
 				pass
-			if int(db2[i][x+4])==y:
+			elif int(db2[i][x+4])==y:
 				if int(db2[i][x+4])==int(db[x][-1]):
 					tt+="##:green["+db[x][y+1]+"]  \n"
 				else:
