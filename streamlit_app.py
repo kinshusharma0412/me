@@ -43,9 +43,10 @@ if int(sub[i])==0:
 	
 	st.write("Thanks")
 	#st.button("Reset", type="primary")
-	if st.button('Submit'):
+	if st.button(':rainbow[Submit Test]'):
 		db2[i][3]=1
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()
 		
 	
 	
