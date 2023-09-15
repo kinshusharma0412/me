@@ -47,8 +47,9 @@ else:
 			break
 		i+=1
 	db2[i]=["Name",query["user"][0],int(os.environ[query["id"][0]+query["user"][0]])].extend(btn)
-	st.write(ids)
+	#st.write(ids)
 	st.write(db2)
+	print(str(db2))
 	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 	
 	
