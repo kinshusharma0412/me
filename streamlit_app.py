@@ -175,5 +175,6 @@ elif int(sub[i])==4:
 	df = pd.DataFrame(new_result2,
 columns=["Name","Time","Marks"])
 	st.table(df)
+	st.write(new_result2)
 	
 	
