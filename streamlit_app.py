@@ -157,6 +157,7 @@ elif int(sub[i])==4:
 		st.experimental_rerun()
 	mraks=[]
 	for x in range(len(db2)):
-		db2[x][-len(db):]
-		st.write(db2[x][-len(db):])
+		for y in range(len(db2[x][-len(db):])):
+			db2[x][-len(db):][y]
+	st.write(db2[x][-len(db):])
 	
