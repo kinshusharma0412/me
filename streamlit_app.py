@@ -110,7 +110,7 @@ if int(sub[i])==0:
 		ph.write(btn)
 
 elif int(sub[i])==2:
-	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
+	path = st.tt_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 	if path:
 		
 		db2.append([path,query["user"][0],N,0])
@@ -126,23 +126,23 @@ elif int(sub[i])==1:
 elif int(sub[i])==3:
 	for x in range(len(db)):
 		st.write(":red["+db[x][0]+"]")
-		
+		tt=""
 		for y in range(len(db[x][1:-3])):
-			text=""
+			
 			if db[x][y+1]=="":
 				pass
 			if int(db2[i][x+4])==y:
 				if int(db2[i][x+4])==int(db[x][-1]):
 					
 				else:
-					text+="      :red["+db[x][y+1]+"]\n"
+					tt+="      :red["+db[x][y+1]+"]\n"
 			elif int(y)==int(db[x][-1]):
-				text+="      :red["+db[x][y+1]+"]"
+				tt+="      :red["+db[x][y+1]+"]"
 			else:
-				text+=db[x][y+1]
-		st.write(text)
+				tt+=db[x][y+1]
+		st.text(tt)
 			
-		st.text("   :rainbow["+db[x][11]+"]")
+		st.write("   :rainbow["+db[x][11]+"]")
 	
 	st.write(db)
 	st.write(db2)
