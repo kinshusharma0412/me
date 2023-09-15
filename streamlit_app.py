@@ -26,7 +26,11 @@ for x in db:
 	btn.append(st.selectbox(x[0],z))
 
 st.write("Thanks")
-
+st.button("Reset", type="primary")
+if st.button('Say hello'):
+    st.write('Why hello there')
+else:
+    st.write('Goodbye')
 
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 ids=[]
