@@ -141,7 +141,7 @@ elif int(sub[i])==3:
 			else:
 				tt+=db[x][y+1]
 		st.text(tt)
-			
+		print(tt)
 		st.write("   :rainbow["+db[x][11]+"]")
 	
 	st.write(db)
