@@ -40,6 +40,16 @@ st.write(data)
 db2.append(data)
 if query["user"][0] not in ids:
 	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+else:
+	i=0
+	for x in ids:
+		if query["user"][0] ==str(x):
+			break
+		i+=1
+	db2[i]=["Name",query["user"][0],os.environ[query["id"][0]+query["user"][0]]].extend(btn)
+	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+	
+	
 	
 	
 if int(os.environ[query["id"][0]+query["user"][0]])>0:
