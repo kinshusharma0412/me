@@ -131,13 +131,13 @@ elif int(sub[i])==3:
 			
 			if db[x][y+1]=="":
 				pass
-			elif int(db2[i][x+4])==y:
+			elif int(db2[i][x+4])==y+1:
 				if int(db2[i][x+4])==int(db[x][-1]):
 					tt+="```      ```:green["+db[x][y+1]+"]  \n"
 				else:
 					tt+="```      ```:red["+db[x][y+1]+"]  \n"
-			elif int(y)==int(db[x][-1]):
-				tt+="```      ```:red["+db[x][y+1]+"]  \n"
+			elif int(y)+1==int(db[x][-1]):
+				tt+="```      ```:green["+db[x][y+1]+"]  \n"
 			else:
 				tt+="```   ```"+db[x][y+1]+"  \n"
 		st.write(tt)
