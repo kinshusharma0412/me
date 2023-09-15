@@ -176,8 +176,13 @@ elif int(sub[i])==4:
 	for key in sorted(new_result, key=lambda x: (new_result[x]['Marks']), reverse=True):
 		st.write(key)
 		new_result2[key] = new_result[key]
+	
+	
+	tab=[]	
+	for x in new_result2.keys():
+		tab.append([new_result2[x]["Name"],new_result2[x]["Marks"],new_result2[x]["Time"]])
 	st.write(new_result2)
-	df = pd.DataFrame(new_result2,
+	df = pd.DataFrame(tab,
 columns=["Name","Time","Marks"])
 	st.table(df)
 	
