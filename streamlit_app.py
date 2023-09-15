@@ -126,24 +126,20 @@ elif int(sub[i])==1:
 elif int(sub[i])==3:
 	for x in range(len(db)):
 		st.write(":red["+db[x][0]+"]")
-		tt=""""""
+		tt=""
 		for y in range(len(db[x][1:-3])):
 			
 			if db[x][y+1]=="":
 				pass
-			elif int(db2[i][x+4])==y:
+			if int(db2[i][x+4])==y:
 				if int(db2[i][x+4])==int(db[x][-1]):
-					tt+="""   :green["""+db[x][y+1]+"""]
-"""
+					tt+="```      ```green["+db[x][y+1]+"]  \n"
 				else:
-					tt+="""   :red["""+db[x][y+1]+"""]
-"""
+					tt+="```      ```red["+db[x][y+1]+"]  \n"
 			elif int(y)==int(db[x][-1]):
-				tt+="""   :red["""+db[x][y+1]+"""]
-"""
+				tt+="```      ```red["+db[x][y+1]+"]  \n"
 			else:
-				tt+="""   """+db[x][y+1]+"""
-"""
+				tt+="```   ```"+db[x][y+1]+"  \n"
 		st.write(tt)
 		
 		st.write("   :rainbow["+db[x][11]+"]")
