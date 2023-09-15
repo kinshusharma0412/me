@@ -169,6 +169,7 @@ elif int(sub[i])==4:
 	st.write(marks)
 	new_result={}
 	for key in sorted(marks, key=lambda x: (marks[x]['Time']), reverse=True):
+		st.write(key)
 		new_result[key] = marks[key]
 	st.write(new_result)
 	new_result2={}
