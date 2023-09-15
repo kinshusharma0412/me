@@ -110,7 +110,7 @@ if int(sub[i])==0:
 		ph.write(btn)
 
 elif int(sub[i])==2:
-	path = st.tt_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
+	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 	if path:
 		
 		db2.append([path,query["user"][0],N,0])
