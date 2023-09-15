@@ -33,12 +33,16 @@ ids=[]
 for x in db2:
 	ids.append(x[1])
 
-data=["Name",query["user"][0],N]
-for x in btn:
-	data.append(x)
 
-db2.append(data)
+
+	
+
+
 if query["user"][0] not in ids:
+	data=["Name",query["user"][0],N]
+	for x in btn:
+		data.append(x)
+		db2.append(data)
 	Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 	st.write(db2)
 else:
@@ -48,7 +52,7 @@ else:
 			break
 		i+=1
 	st.write(i)
-	db2[i]=["Name",query["user"][0],os.environ[query["id"][0]+query["user"][0]]]
+	db2[i]=["Name",query["user"][0],int(os.environ[query["id"][0]+query["user"][0]])]
 	for x in btn:
 		db2[i].append(x)
 	
