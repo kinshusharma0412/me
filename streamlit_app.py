@@ -160,9 +160,11 @@ elif int(sub[i])==4:
 	for x in range(len(db2)):
 		mark=0
 		for y in range(len(db2[x][-len(db):])):
-			if db2[x][-len(db):][y] == db[y][-1]:
+			st.write(db2[x][-len(db):][y].type())
+			st.write(db[y][-1].type())
+			if int(db2[x][-len(db):][y]) == int(db[y][-1]):
 				mark+=4
-			elif db2[x][-len(db):][y]==1:
+			elif int(db2[x][-len(db):][y])==1:
 				pass
 			else:
 				mark-=1
