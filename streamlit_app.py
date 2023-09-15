@@ -43,7 +43,7 @@ if int(sub[i])==0:
 	btn=[]
 	for x in range(len(btn2)):
 		j=0
-		for y in bd[x][1:-3]:
+		for y in db[x][1:-3]:
 			if y==btn2[x]:
 				break
 			j+=1
