@@ -180,7 +180,7 @@ elif int(sub[i])==4:
 	
 	tab=[]	
 	for x in new_result2.keys():
-		tab.append([new_result2[x]["Name"],new_result2[x]["Marks"],new_result2[x]["Time"]])
+		tab.append([new_result2[x]["Name"],new_result2[x]["Time"],new_result2[x]["Marks"]])
 	st.write(new_result2)
 	df = pd.DataFrame(tab,
 columns=["Name","Time","Marks"])
