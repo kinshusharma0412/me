@@ -174,7 +174,7 @@ elif int(sub[i])==4:
 	
 	new_result2={}
 	for key in sorted(new_result, key=lambda x: (new_result[x]['Marks']), reverse=True):
-		st.write(key)
+		
 		new_result2[key] = new_result[key]
 	
 	
