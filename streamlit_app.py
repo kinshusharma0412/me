@@ -1,5 +1,5 @@
 import streamlit as st
-st.set_page_config()
+#st.set_page_config()
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
