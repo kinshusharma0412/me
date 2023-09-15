@@ -124,7 +124,7 @@ elif int(sub[i])==1:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 elif int(sub[i])==3:
-	for x in range(len(db):
+	for x in range(len(db)):
 		st.write(":red["+db[x][0]+"]")
 		
 		for y in range(len(db[x][1:-3])):
