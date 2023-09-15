@@ -39,7 +39,7 @@ if int(sub[i])==0:
 			if y!="":
 				z.append(y)
 		try:
-			btn2.append(st.selectbox(db[x][0],z,index=int(db2[i][x+4])))
+			btn2.append(st.selectbox(db[x][0],z,index=int(db2[i][x+4])-1))
 		except:
 			btn2.append(st.selectbox(db[x][0],z))
 		
@@ -50,7 +50,7 @@ if int(sub[i])==0:
 			if y==btn2[x]:
 				break
 			j+=1
-		btn.append(j)
+		btn.append(j+1)
 	st.write(btn)
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
