@@ -148,19 +148,14 @@ elif int(sub[i])==3:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 elif int(sub[i])==4:
-	for x in range(len(db2)):
-		db2[x][-len(db):]
-		st.write(db2[x][-len(db):])
 	if st.button(':rainbow[View your Answer key]'):
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
-	
+		st.experimental_rerun()	
 	marks={}
 	for x in range(len(db2)):
 		mark=0
 		for y in range(len(db2[x][-len(db):])):
-			
 			if str(db2[x][-len(db):][y]) =="":
 				pass
 			elif int(db2[x][-len(db):][y]) == int(db[y][-1]):
