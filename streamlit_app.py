@@ -139,8 +139,7 @@ elif int(sub[i])==3:
 				st.write(db[x][y])
 			
 		st.write("   :rainbow["+db[x][y]+"]")
-	for y in db2:
-		
+	
 	st.write(db)
 	st.write(db2)
 
