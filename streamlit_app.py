@@ -33,13 +33,16 @@ if int(sub[i])==0:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
 	btn2=[]	
-	for x in db:
+	for x in range(len(db)):
 		z=[]
-		for y in x[1:-3]:
+		for y in db[x][1:-3]:
 			if y!="":
 				z.append(y)
+		try:
+			btn2.append(st.selectbox(db[x][0],z,index=int(db2[i][x+4])))
+		except:
+			btn2.append(st.selectbox(db[x][0],z))
 		
-		btn2.append(st.selectbox(x[0],z))
 	btn=[]
 	for x in range(len(btn2)):
 		j=0
