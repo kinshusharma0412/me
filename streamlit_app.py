@@ -18,10 +18,13 @@ for x in ids:
 	if str(query["user"][0]) ==str(x):
 		break
 	i+=1
-if sub[i]==0:
+N = len(db)*30
+if i>len(sub)-1:
+	sub.append(2)
+if subsub[i]==0:
 	st.set_page_config()
 	ph = st.empty()
-	N = len(db)*30
+	
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
@@ -53,7 +56,7 @@ if sub[i]==0:
 	
 	
 	if query["user"][0] not in ids:
-		data=["Name",query["user"][0],N,0]
+		data=[db2[i][0],query["user"][0],N,0]
 		for x in btn:
 			data.append(x)
 		db2.append(data)
@@ -61,7 +64,7 @@ if sub[i]==0:
 		st.write(db2)
 	else:
 		st.write(i)
-		db2[i]=["Name",query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
+		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
 		for x in btn:
 			db2[i].append(x)
 		
@@ -89,5 +92,10 @@ if sub[i]==0:
 		ph.write(btn)
 elif sub[i]==1:
 	st.write("attempt sucessful")
+elif sub[i]==2:
+	path = st.text_input('CSV file path')
+	if path:
+		db2.append([path,query["user"][0],N,0])
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
     
