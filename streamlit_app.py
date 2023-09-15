@@ -119,11 +119,18 @@ elif int(sub[i])==2:
 		st.experimental_rerun()
 elif int(sub[i])==1:
 	st.write("Test submission sucessful 🥳🥳🥳")
-	if st.button(':rainbow[View your Answer key]'):
+	col1, col2 = st.columns([1,1])
+	with col1:
+		bt1=st.button(':rainbow[View your Answer key]')
+	with col2:
+		bt2=st.button(':rainbow[Rank List]')
+
+	if bt1:
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
-	if st.button(':rainbow[Rank List]'):
+	
+	if bt1:
 		db2[i][3]=4
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
