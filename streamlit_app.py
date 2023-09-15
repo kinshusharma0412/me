@@ -51,7 +51,7 @@ if int(sub[i])==0:
 				break
 			j+=1
 		btn.append(j+1)
-	st.write(btn)
+	#st.write(btn)
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
@@ -177,6 +177,7 @@ elif int(sub[i])==4:
 				pass
 			else:
 				mark-=1
+			st.write(mark)
 		
 		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
 	
