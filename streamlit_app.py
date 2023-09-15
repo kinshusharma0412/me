@@ -69,7 +69,8 @@ if int(os.environ[query["id"][0]+query["user"][0]])>0:
 		mm, ss = secs//60, secs%60
 		ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 		time.sleep(1)
-		os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
+		if secs>0:
+			os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
 		if secs<1:
 			ph.write("Times Up!!")
 			ph.write(btn)
