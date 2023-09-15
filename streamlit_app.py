@@ -47,7 +47,7 @@ else:
 			break
 		i+=1
 	st.write(i)
-	db2[i]=["Name",query["user"][0],int(os.environ[query["id"][0]+query["user"][0]])].extend(btn)
+	db2[i]=["Name",query["user"][0],os.environ[query["id"][0]+query["user"][0]]].extend(btn)
 	
 	st.write(db2)
 	print(str(db2))
