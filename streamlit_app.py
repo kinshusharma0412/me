@@ -161,7 +161,9 @@ elif int(sub[i])==4:
 		mark=0
 		for y in range(len(db2[x][-len(db):])):
 			
-			if int(db2[x][-len(db):][y]) == int(db[y][-1]):
+			if str(db2[x][-len(db):][y]) =="":
+				pass
+			elif int(db2[x][-len(db):][y]) == int(db[y][-1]):
 				mark+=4
 			elif int(db2[x][-len(db):][y])==1:
 				pass
