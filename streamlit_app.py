@@ -21,7 +21,7 @@ st.write(sub)
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
-if sub[i]==0:
+if int(sub[i])==0:
 	st.set_page_config()
 	ph = st.empty()
 	
@@ -90,9 +90,9 @@ if sub[i]==0:
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 	else:
 		ph.write(btn)
-elif sub[i]==1:
+elif int(sub[i])==1:
 	st.write("attempt sucessful")
-elif sub[i]==2:
+elif int(sub[i])==2:
 	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 	if path:
 		db2.append([path,query["user"][0],N,0])
