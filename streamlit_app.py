@@ -165,12 +165,12 @@ elif int(sub[i])==4:
 			else:
 				mark-=1
 		
-		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":db2[x][2]}
+		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
 	new_result={}
-	for key in sorted(marks, key=lambda x: int(marks[x]['Time']), reverse=True):
+	for key in sorted(marks, key=lambda x: (marks[x]['Time']), reverse=True):
 		new_result[key] = marks[key]
 	new_result2={}
-	for key in sorted(new_result, key=lambda x: int(new_result[x]['Marks']), reverse=True):
+	for key in sorted(new_result, key=lambda x: (new_result[x]['Marks']), reverse=True):
 		new_result2[key] = new_result[key]
 	df = pd.DataFrame(new_result2,
 columns=["Name","Time","Marks"])
