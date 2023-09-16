@@ -212,6 +212,7 @@ elif int(sub[i])==4:
 		if str(x)==str(ids[i]):
 			indi=con
 		con+=1
+	st.write(new_result2)
 	def cooling_highlight(val):
 		color = 'green' if val["Sr."]==indi else 'white'
 		return f'background-color: {color}'*4
