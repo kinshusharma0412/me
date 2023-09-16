@@ -46,10 +46,11 @@ if int(sub[i])==0:
 	for x in range(len(db)):
 		temp=[]
 		st.write("Q"+str(x+1)+". "+db[x][0])
-		for y in db[x][1:-3]:
+		for y in range(len(db[x][1:-3])):
 			if y!="":
-				temp.append(st.button(y))
+				temp.append(st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1)))
 			btn2.append(temp)
+			
 		
 		
 	btn3={}
@@ -63,6 +64,7 @@ if int(sub[i])==0:
 					btn[x]=y+1
 				except:
 					btn.append(y+1)
+				st.write(x,y)
 	
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
