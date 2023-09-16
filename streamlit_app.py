@@ -219,7 +219,7 @@ elif int(sub[i])==4:
 		return f'background-color: {color}'*4
 	df = pd.DataFrame(tab,columns=["Sr.","Name","Time","Marks"])
 	df = df.style.hide(axis="index")
-	#df.style.apply(cooling_highlight)
+	df = df.style.apply(cooling_highlight)
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
 	#st.table(df)
