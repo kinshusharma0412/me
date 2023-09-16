@@ -205,13 +205,21 @@ elif int(sub[i])==4:
 		mm, ss =(N- new_result2[x]["Time"])//60, (N-new_result2[x]["Time"])%60
 		ti=f"{mm:02d}:{ss:02d}"
 		tab.append([new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
+	con=1
+	indi=1
+	for x in new_result2.keys():
+		new_result2[x]["Sr."]=str(con)
+		if str(x)==str(ids[i]):
+			indi=con
+		con+=1
 	def cooling_highlight(val):
-		color = 'green' if val else 'white'
-		return f'background-color: {color}'
+		color = 'green' if val["Sr."]==indi else 'white'
+		return f'background-color: {color}'*4
 	
-	df = pd.DataFrame(tab,columns=["Name","Time","Marks"])
-#	.style.applymap(cooling_highlight, subset=['Name', 'Time',"Marks"]),#,height=530
-                     #),
+	df = pd.DataFrame(tab,columns=["Sr.","Name","Time","Marks"])
+	
+	df.style.hide_index()
+	df.style.apply(cooling_highlight)
 	st.table(df)
 	
 	
