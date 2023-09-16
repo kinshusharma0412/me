@@ -219,7 +219,7 @@ elif int(sub[i])==4:
 	def cooling_highlight(Z):
 		st.write(Z)
 		st.write(indi)
-		if Z.Sr==str(indi+1)+". ":
+		if Z.Sr==str(indi)+". ":
 			color = 'green'
 		else:
 			color = 'white'
