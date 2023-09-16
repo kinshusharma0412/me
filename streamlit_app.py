@@ -214,17 +214,19 @@ elif int(sub[i])==4:
 		tab.append([new_result2[x]["Sr."]+". ",new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
 	
 	#st.write(new_result2)
-	def cooling_highlight(val):
-		st.write(val)
-		if True:
+	
+	df = pd.DataFrame(tab,columns=["Sr","Name","Time","Marks"])
+	def cooling_highlight(Z):
+		st.write(Z)
+		st.write(indi)
+		if Z.Sr==str(indi)+". ":
 			color = 'green'
 		else:
 			color = 'white'
 		 
 		return f'background-color: {color}'
-	df = pd.DataFrame(tab,columns=["Sr","Name","Time","Marks"])
 	df = df.style.hide(axis="index")
-	df = df.apply(cooling_highlight)
+	df = df.apply(cooling_highlight,axis=1)
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
 	#st.table(df)
