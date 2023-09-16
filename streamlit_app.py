@@ -177,11 +177,12 @@ elif int(sub[i])==4:
 	for x in range(len(db2)):
 		mark=0
 		for y in range(len(db2[x][-len(db):])):
+			st.write(db2[x][-len(db):][y])
 			if str(db2[x][-len(db):][y]) =="":
 				pass
-			elif int(db2[x][-len(db):][y]) == int(db[y][-1]):
+			elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
 				mark+=4
-			elif int(db2[x][-len(db):][y])==1:
+			elif str(db2[x][-len(db):][y])==1:
 				pass
 			else:
 				mark-=1
