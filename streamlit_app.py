@@ -226,7 +226,7 @@ elif int(sub[i])==4:
 		 
 		return f'background-color: {color}'
 	df = df.style.hide(axis="index")
-	total=pd.Series("font-weight: bold;", index=[str(indi-1)])
+	total=pd.Series("font-weight: bold;", index=[str(2-1)])
 	df = df.apply(total)
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
