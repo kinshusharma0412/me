@@ -221,7 +221,7 @@ elif int(sub[i])==4:
 		if x.sr==str(indi)+". ":
 			return['background-color: green']*4
 		else:
-			return['background-color: white']*4
+			return['background-color: black']*4
 
 
 	df = df.style.hide(axis="index")
