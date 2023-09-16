@@ -219,7 +219,7 @@ elif int(sub[i])==4:
 	def cooling_highlight(Z):
 		st.write(Z)
 		st.write(indi)
-		if Z.Sr==str(indi)+". ":
+		if Z.Sr==str(indi+1)+". ":
 			color = 'green'
 		else:
 			color = 'white'
@@ -227,9 +227,9 @@ elif int(sub[i])==4:
 		return f'background-color: {color}'
 	def highlight_rows(x):
 		if x.sr==str(inti+1)+". ":
-			return['background-color: pink']*4
+			return['background-color: green']*4
 		else:
-			return['background-color: blue']*4
+			return['background-color: white']*4
 
 
 	df = df.style.hide(axis="index")
