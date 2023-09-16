@@ -216,9 +216,9 @@ elif int(sub[i])==4:
 	#st.write(new_result2)
 	def cooling_highlight(val):
 		st.write(val)
-		color = 'green' if int(val)==indi else 'white'
+		color = 'green' if int(val.Sr)==indi else 'white'
 		return f'background-color: {color}'*4
-	df = pd.DataFrame(tab,columns=["Sr.","Name","Time","Marks"])
+	df = pd.DataFrame(tab,columns=["Sr","Name","Time","Marks"])
 	df = df.style.hide(axis="index")
 	df = df.apply(cooling_highlight)
 	st.markdown(df.to_html(), unsafe_allow_html=True)
