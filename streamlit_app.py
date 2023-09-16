@@ -221,7 +221,7 @@ elif int(sub[i])==4:
 		else:
 			color = 'white'
 		 
-		return f'background-color: {color}'*4
+		return f'background-color: {color}'
 	df = pd.DataFrame(tab,columns=["Sr","Name","Time","Marks"])
 	df = df.style.hide(axis="index")
 	df = df.apply(cooling_highlight)
