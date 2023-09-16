@@ -176,7 +176,7 @@ elif int(sub[i])==4:
 	marks={}
 	for x in range(len(db2)):
 		mark=0
-		st.write(db2[x]])
+		st.write(db2[x])
 		for y in range(len(db2[x][-len(db):])):
 			
 			if str(db2[x][-len(db):][y]) =="":
