@@ -213,7 +213,7 @@ elif int(sub[i])==4:
 		ti=f"{mm:02d}:{ss:02d}"
 		tab.append([new_result2[x]["Sr."]+". ",new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
 	
-	st.write(new_result2)
+	#st.write(new_result2)
 	def cooling_highlight(val):
 		color = 'green' if val["Sr."]==indi else 'white'
 		return f'background-color: {color}'*4
