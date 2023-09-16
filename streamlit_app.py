@@ -226,7 +226,7 @@ elif int(sub[i])==4:
 		 
 		return f'background-color: {color}'
 	def highlight_rows(x):
-		if x.sr=="2. ":
+		if x.sr==str(inti+1)+". ":
 			return['background-color: pink']*4
 		else:
 			return['background-color: blue']*4
