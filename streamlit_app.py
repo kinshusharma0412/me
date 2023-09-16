@@ -48,8 +48,17 @@ if int(sub[i])==0:
 		st.write("Q"+str(x+1)+". "+db[x][0])
 		for y in range(len(db[x][1:-3])):
 			if db[x][1:-3][y]!="" :
-				temp.append(st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1)))
-				btn2.append(temp)
+				temp2=""
+				try:
+					if str(db2[i][x+4])==str(y+1):
+						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1))
+					else:
+						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
+					
+				except:
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
+				temp.append(temp2)
+			btn2.append(temp)
 			
 		
 		
