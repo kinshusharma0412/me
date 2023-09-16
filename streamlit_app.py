@@ -5,7 +5,7 @@ import pandas as pd
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
-time.sleep(1)
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -19,6 +19,7 @@ print(query)
 db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+
 ids=[]
 sub=[]
 
@@ -105,6 +106,7 @@ if int(sub[i])==0:
 	else:
 		#st.write(i)
 		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
+		time.sleep(1)
 		for x in btn:
 			db2[i].append(x)
 		
