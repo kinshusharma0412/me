@@ -212,7 +212,7 @@ elif int(sub[i])==4:
 				else:
 					mark-=1
 			except Exception as e:
-				st.write(e)
+				st.write("line215"+str(e))
 			#st.write(mark)
 		
 		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
