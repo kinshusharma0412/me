@@ -1,11 +1,11 @@
 import streamlit as st
 import streamlit as st
 import pandas as pd
-#st.set_page_config()
+#st.set_page_config(layout="wide")
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
-#db=Drive_OCR("").google_spreadsheet_get("13Aw2HghuOauGAjnxgD5YvBYo7Ysda-TprTJ_BLHuIPA","A:N")
+
 print(query)
 db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
@@ -27,7 +27,8 @@ if i>len(sub)-1:
 	sub.append(2)
 if int(sub[i])==0:
 	#st.set_page_config()
-	ph = st.empty()
+	
+	ph = st.empty()#st.container()
 	
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
@@ -39,7 +40,7 @@ if int(sub[i])==0:
 			if y!="":
 				z.append(y)
 		try:
-			btn2.append(st.selectbox(db[x][0],z,index=int(db2[i][x+4])-1))
+			btn2.append(st.selectbox("Q"+str(x+1)+". "+db[x][0],z,index=int(db2[i][x+4])-1))
 		except:
 			btn2.append(st.selectbox(db[x][0],z))
 		
@@ -95,7 +96,13 @@ if int(sub[i])==0:
 	if int(os.environ[query["id"][0]+query["user"][0]])>0:
 		for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
 			mm, ss = secs//60, secs%60
-			ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+			with ph:
+				styl = f"""
+<h1 style="position: fixed;up: 0rem;right: 0rem;">{mm:02d}:{ss:02d}</h1>"""
+				ph.markdown(styl, unsafe_allow_html=True)
+				#ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
+				
+			#st.markdown(f'''<div class="floating">{mm:02d}:{ss:02d}</div>''', unsafe_allow_html=True)
 			time.sleep(1)
 			if secs>0:
 				os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
@@ -119,7 +126,7 @@ elif int(sub[i])==2:
 		st.experimental_rerun()
 elif int(sub[i])==1:
 	st.write("Test submission sucessful 🥳🥳🥳")
-	col1, col2 = st.columns([1,1])
+	col1,col2 = st.columns([1,1])
 	with col1:
 		bt1=st.button(':rainbow[View your Answer key]')
 	with col2:
@@ -129,8 +136,7 @@ elif int(sub[i])==1:
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
-	
-	if bt1:
+	if bt2:
 		db2[i][3]=4
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
@@ -141,11 +147,13 @@ elif int(sub[i])==3:
 		st.experimental_rerun()
 	
 	for x in range(len(db)):
-		st.write(":red["+db[x][0]+"]")
+		st.write(":red[Q"+str(x+1)+". "+db[x][0]+"]")
 		tt=""
 		for y in range(len(db[x][1:-3])):
 			
-			if db[x][y+1]=="":
+			if y==0:
+				pass
+			elif db[x][y+1]=="":
 				pass
 			elif int(db2[i][x+4])==y+1:
 				if int(db2[i][x+4])==int(db[x][-1]):
