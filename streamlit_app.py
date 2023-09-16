@@ -64,18 +64,17 @@ if int(sub[i])==0:
 			
 		
 		
-	btn3={}
+	
 	btn=[]	
 	for x in range(len(btn2)):
 		
 		for y in range(len(btn2[x])):
 			if btn2[x][y]:
-				btn3[str(x+1)]=str(y+1)
 				try:
 					btn[x]=y+1
 				except:
 					btn.append(y+1)
-				st.write(x,y)
+				st.write(x,btn[x])
 	
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
