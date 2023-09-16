@@ -217,7 +217,6 @@ elif int(sub[i])==4:
 	def cooling_highlight(val):
 		color = 'green' if val["Sr."]==indi else 'white'
 		return f'background-color: {color}'*4
-	
 	df = pd.DataFrame(tab,columns=["Sr.","Name","Time","Marks"])
 	
 	df.style.hide_index()
