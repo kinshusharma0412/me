@@ -216,17 +216,9 @@ elif int(sub[i])==4:
 	#st.write(new_result2)
 	
 	df = pd.DataFrame(tab,columns=["sr","Name","Time","Marks"])
-	def cooling_highlight(Z):
-		st.write(Z)
-		st.write(indi)
-		if Z.Sr==str(indi)+". ":
-			color = 'green'
-		else:
-			color = 'white'
-		 
-		return f'background-color: {color}'
+	
 	def highlight_rows(x):
-		if x.sr==str(inti+1)+". ":
+		if x.sr==str(indi)+". ":
 			return['background-color: green']*4
 		else:
 			return['background-color: white']*4
@@ -234,7 +226,6 @@ elif int(sub[i])==4:
 
 	df = df.style.hide(axis="index")
 	df=df.apply(highlight_rows, axis = 1)
-	
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
 	#st.table(df)
