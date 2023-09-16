@@ -5,7 +5,7 @@ import pandas as pd
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
-
+time.sleep(1)
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -24,7 +24,8 @@ sub=[]
 
 for x in db2:
 	ids.append(x[1])
-	sub.append(x[3])	
+	sub.append(x[3])
+	
 i=0
 for x in ids:
 	if str(query["user"][0]) ==str(x):
@@ -126,9 +127,9 @@ if int(sub[i])==0:
 				
 			#st.markdown(f'''<div class="floating">{mm:02d}:{ss:02d}</div>''', unsafe_allow_html=True)
 			time.sleep(1)
-			if secs>0:
+			if secs>1:
 				os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
-			if secs<1:
+			elif secs<1:
 				ph.write("Times Up!!")
 				time.sleep(5)
 				db2[i][2]=secs
