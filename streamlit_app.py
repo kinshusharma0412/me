@@ -5,10 +5,12 @@ import pandas as pd
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 query=st.experimental_get_query_params()
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
+            a.embeddedAppMetaInfoBar_linkOutText__4ptMa {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
