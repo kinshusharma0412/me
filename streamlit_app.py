@@ -49,7 +49,7 @@ if int(sub[i])==0:
 		for y in range(len(db[x][1:-3])):
 			if y!="":
 				temp.append(st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1)))
-			btn2.append(temp)
+				btn2.append(temp)
 			
 		
 		
