@@ -205,8 +205,11 @@ elif int(sub[i])==4:
 		mm, ss =(N- new_result2[x]["Time"])//60, (N-new_result2[x]["Time"])%60
 		ti=f"{mm:02d}:{ss:02d}"
 		tab.append([new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
-	
-	df = pd.DataFrame(tab,
+	def cooling_highlight(val):
+		color = 'green' if val else 'white'
+		return f'background-color: {color}'
+	df = pd.DataFrame(tab.style.applymap(cooling_highlight, subset=['Name', 'Time',"Marks"]),#,height=530
+                     #),
 columns=["Name","Time","Marks"])
 	st.table(df)
 	
