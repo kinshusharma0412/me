@@ -215,8 +215,8 @@ elif int(sub[i])==4:
 	
 	#st.write(new_result2)
 	def cooling_highlight(val):
-		st.write(val)
-		if val:
+		st.write(val.Marks)
+		if Ture:
 			color = 'green'
 		else:
 			color = 'white'
