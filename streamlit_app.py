@@ -208,7 +208,8 @@ elif int(sub[i])==4:
 	def cooling_highlight(val):
 		color = 'green' if val else 'white'
 		return f'background-color: {color}'
-	df = pd.DataFrame(tab.style.applymap(cooling_highlight, subset=['Name', 'Time',"Marks"]),#,height=530
+	pd2=pd.read_csv(tab)
+	df = pd.DataFrame(pd2.style.applymap(cooling_highlight, subset=['Name', 'Time',"Marks"]),#,height=530
                      #),
 columns=["Name","Time","Marks"])
 	st.table(df)
