@@ -176,17 +176,19 @@ elif int(sub[i])==4:
 	marks={}
 	for x in range(len(db2)):
 		mark=0
-		st.write(db2[x])
+		#st.write(db2[x])
 		for y in range(len(db2[x][-len(db):])):
-			
-			if str(db2[x][-len(db):][y]) =="":
-				pass
-			elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
-				mark+=4
-			elif str(db2[x][-len(db):][y])==1:
-				pass
-			else:
-				mark-=1
+			try:
+				if str(db2[x][-len(db):][y]) =="":
+					pass
+				elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
+					mark+=4
+				elif str(db2[x][-len(db):][y])==1:
+					pass
+				else:
+					mark-=1
+			except Exception as e:
+				st.write(e)
 			#st.write(mark)
 		
 		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
