@@ -9,10 +9,12 @@ query=st.experimental_get_query_params()
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            div.embeddedAppMetaInfoBar_container__DxxL1:disabled{visibility: hidden;}
+            button[title="View fullscreen"]{
+    visibility: hidden;}
             </style>
             """
+            #footer {visibility: hidden;}
+            #div.embeddedAppMetaInfoBar_container__DxxL1:disabled{visibility: hidden;}
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 print(query)
 db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
