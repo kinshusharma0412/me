@@ -200,11 +200,7 @@ elif int(sub[i])==4:
 		new_result2[key] = new_result[key]
 	
 	
-	tab=[]	
-	for x in new_result2.keys():
-		mm, ss =(N- new_result2[x]["Time"])//60, (N-new_result2[x]["Time"])%60
-		ti=f"{mm:02d}:{ss:02d}"
-		tab.append([new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
+	tab=[]
 	con=1
 	indi=1
 	for x in new_result2.keys():
@@ -212,6 +208,11 @@ elif int(sub[i])==4:
 		if str(x)==str(ids[i]):
 			indi=con
 		con+=1
+	for x in new_result2.keys():
+		mm, ss =(N- new_result2[x]["Time"])//60, (N-new_result2[x]["Time"])%60
+		ti=f"{mm:02d}:{ss:02d}"
+		tab.append([new_result2[x]["Sr."]+". ",new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
+	
 	st.write(new_result2)
 	def cooling_highlight(val):
 		color = 'green' if val["Sr."]==indi else 'white'
