@@ -74,7 +74,7 @@ if int(sub[i])==0:
 					btn[x]=y+1
 				except:
 					btn.append(y+1)
-		st.write(x,btn[x])
+		#st.write(x,btn[x])
 	
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
