@@ -219,7 +219,7 @@ elif int(sub[i])==4:
 	
 	def highlight_rows(x):
 		if x.sr==str(indi)+". ":
-			return['background-color: rgba(0,255,0,1)']*4
+			return['background-color: rgba(0,255,0,.5)']*4
 		else:
 			return['background-color: rgba(0,255,0,0)']*4
 			#return['background-color: black']*4
