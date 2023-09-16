@@ -233,7 +233,7 @@ elif int(sub[i])==4:
 
 
 	df = df.style.hide(axis="index")
-	df=df.style.apply(highlight_rows, axis = 1)
+	df=df.apply(highlight_rows, axis = 1)
 	
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
