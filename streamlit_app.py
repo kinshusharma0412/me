@@ -9,7 +9,7 @@ query=st.experimental_get_query_params()
 hide_streamlit_style = """
             <style>
             
-            div.embeddedAppMetaInfoBar_container__DxxL1:disabled{height: 200px; visibility: hidden;}
+            div.embeddedAppMetaInfoBar_container__DxxL1:disabled{height: 1200px; visibility: hidden;}
             </style>
             """
             #footer {visibility: hidden;}
