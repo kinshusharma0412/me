@@ -218,8 +218,7 @@ elif int(sub[i])==4:
 		color = 'green' if val["Sr."]==indi else 'white'
 		return f'background-color: {color}'*4
 	df = pd.DataFrame(tab,columns=["Sr.","Name","Time","Marks"])
-	
-	df.style.hide(axis="index").format(escape="html")
+	st.markdown(df.style.hide(axis="index").to_html(), unsafe_allow_html=True)
 	df.style.apply(cooling_highlight)
 	st.table(df)
 	
