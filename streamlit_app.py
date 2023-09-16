@@ -10,7 +10,7 @@ hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
-            a.embeddedAppMetaInfoBar_linkOutText__4ptMa {visibility: hidden;}
+            div.embeddedAppMetaInfoBar_container__DxxL1 {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
