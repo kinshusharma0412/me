@@ -8,12 +8,12 @@ query=st.experimental_get_query_params()
 
 hide_streamlit_style = """
             <style>
-            
-            div.embeddedAppMetaInfoBar_container__DxxL1:disabled{height: 1200px; visibility: hidden;}
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
             </style>
             """
-            #footer {visibility: hidden;}
-            ##MainMenu {visibility: hidden;}
+            #
+            #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 print(query)
 db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
@@ -44,24 +44,26 @@ if int(sub[i])==0:
 	
 	btn2=[]	
 	for x in range(len(db)):
-		z=[]
+		temp=[]
+		st.write("Q"+str(x+1)+". "+db[x][0])
 		for y in db[x][1:-3]:
 			if y!="":
-				z.append(y)
-		try:
-			btn2.append(st.selectbox("Q"+str(x+1)+". "+db[x][0],z,index=int(db2[i][x+4])-1))
-		except:
-			btn2.append(st.selectbox("Q"+str(x+1)+". "+db[x][0],z))
+				temp.append(st.button(y))
+			btn2.append(temp)
 		
-	btn=[]
+		
+	btn3={}
+	btn=[]	
 	for x in range(len(btn2)):
-		j=0
-		for y in db[x][1:-3]:
-			if y==btn2[x]:
-				break
-			j+=1
-		btn.append(j+1)
-	#st.write(btn)
+		
+		for y in range(len(btn2[x])):
+			if btn2[x][y]:
+				btn3[str(x+1)]=str(y+1)
+				try:
+					btn[x]=y+1
+				except:
+					btn.append(y+1)
+	
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
