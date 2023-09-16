@@ -215,7 +215,7 @@ elif int(sub[i])==4:
 	
 	#st.write(new_result2)
 	
-	df = pd.DataFrame(tab,columns=["Sr","Name","Time","Marks"])
+	df = pd.DataFrame(tab,columns=["sr","Name","Time","Marks"])
 	def cooling_highlight(Z):
 		st.write(Z)
 		st.write(indi)
@@ -225,9 +225,16 @@ elif int(sub[i])==4:
 			color = 'white'
 		 
 		return f'background-color: {color}'
+	def highlight_rows(x):
+		if x.sr>2:
+			return['background-color: pink']*5
+		else:
+			return['background-color: blue']*5
+
+
 	df = df.style.hide(axis="index")
-	total=pd.Series("font-weight: bold;", index=1)
-	df = df.apply(total)
+	df=df.style.apply(highlight_rows, axis = 1)
+	
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
 	#st.table(df)
