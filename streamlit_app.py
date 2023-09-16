@@ -42,7 +42,7 @@ if int(sub[i])==0:
 		try:
 			btn2.append(st.selectbox("Q"+str(x+1)+". "+db[x][0],z,index=int(db2[i][x+4])-1))
 		except:
-			btn2.append(st.selectbox(db[x][0],z))
+			btn2.append(st.selectbox("Q"+str(x+1)+". "+db[x][0],z))
 		
 	btn=[]
 	for x in range(len(btn2)):
