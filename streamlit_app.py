@@ -4,6 +4,7 @@ import pandas as pd
 #st.set_page_config(layout="wide")
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
+import re as reaaa
 query=st.experimental_get_query_params()
 
 hide_streamlit_style = """
@@ -44,7 +45,32 @@ if int(sub[i])==0:
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
-	btn2=[]	
+	ids=[]
+	for x in db2:
+		ids.append(x[1])
+	
+	
+	btn2=[]
+	
+	
+	def click_button(i):
+		if query["user"][0] not in os.environ.keys():
+			temp3={}
+		else:
+			temp3=os.environ[query["user"][0]]
+		y=reaaa.split("\.",i)
+		temp3[y[0]]=y[1]
+		os.environ[query["user"][0]]=temp3
+			
+			
+
+
+
+
+
+			
+		
+		
 	for x in range(len(db)):
 		temp=[]
 		st.write("Q"+str(x+1)+". "+db[x][0])
@@ -52,51 +78,46 @@ if int(sub[i])==0:
 			if db[x][1:-3][y]!="" :
 				temp2=""
 				try:
-					if str(db2[i][x+4])==str(y+1):
-						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1))
+					if str(os.environ[query["user"][0]][str(x+1)])==str(y+1):
+						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 					else:
-						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
+						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 					
-				except:
-					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
+				except Exception as e:
+					st.warning(str(x+1)+"."+str(y+1), icon="⚠️")
+					#temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
 				temp.append(temp2)
 		btn2.append(temp)
 		
 		
 		
 	
-	btn=[]	
-	for x in range(len(btn2)):
-		
-		for y in range(len(btn2[x])):
-			if btn2[x][y]:
-				try:
-					btn[x]=y+1
-				except:
-					btn.append(y+1)
-				st.write(x,btn)
+	
 	
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if st.button(':rainbow[Submit Test]'):
+		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
+		for x in range(len(db2[i][4:])):
+			try:
+				db2[i][4+x]=os.environ[query["user"][0]][str(1+x)]
+			except Exception as e:
+				pass#st.warning(temp3, icon="⚠️")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 		
 	
 	
 	
-	ids=[]
-	for x in db2:
-		ids.append(x[1])
+	
 	
 	
 	
 		
 	
 	
-	if query["user"][0] not in ids:
-		data=[db2[i][0],query["user"][0],N,0]
+	
 		for x in btn:
 			data.append(x)
 		db2.append(data)
@@ -132,7 +153,7 @@ if int(sub[i])==0:
 				os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
 			elif secs<1:
 				ph.write("Times Up!!")
-				time.sleep(5)
+				#time.sleep(5)
 				db2[i][2]=secs
 				db2[i][3]=1
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
