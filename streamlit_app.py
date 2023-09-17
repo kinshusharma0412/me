@@ -125,8 +125,8 @@ if int(sub[i])==0:
 		db2[i][3]=1
 		
 		for x in range(len(db)):
-			st.write(db2,i)
-			st.write(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]))
+			
+			
 			try:
 				db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 			except Exception as e:
