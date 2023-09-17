@@ -182,7 +182,7 @@ if int(sub[i])==0:
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 				st.experimental_rerun()
 	else:
-		ph.write(btn)
+		ph.warning(str(x+1)+"."+str(y+1)+str(e), icon="⚠️")
 
 elif int(sub[i])==2:
 	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
