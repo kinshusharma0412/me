@@ -77,10 +77,10 @@ if int(sub[i])==0:
 		for y in range(len(db[x][1:-3])):
 			if db[x][1:-3][y]!="" :
 				temp2=""
-				
+				st.write(environ[query["user"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-				elif str(os.environ[query["user"][0]][str(x+1)])==str(y+1):
+				elif str(json.loads(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
@@ -104,7 +104,7 @@ if int(sub[i])==0:
 		db2[i][3]=1
 		for x in range(len(db2[i][4:])):
 			try:
-				db2[i][4+x]=os.environ[query["user"][0]][str(1+x)]
+				db2[i][4+x]=json.loads(os.environ[query["user"][0]])[str(1+x)]
 			except Exception as e:
 				pass#st.warning(temp3, icon="⚠️")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
