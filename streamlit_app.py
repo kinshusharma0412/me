@@ -7,13 +7,7 @@ import time,os, string,xlsxwriter
 import re as reaaa
 import ast
 query=st.experimental_get_query_params()
-import SessionState
-
-ss = SessionState.get(x=1)
-    
-if st.button("Increment x"):
-    ss.x = ss.x + 1
-    st.text(ss.x)
+st.write(st.session_state)
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
