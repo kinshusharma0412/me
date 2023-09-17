@@ -113,7 +113,7 @@ if int(sub[i])==0:
 			st.write(db2,i)
 			st.write(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]))
 			try:
-				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)]
+				db2[i][4+x].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 			except Exception as e:
 				db2[i].append("")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
@@ -155,9 +155,8 @@ if int(sub[i])==0:
 				db2[i][3]=1
 				for x in range(len(db)):
 					try:
-						db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)]
+						db2[i][4+x].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
-						st.write(db2,i)
 						db2[i].append("")
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 				st.experimental_rerun()
