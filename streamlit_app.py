@@ -33,7 +33,7 @@ for x in ids:
 	if str(query["user"][0]) ==str(x):
 		break
 	i+=1
-
+st.write(environ[query["user"][0]])
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
@@ -77,7 +77,7 @@ if int(sub[i])==0:
 		for y in range(len(db[x][1:-3])):
 			if db[x][1:-3][y]!="" :
 				temp2=""
-				st.write(environ[query["user"][0]])
+				#st.write(environ[query["user"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				elif str(json.loads(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
