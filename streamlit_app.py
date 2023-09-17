@@ -7,7 +7,7 @@ import time,os, string,xlsxwriter
 import re as reaaa
 import ast
 query=st.experimental_get_query_params()
-st.write(st.session_state)
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -61,11 +61,11 @@ if int(sub[i])==0:
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
 		
 		y=reaaa.split("\.",j)
-		st.session_state[j]=True
+		_="""st.session_state[j]=True
 		for x in range(len(db[int(y[0])-1][1:-3])):
 			if db[int(y[0])-1][1:-3][x]!="":
 				if str(x+1)!=y[1]:
-					st.session_state[y[0]+"."+str(x+1)]=False
+					st.session_state[y[0]+"."+str(x+1)]=False"""
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
 		
