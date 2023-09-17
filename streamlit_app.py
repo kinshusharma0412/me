@@ -78,7 +78,7 @@ if int(sub[i])==0:
 			if db[x][1:-3][y]!="" :
 				temp2=""
 				try:
-					if query["user"][0] not in os.environ.key():
+					if query["user"][0] not in os.environ:
 						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 					elif str(os.environ[query["user"][0]][str(x+1)])==str(y+1):
 						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
