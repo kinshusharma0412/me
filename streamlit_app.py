@@ -34,7 +34,7 @@ for x in ids:
 	if str(query["user"][0]) ==str(x):
 		break
 	i+=1
-st.write(os.environ[query["user"][0]])
+#st.write(os.environ[query["user"][0]+query["id"][0]])
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
@@ -58,10 +58,10 @@ if int(sub[i])==0:
 		if query["user"][0] not in os.environ:
 			temp3={}
 		else:
-			temp3=ast.literal_eval(os.environ[query["user"][0]])
+			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
-		os.environ[query["user"][0]]=str(temp3)
+		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
 			
 			
 
@@ -79,12 +79,12 @@ if int(sub[i])==0:
 			
 			if db[x][1:-3][y]!="" :
 				temp2=""
-				#st.write(os.environ[query["user"][0]])
+				#st.write(os.environ[query["user"][0]+query["id"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-				elif str(x+1) not in ast.literal_eval(os.environ[query["user"][0]]).keys():
+				elif str(x+1) not in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-				elif str(ast.literal_eval(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
+				elif str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
@@ -110,7 +110,7 @@ if int(sub[i])==0:
 		db2[i][3]=1
 		for x in range(len(db2[i][4:])):
 			try:
-				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]])[str(1+x)]
+				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)]
 			except Exception as e:
 				pass#st.warning(temp3, icon="⚠️")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
@@ -157,6 +157,7 @@ if int(sub[i])==0:
 				#ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 				
 			#st.markdown(f'''<div class="floating">{mm:02d}:{ss:02d}</div>''', unsafe_allow_html=True)
+			
 			time.sleep(1)
 			if secs>1:
 				os.environ[query["id"][0]+query["user"][0]]=str(secs-2)
