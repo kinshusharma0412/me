@@ -5,7 +5,7 @@ import pandas as pd
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 import re as reaaa
-import ast
+import ast,random
 query=st.experimental_get_query_params()
 
 hide_streamlit_style = """
@@ -61,6 +61,7 @@ if int(sub[i])==0:
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
 		
 		y=reaaa.split("\.",j)
+		st.session_state["q"]=random.randint(3, 999)
 		_="""st.session_state[j]=True
 		for x in range(len(db[int(y[0])-1][1:-3])):
 			if db[int(y[0])-1][1:-3][x]!="":
