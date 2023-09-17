@@ -4,7 +4,8 @@ import pandas as pd
 #st.set_page_config(layout="wide")
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
-import re as reaaa,json
+import re as reaaa
+import ast
 query=st.experimental_get_query_params()
 
 hide_streamlit_style = """
@@ -57,7 +58,7 @@ if int(sub[i])==0:
 		if query["user"][0] not in os.environ:
 			temp3={}
 		else:
-			temp3=json.loads(os.environ[query["user"][0]])
+			temp3=ast.literal_eval(os.environ[query["user"][0]])
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]]=str(temp3)
@@ -80,7 +81,7 @@ if int(sub[i])==0:
 				#st.write(os.environ[query["user"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-				elif str(json.loads(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
+				elif str(ast.literal_eval(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
@@ -104,7 +105,7 @@ if int(sub[i])==0:
 		db2[i][3]=1
 		for x in range(len(db2[i][4:])):
 			try:
-				db2[i][4+x]=json.loads(os.environ[query["user"][0]])[str(1+x)]
+				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]])[str(1+x)]
 			except Exception as e:
 				pass#st.warning(temp3, icon="⚠️")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
