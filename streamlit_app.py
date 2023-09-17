@@ -77,7 +77,7 @@ if int(sub[i])==0:
 			
 		
 	if query["user"][0]+query["id"][0]  in os.environ:
-		st.write(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]))
+		
 	for x in range(len(db)):
 		temp=[]
 		
