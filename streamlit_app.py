@@ -83,7 +83,7 @@ if int(sub[i])==0:
 				temp2=""
 				
 				
-				if os.environ[query["user"][0]+query["id"][0]] not in os.environ:
+				if query["user"][0]+query["id"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 					
 					
