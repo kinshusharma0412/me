@@ -34,7 +34,7 @@ for x in ids:
 	if str(query["user"][0]) ==str(x):
 		break
 	i+=1
-#st.write(os.environ[query["user"][0]+query["id"][0]])
+
 N = len(db)*30
 if i>len(sub)-1:
 	sub.append(2)
