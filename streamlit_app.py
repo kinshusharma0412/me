@@ -109,7 +109,7 @@ if int(sub[i])==0:
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
 		
-		for x in range(len(db2[i][4:])):
+		for x in range(len(db)):
 			try:
 				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)]
 			except Exception as e:
@@ -143,9 +143,9 @@ if int(sub[i])==0:
 			#st.markdown(f'''<div class="floating">{mm:02d}:{ss:02d}</div>''', unsafe_allow_html=True)
 			
 			time.sleep(1)
-			if secs>1:
-				os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
-			elif secs<1:
+			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
+				
+			if secs<1:
 				ph.write("Times Up!!")
 				
 				db2[i][2]=str(secs)
