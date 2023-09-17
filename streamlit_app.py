@@ -83,6 +83,7 @@ if int(sub[i])==0:
 					
 				elif str(x+1) not in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				
 					
 					
 				elif str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(y+1):
@@ -101,8 +102,15 @@ if int(sub[i])==0:
 					#st.warning(str(x+1)+"."+str(y+1)+str(e), icon="⚠️")
 					#temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
 				temp.append(temp2)
+		
+		if query["user"][0]+query["id"][0]  in os.environ:
+			if  str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(0):
+				temp2=st.button("```      ```:green[Skip (optional)]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+				
+		else:
+			temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+		temp.append(temp2)
 		btn2.append(temp)
-		temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
 		
 		
 		
