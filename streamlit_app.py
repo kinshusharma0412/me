@@ -162,16 +162,7 @@ if int(sub[i])==0:
 				
 			time.sleep(1)
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
-			_ = """for x in range(len(db)):
-				try:
-					db2[i][2]=str(secs)
-					db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
-				except Exception as e:
-					db2[i].append("")
-			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-			st.experimental_rerun()"""
-			
-				
+		
 			if secs<1:
 				ph.write("Times Up!!")
 				
@@ -185,7 +176,7 @@ if int(sub[i])==0:
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 				st.experimental_rerun()
 	else:
-		ph.warning(str(x+1)+"."+str(y+1)+str(e), icon="⚠️")
+		ph.warning(str(e), icon="⚠️")
 
 elif int(sub[i])==2:
 	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
