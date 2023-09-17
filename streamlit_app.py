@@ -76,19 +76,18 @@ if int(sub[i])==0:
 		temp=[]
 		st.write("Q"+str(x+1)+". "+db[x][0])
 		for y in range(len(db[x][1:-3])):
-			try:
-				if db[x][1:-3][y]!="" :
-					temp2=""
-					#st.write(os.environ[query["user"][0]])
-					if query["user"][0] not in os.environ:
-						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					elif str(ast.literal_eval(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
-						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					else:
-						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-						
-			except:
-				pass
+			
+			if db[x][1:-3][y]!="" :
+				temp2=""
+				#st.write(os.environ[query["user"][0]])
+				if query["user"][0] not in os.environ:
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				elif str(ast.literal_eval(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
+					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				else:
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+					
+			
 				
 				
 					
