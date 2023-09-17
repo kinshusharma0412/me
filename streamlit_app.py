@@ -225,6 +225,8 @@ elif int(sub[i])==3:
 				tt+="```      ```:green["+db[x][y+1]+"]  \n"
 			else:
 				tt+="```   ```"+db[x][y+1]+"  \n"
+		if int(db2[i][x+4])==0:
+			tt+="```      ```:red[Skip]  \n"
 		st.write(tt)
 		
 		st.write("   :rainbow["+db[x][11]+"]")
