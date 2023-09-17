@@ -127,23 +127,6 @@ if int(sub[i])==0:
 	
 	
 	
-		for x in btn:
-			data.append(x)
-		db2.append(data)
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		#st.write(db2)
-	else:
-		#st.write(i)
-		db2[i]=[db2[i][0],query["user"][0],int(os.environ[query["id"][0]+query["user"][0]]),0]
-		time.sleep(1)
-		for x in btn:
-			db2[i].append(x)
-		
-		
-		#st.write(db2)
-		#print(str(db2))
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		
 		
 		
 		
