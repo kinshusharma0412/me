@@ -110,11 +110,13 @@ if int(sub[i])==0:
 		db2[i][3]=1
 		
 		for x in range(len(db)):
+			st.write(db2,i)
 			try:
 				db2[i][4+x]=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)]
 			except Exception as e:
 				db2[i].append("")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		time.sleep(5)
 		st.experimental_rerun()
 		
 	
