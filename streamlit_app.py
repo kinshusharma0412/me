@@ -64,7 +64,8 @@ if int(sub[i])==0:
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
-		st.write(os.environ(query["user"][0]+query["id"][0] )
+		
+		st.write(os.environ[query["user"][0]+query["id"][0]] )
 		_="""if len(db2[i])-4>int(y[0])-1:
 			db2[i][4+int(y)-1]=y[1]
 		elif len(db2[i])-4=int(y[0])-1:
