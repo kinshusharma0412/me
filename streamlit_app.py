@@ -104,8 +104,13 @@ if int(sub[i])==0:
 				temp.append(temp2)
 		
 		if query["user"][0]+query["id"][0]  in os.environ:
-			if  str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(0):
-				temp2=st.button("```      ```:green[Skip (optional)]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+			if  str(x+1) in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
+				if  str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(0):
+					temp2=st.button("```      ```:green[Skip (optional)]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+				else:
+					temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+			else:
+				temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
 				
 		else:
 			temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
