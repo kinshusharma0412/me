@@ -54,27 +54,17 @@ if int(sub[i])==0:
 	btn2=[]
 	
 	
-	def click_button(i):
+	def click_button(j):
 		
 		if query["user"][0]+query["id"][0] not in os.environ:
 			temp3={}
 		else:
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
 		
-		y=reaaa.split("\.",i)
+		y=reaaa.split("\.",j)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
 		
-		#st.write(os.environ[query["user"][0]+query["id"][0]] )
-		_="""if len(db2[i])-4>int(y[0])-1:
-			db2[i][4+int(y)-1]=y[1]
-		elif len(db2[i])-4=int(y[0])-1:
-			db2[i].append(y[1])"""
-		
-
-
-
-			
 		
 	
 	for x in range(len(db)):
