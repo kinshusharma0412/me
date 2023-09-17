@@ -55,7 +55,7 @@ if int(sub[i])==0:
 	
 	
 	def click_button(i):
-		if query["user"][0] not in os.environ:
+		if query["user"][0]+query["id"][0] not in os.environ:
 			temp3={}
 		else:
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
