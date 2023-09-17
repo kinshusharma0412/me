@@ -77,17 +77,17 @@ if int(sub[i])==0:
 		for y in range(len(db[x][1:-3])):
 			if db[x][1:-3][y]!="" :
 				temp2=""
-				try:
-					if query["user"][0] not in os.environ:
-						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					elif str(os.environ[query["user"][0]][str(x+1)])==str(y+1):
-						temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					else:
-						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				
+				if query["user"][0] not in os.environ:
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				elif str(os.environ[query["user"][0]][str(x+1)])==str(y+1):
+					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				else:
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 					
-				except Exception as e:
+				
 					
-					st.warning(str(x+1)+"."+str(y+1)+str(e), icon="⚠️")
+					#st.warning(str(x+1)+"."+str(y+1)+str(e), icon="⚠️")
 					#temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
 				temp.append(temp2)
 		btn2.append(temp)
