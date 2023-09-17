@@ -70,8 +70,8 @@ if int(sub[i])==0:
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
 		
-	if query["user"][0]+query["id"][0] in os.environ:
-		st.write(os.environ[query["user"][0]+query["id"][0]])
+	_="""if query["user"][0]+query["id"][0] in os.environ:
+		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
 	for x in range(len(db)):
 		temp=[]
 		
