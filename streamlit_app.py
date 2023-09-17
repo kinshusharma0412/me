@@ -204,10 +204,7 @@ elif int(sub[i])==3:
 		st.write(":red[Q"+str(x+1)+". "+db[x][0]+"]")
 		tt=""
 		for y in range(len(db[x][1:-3])):
-			
-			if y==0:
-				pass
-			elif db[x][y+1]=="":
+			if db[x][y+1]=="":
 				pass
 			elif int(db2[i][x+4])==y+1:
 				if int(db2[i][x+4])==int(db[x][-1]):
