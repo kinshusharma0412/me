@@ -62,11 +62,11 @@ if int(sub[i])==0:
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
+		if len(db2[i])-4>int(y[0])-1:
+			db2[i][4+int(y)-1]=y[1]
+		elif len(db2[i])-4=int(y[0])-1:
+			db2[i].append(y[1])
 		
-			
-			
-
-
 
 
 
@@ -152,14 +152,14 @@ if int(sub[i])==0:
 				
 			time.sleep(1)
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
-			for x in range(len(db)):
+			_ = """for x in range(len(db)):
 				try:
 					db2[i][2]=str(secs)
 					db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 				except Exception as e:
 					db2[i].append("")
 			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-			st.experimental_rerun()
+			st.experimental_rerun()"""
 			
 				
 			if secs<1:
