@@ -76,8 +76,7 @@ if int(sub[i])==0:
 
 			
 		
-	if query["user"][0]+query["id"][0]  in os.environ:
-		
+	
 	for x in range(len(db)):
 		temp=[]
 		
