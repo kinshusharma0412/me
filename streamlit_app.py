@@ -4,7 +4,7 @@ import pandas as pd
 #st.set_page_config(layout="wide")
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
-import re as reaaa
+import re as reaaa,json
 query=st.experimental_get_query_params()
 
 hide_streamlit_style = """
@@ -54,13 +54,13 @@ if int(sub[i])==0:
 	
 	
 	def click_button(i):
-		if query["user"][0] not in os.environ.keys():
+		if query["user"][0] not in os.environ:
 			temp3={}
 		else:
-			temp3=os.environ[query["user"][0]]
+			temp3=json.loads(os.environ[query["user"][0]])
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
-		os.environ[query["user"][0]]=temp3
+		os.environ[query["user"][0]]=str(temp3)
 			
 			
 
