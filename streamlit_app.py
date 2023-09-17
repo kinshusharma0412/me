@@ -82,6 +82,8 @@ if int(sub[i])==0:
 				#st.write(os.environ[query["user"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+				elif str(x+1) not in str(ast.literal_eval(os.environ[query["user"][0]])):
+					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				elif str(ast.literal_eval(os.environ[query["user"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 				else:
