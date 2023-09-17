@@ -91,7 +91,7 @@ if int(sub[i])==0:
 					
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-		temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
+		
 					
 					
 			
@@ -102,6 +102,7 @@ if int(sub[i])==0:
 					#temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
 				temp.append(temp2)
 		btn2.append(temp)
+		temp2=st.button("Skip (optional)",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(0)])
 		
 		
 		
