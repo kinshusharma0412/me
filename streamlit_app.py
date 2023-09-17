@@ -211,7 +211,7 @@ elif int(sub[i])==3:
 		st.experimental_rerun()
 	
 	for x in range(len(db)):
-		st.write(":red[Q"+str(x+1)+". "+db[x][0]+"]")
+		st.write(":golden[Q"+str(x+1)+". "+db[x][0]+"]")
 		tt=""
 		for y in range(len(db[x][1:-3])):
 			if db[x][y+1]=="":
