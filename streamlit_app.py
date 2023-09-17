@@ -60,8 +60,8 @@ if int(sub[i])==0:
 				except:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1))
 				temp.append(temp2)
-			btn2.append(temp)
-			
+		btn2.append(temp)
+		
 		
 		
 	
