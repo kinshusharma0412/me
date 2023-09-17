@@ -244,7 +244,7 @@ elif int(sub[i])==4:
 				
 				if str(db2[x][-len(db):][y]) =="":
 					pass
-				elif str(db2[x][-len(db):][y]) == str(int(db[y][-1])-1):
+				elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
 					mark+=4
 				elif str(db2[x][-len(db):][y])=="0":
 					pass
