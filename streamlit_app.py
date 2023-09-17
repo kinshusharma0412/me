@@ -62,6 +62,7 @@ if int(sub[i])==0:
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
+		st.experimental_rerun()
 			
 			
 
@@ -117,7 +118,7 @@ if int(sub[i])==0:
 			except Exception as e:
 				db2[i].append("")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		time.sleep(50)
+		
 		st.experimental_rerun()
 		
 	
