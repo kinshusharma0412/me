@@ -63,7 +63,7 @@ if int(sub[i])==0:
 		y=reaaa.split("\.",j)
 		st.session_state[j]=True
 		for x in range(len(db[int(y[0])-1][1:-3])):
-			if db[int(y[0])-1)][1:-3][x]!="":
+			if db[int(y[0])-1][1:-3][x]!="":
 				if str(x+1)!=y[1]:
 					st.session_state[y[0]+"."+str(x+1)]=False
 		temp3[y[0]]=y[1]
