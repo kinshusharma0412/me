@@ -62,7 +62,7 @@ if int(sub[i])==0:
 		y=reaaa.split("\.",i)
 		temp3[y[0]]=y[1]
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
-		st.experimental_rerun()
+		
 			
 			
 
@@ -83,12 +83,20 @@ if int(sub[i])==0:
 				#st.write(os.environ[query["user"][0]+query["id"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+					if temp2:
+						st.experimental_rerun()
 				elif str(x+1) not in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+					if temp2:
+						st.experimental_rerun()
 				elif str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+					if temp2:
+						st.experimental_rerun()
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
+					if temp2:
+						st.experimental_rerun()
 					
 			
 				
