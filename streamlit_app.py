@@ -83,35 +83,19 @@ if int(sub[i])==0:
 				#st.write(os.environ[query["user"][0]+query["id"][0]])
 				if query["user"][0] not in os.environ:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					if temp2:
-						container = st.empty()
-						container.write("Save")  
-						time.sleep(1)  
-						container.empty() 
+					
 					
 				elif str(x+1) not in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					if temp2:
-						container = st.empty()
-						container.write("Save")  
-						time.sleep(1)  
-						container.empty() 
+					
 					
 				elif str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(y+1):
 					temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					if temp2:
-						container = st.empty()
-						container.write("Save")  
-						time.sleep(1)  
-						container.empty() 
+					
 					
 				else:
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),on_click=click_button,args=[str(x+1)+"."+str(y+1)])
-					if temp2:
-						container = st.empty()
-						container.write("Save")  
-						time.sleep(1)  
-						container.empty() 
+					
 					
 			
 				
@@ -165,12 +149,18 @@ if int(sub[i])==0:
 				styl = f"""
 <h1 style="position: fixed;up: 0rem;right: 0rem;">{mm:02d}:{ss:02d}</h1>"""
 				ph.markdown(styl, unsafe_allow_html=True)
-				#ph.metric("Countdown", f"{mm:02d}:{ss:02d}")
 				
-			#st.markdown(f'''<div class="floating">{mm:02d}:{ss:02d}</div>''', unsafe_allow_html=True)
-			
 			time.sleep(1)
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
+			for x in range(len(db)):
+				try:
+					db2[i][2]=str(secs)
+					db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+				except Exception as e:
+					db2[i].append("")
+			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+			st.experimental_rerun()
+			
 				
 			if secs<1:
 				ph.write("Times Up!!")
