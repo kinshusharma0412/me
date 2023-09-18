@@ -75,7 +75,7 @@ if int(sub[i])==0:
 	for x in range(len(db)):
 		temp=[]
 		
-		st.write("["+str(x+1)+"/"+str(len(db[x]))+"] "+db[x][0])
+		st.write("["+str(x+1)+"/"+str(len(db))+"] "+db[x][0])
 		for y in range(len(db[x][1:-3])):
 			
 			if db[x][1:-3][y]!="" :
