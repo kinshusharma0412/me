@@ -230,7 +230,7 @@ elif int(sub[i])==3:
 				db2[i][x+4]=0
 			if db[x][y+1]=="":
 				pass
-			elif len(db2[i])==[x+4]:
+			elif int(db2[i][x+4])=="":
 				tt+="```   ```"+db[x][y+1]+"  \n"
 			elif int(db2[i][x+4])==y+1:
 				if int(db2[i][x+4])==int(db[x][-1]):
