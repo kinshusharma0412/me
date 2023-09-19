@@ -126,10 +126,10 @@ if int(sub[i])==0:
 		
 	
 	
-	
+	submt=st.button(':rainbow[Submit Test]')
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
-	if st.button(':rainbow[Submit Test]'):
+	if submt:
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
 		
