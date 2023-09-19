@@ -225,7 +225,7 @@ elif int(sub[i])==3:
 		for y in range(len(db[x][1:-3])):
 			
 			try:
-				db2[i][x+4
+				db2[i][x+4]
 			except:
 				db2[i][x+4]=0
 			if db[x][y+1]=="":
