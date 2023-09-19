@@ -221,7 +221,7 @@ elif int(sub[i])==3:
 	for x in range(len(db)):
 		st.write(":blue[Q"+str(x+1)+". "+db[x][0]+"]")
 		tt=""
-		st.write(db2[i])
+		
 		for y in range(len(db[x][1:-3])):
 			
 			try:
