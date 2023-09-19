@@ -7,7 +7,7 @@ import time,os, string,xlsxwriter
 import re as reaaa
 import ast,random
 query=st.experimental_get_query_params()
-
+from  urllib.parse import unquote_plus
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -182,13 +182,20 @@ if int(sub[i])==0:
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 				st.experimental_rerun()
 elif int(sub[i])==2:
-	path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
-	if path:
-		
+	if "name" in query.keys():
+		path=unquote_plus(query["name"][0])
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 		st.experimental_rerun()
+	else
+		path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
+		if path:
+			
+			db2.append([path,query["user"][0],N,0])
+			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+			os.environ[query["id"][0]+query["user"][0]]=str(N)
+			st.experimental_rerun()
 elif int(sub[i])==1:
 	st.write("Test submission sucessful 🥳🥳🥳")
 	col1,col2 = st.columns([1,1])
