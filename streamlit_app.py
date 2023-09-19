@@ -224,6 +224,8 @@ elif int(sub[i])==3:
 		for y in range(len(db[x][1:-3])):
 			if db[x][y+1]=="":
 				pass
+			elif db2[i][x+4]=="":
+				tt+="```   ```"+db[x][y+1]+"  \n"
 			elif int(db2[i][x+4])==y+1:
 				if int(db2[i][x+4])==int(db[x][-1]):
 					tt+="```      ```:green["+db[x][y+1]+"]```      ```+4  \n"
