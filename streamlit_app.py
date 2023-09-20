@@ -348,7 +348,7 @@ elif int(sub[i])==5:
 				mark-=1
 			if str(y)==str(i):
 				useR.append(mark)
-			st.write((db2[y][2]))
+			st.write((db2[y][1]))
 			mask1.append(mark)
 			
 		marsk[db2[y][1]]=mask1
