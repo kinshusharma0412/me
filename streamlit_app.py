@@ -342,6 +342,7 @@ elif int(sub[i])==5:
 		else:
 			mark-=1
 		marsk.append(mark)
+	st.write(marsk)
 	chart_data = pd.DataFrame(
     marsk,
     columns=[str(db2[i][0])])
