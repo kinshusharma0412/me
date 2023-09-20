@@ -364,7 +364,7 @@ elif int(sub[i])==5:
 		av.append(yy/len(db2))
 	data=[]
 	for x in range(len(av)):
-		data.append([av[x],useR[x]]
+		data.append([av[x],useR[x]])
 	chart_data = pd.DataFrame(data,columns=["Average Graph",str(db2[i][0])])
 	st.line_chart(chart_data)
 
