@@ -344,8 +344,8 @@ elif int(sub[i])==5:
 			else:
 				mark-=1
 			if str(y)==str(i):
-				useR.append(mask)
-			mask1.append(mask)
+				useR.append(mark)
+			mask1.append(mark)
 		marsk[db2[y][1]]=mark1
 	av=[]
 	for y in range(len(db2)):
