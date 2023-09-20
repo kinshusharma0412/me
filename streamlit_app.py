@@ -337,7 +337,7 @@ elif int(sub[i])==5:
 	
 	for y in range(len(db2)):
 		mask1=[]
-		
+		mark=0
 		for x in range(len(db)):
 			try:
 				if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
@@ -360,10 +360,12 @@ elif int(sub[i])==5:
 		yy=0
 		for x in marsk.keys():
 			yy+=marsk[x][y]
+			
 		
 		av.append(yy/len(db2))
 	data=[]
 	for x in range(len(av)):
+		
 		data.append([av[x],useR[x]])
 	chart_data = pd.DataFrame(data,columns=["Average Graph",str(db2[i][0])])
 	st.line_chart(chart_data)
