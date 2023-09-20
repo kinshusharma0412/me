@@ -331,23 +331,31 @@ elif int(sub[i])==5:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 
-	marsk=[]
+	marsk={}
 	mark=0
-	for x in range(len(db)):
+	useR=[]
+	for y in range(len(db2)):
+		mask1=[]
+		for x in range(len(db)):
+			if str(db2[y][x+4])=="" or str(db2[i][x+4])=="0" :
+				pass
+			elif str(db2[i][x+4])==str(db[x][-1]):
+				mark+=4
+			else:
+				mark-=1
+			if str(y)==str(i):
+				useR.append(mask)
+			mask1.append(mask)
+		marsk[db2[y][1]]=mark1
+	av=[]
+	for y in range(len(db2)):
+		yy=0
+		for x in marsk.keys():
+			yy+=marsk[x][y]
 		
-		if str(db2[i][x+4])=="" or str(db2[i][x+4])=="0" :
-			pass
-		elif str(db2[i][x+4])==str(db[x][-1]):
-			mark+=4
-		else:
-			mark-=1
-		marsk.append(mark)
-	
-	chart_data = pd.DataFrame(
-    marsk,
-    columns=[str(db2[i][0])])
-
-st.line_chart(chart_data)
+		av.append(yy/len(db2))
+	chart_data = pd.DataFrame([av,useR],columns=["Average Graph",str(db2[i][0])])
+	st.line_chart(chart_data)
 
 	
 	
