@@ -339,16 +339,19 @@ elif int(sub[i])==5:
 		mask1=[]
 		
 		for x in range(len(db)):
-			
-			if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
-				pass
-			elif str(db2[y][x+4])==str(db[x][-1]):
-				mark+=4
-			else:
-				mark-=1
+			try:
+				if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
+					pass
+				elif str(db2[y][x+4])==str(db[x][-1]):
+					mark+=4
+				else:
+					mark-=1
+			except:
+				pass	
 			if str(y)==str(i):
 				useR.append(mark)
-			st.write((db2[y][1]))
+				
+			
 			mask1.append(mark)
 			
 		marsk[db2[y][1]]=mask1
