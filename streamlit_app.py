@@ -250,6 +250,10 @@ elif int(sub[i])==4:
 		db2[i][3]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()	
+	elif st.button(':rainbow[Review]'):
+		db2[i][3]=5
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()	
 	marks={}
 	for x in range(len(db2)):
 		mark=0
@@ -311,7 +315,76 @@ elif int(sub[i])==4:
 	df=df.apply(highlight_rows, axis = 1)
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
-	#st.table(df)
+elif int(sub[i])==5:
+	col1,col2 = st.columns([1,1])
+	with col1:
+		bt1=st.button(':rainbow[View your Answer key]')
+	with col2:
+		bt2=st.button(':rainbow[Rank List]')
+
+	if bt1:
+		db2[i][3]=3
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()
+	if bt2:
+		db2[i][3]=4
+		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		st.experimental_rerun()
+	marks={}
+	for x in range(len(db2)):
+		mark=0
+		#st.write(db2[x])
+		for y in range(len(db2[x][-len(db):])):
+			try:
+				
+				if str(db2[x][-len(db):][y]) =="":
+					pass
+				elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
+					mark+=4
+				elif str(db2[x][-len(db):][y])=="0":
+					pass
+				else:
+					mark-=1
+			except Exception as e:
+				st.write("line215"+str(e))
+			#st.write(mark)
+	marsk=[]
+	mark=0
+	for x in range(len(db)):
+		
+		if str(db2[i][x+4])=="" or str(db2[i][x+4])=="0" :
+			pass
+		elif str(db2[i][x+4])==str(db[x][-1]):
+			mark+=4
+		else:
+			mark-=1
+		marsk.append(mark)
+	chart_data = pd.DataFrame(
+    marsk,
+    columns=[str(db2[i][0])])
+
+st.line_chart(chart_data)
+
+	
+	
+		
+	
+	
+	
+	df = pd.DataFrame(tab,columns=["sr","Name","Time","Marks"])
+	
+	def highlight_rows(x):
+		if x.sr==str(indi)+". ":
+			return['background-color: rgba(0,255,0,.5)']*4
+		else:
+			return['background-color: rgba(0,255,0,0)']*4
+			#return['background-color: black']*4
+
+
+	df = df.style.hide(axis="index")
+	df=df.apply(highlight_rows, axis = 1)
+	st.markdown(df.to_html(), unsafe_allow_html=True)
+	
 	
 	
 	
