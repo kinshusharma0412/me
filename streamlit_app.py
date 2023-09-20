@@ -334,7 +334,7 @@ elif int(sub[i])==5:
 	marsk={}
 	mark=0
 	useR=[]
-	st.write((db2))
+	
 	for y in range(len(db2)):
 		mask1=[]
 		
@@ -342,13 +342,15 @@ elif int(sub[i])==5:
 			
 			if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
 				pass
-			elif str(db2[i][x+4])==str(db[x][-1]):
+			elif str(db2[y][x+4])==str(db[x][-1]):
 				mark+=4
 			else:
 				mark-=1
 			if str(y)==str(i):
 				useR.append(mark)
+			st.write((db2[y][2]))
 			mask1.append(mark)
+			
 		marsk[db2[y][1]]=mask1
 	av=[]
 	for y in range(len(db2)):
