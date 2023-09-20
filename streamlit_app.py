@@ -334,9 +334,7 @@ elif int(sub[i])==5:
 	marsk={}
 	mark=0
 	useR=[]
-	for y in range(len(db2)):
-		mask1=[]
-		st.write(str(db2[y]))
+	st.write((db2))
 	for y in range(len(db2)):
 		mask1=[]
 		
