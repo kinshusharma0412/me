@@ -337,7 +337,7 @@ elif int(sub[i])==5:
 	for y in range(len(db2)):
 		mask1=[]
 		for x in range(len(db)):
-			st.write(db2)
+			st.write(str(db2))
 			if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
 				pass
 			elif str(db2[i][x+4])==str(db[x][-1]):
