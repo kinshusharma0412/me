@@ -366,12 +366,12 @@ elif int(sub[i])==5:
 		
 		av.append(yy/len(db2))
 	data=[]
-	st.write(str([av[x],useR[x]])
+	st.write(str([av,useR])
 	for x in range(len(av)):
 		
 		data.append([av[x],useR[x]])
 	chart_data = pd.DataFrame(data,columns=["Average Graph",str(db2[i][0])])
-	st.line_chart(chart_data)
+	st.line_chart(chart_data,use_container_width=True)
 
 	
 	
