@@ -370,7 +370,7 @@ elif int(sub[i])==5:
 		
 		data.append([av[x],useR[x]])
 	chart_data = pd.DataFrame(data,columns=["Average Graph",str(db2[i][0])])
-	st.line_chart(chart_data,x="No. of Questions",y="Marks")
+	st.line_chart(chart_data)
 
 	
 	
