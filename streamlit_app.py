@@ -358,7 +358,7 @@ elif int(sub[i])==5:
 			
 		marsk[db2[y][1]]=mask1
 	av=[]
-	for y in range(len(db2)):
+	for y in range(len(db[4:-1])):
 		yy=0
 		for x in marsk.keys():
 			yy+=marsk[x][y]
