@@ -366,7 +366,7 @@ elif int(sub[i])==5:
 		
 		av.append(yy/len(db2))
 	data=[]
-	
+	st.write(str([av,useR]))
 	for x in range(len(av)):
 		
 		data.append([av[x],useR[x]])
