@@ -358,7 +358,7 @@ elif int(sub[i])==5:
 			
 		marsk[db2[y][1]]=mask1
 	av=[]
-	for y in range(len(db[4:-1])):
+	for y in range(len(db)):
 		yy=0
 		for x in marsk.keys():
 			yy+=marsk[x][y]
@@ -368,7 +368,6 @@ elif int(sub[i])==5:
 	data=[]
 	
 	for x in range(len(av)):
-		
 		data.append([av[x],useR[x]])
 	st.write(str(data))
 	chart_data = pd.DataFrame(data,columns=["Average Graph",str(db2[i][0])])
