@@ -349,7 +349,9 @@ elif int(sub[i])==5:
 			except:
 				pass	
 			if str(y)==str(i):
+				
 				useR.append(mark)
+				st.write(mark)
 				
 			
 			mask1.append(mark)
