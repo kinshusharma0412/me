@@ -264,6 +264,8 @@ elif int(sub[i])==3:
 		if x+4<len(db2[i]):
 			if str(db2[i][x+4])==str(0) or str(db2[i][x+4])=="":
 				tt+="```      ```:red[Skip]  \n"
+		else:
+			tt+="```      ```:red[Skip]  \n"
 			st.write(tt)
 		
 			
