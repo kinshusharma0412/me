@@ -256,6 +256,8 @@ elif int(sub[i])==3:
 						tt+="```      ```:green["+db[x][y+1]+"]```      ```+4  \n"
 					else:
 						tt+="```      ```:red["+db[x][y+1]+"]```      ```-1  \n"
+				else:
+					st.wtite("db2[i][x+4]="+str(db2[i][x+4]))
 			elif int(y)+1==int(db[x][-1]):
 				tt+="```      ```:green["+db[x][y+1]+"]  \n"
 			else:
