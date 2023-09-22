@@ -270,9 +270,9 @@ elif int(sub[i])==1:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.rerun()
 elif int(sub[i])==3:
+	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+	ids,sub,i=id_sub(db2)
 	if st.button(':rainbow[Rank List]'):
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
 		db2[i][3]=4
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
@@ -356,7 +356,7 @@ elif int(sub[i])==4:
 	marks={}
 	for x in range(len(db2)):
 		mark=0
-		#st.write(db2[x])
+		
 		for y in range(len(db2[x][-len(db):])):
 			try:
 				
