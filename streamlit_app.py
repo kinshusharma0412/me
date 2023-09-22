@@ -19,14 +19,14 @@ hide_streamlit_style = """
             #
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-idd=str(query["id"][0])
+
 
 
 if query["id"][0] not in os.environ:
 	os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 	st.write("quiz from account")
 else:
-	db=json.load(os.environ[query["id"][0]])
+	db=json.loads(os.environ[query["id"][0]])
 	st.write("quiz from database")
 
 
