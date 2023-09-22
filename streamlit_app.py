@@ -18,9 +18,10 @@ hide_streamlit_style = """
             #
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-print(query)
 
+st.write(st.secrets)
 if query["id"][0] not in st.secrets.keys():
+	
 	st.secrets[query["id"][0]]=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 	st.write("quiz from account")
 else:
