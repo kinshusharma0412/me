@@ -21,13 +21,13 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 st.write(st.secrets)
 if query["id"][0] not in st.secrets:
-	
-	st.secrets[query["id"][0]]=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+	st.secrets[query["id"][0]]=str(db)
 	st.write("quiz from account")
 else:
 	db=st.secrets[query["id"][0]]
 	st.write("quiz from database")
-	
+db=ast.literal_eval(db)
 
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
