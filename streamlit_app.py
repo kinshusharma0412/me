@@ -272,7 +272,7 @@ elif int(sub[i])==3:
 				tt+="```      ```:red[Skip]  \n"
 		else:
 			tt+="```      ```:red[Skip]  \n"
-			st.write(tt)
+		st.write(tt)
 		
 			
 		st.write("   :rainbow["+db[x][11]+"]")
