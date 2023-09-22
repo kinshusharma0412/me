@@ -5,7 +5,7 @@ import pandas as pd
 from quickstart import Drive_OCR
 import time,os, string,xlsxwriter
 import re as reaaa
-import ast,random
+import ast,random,csv
 query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 hide_streamlit_style = """
@@ -217,8 +217,8 @@ elif int(sub[i])==3:
 		db2[i][3]=4
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
-	df=pd.read_csv("./data/Quiz.csv")
-	st.write(str(df))
+	df=csv.reader(open('./data/Quiz.csv', 'r') )
+	st.write((df))
 	from PIL import Image
 #	image = Image.open('sunrise.jpg')
 #	st.image(image, caption='Sunrise by the mountains')
