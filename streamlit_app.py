@@ -24,8 +24,6 @@ if "count" not in os.environ:
 else:
 	os.environ["count"]=str(int(os.environ["count"])+1)
 if query["user"][0] ==str(711296045):
-	
-	
 	if st.button(':rainbow[Restart Quiz]'):
 		os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 
@@ -168,11 +166,11 @@ if int(sub[i])==0:
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if submt:
+		
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		ids,sub,i=id_sub(db2)
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
-		
 		for x in range(len(db)):
 			
 			
@@ -180,8 +178,8 @@ if int(sub[i])==0:
 				db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 			except Exception as e:
 				db2[i].append("")
+		st.write(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		
 		st.rerun()
 		
 	
