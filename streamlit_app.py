@@ -260,7 +260,7 @@ elif int(sub[i])==3:
 					tt+="```      ```:green["+db[x][y+1]+"]  \n"
 				else:
 					tt+="```   ```"+db[x][y+1]+"  \n"
-					st.write("Error")
+					
 					
 			elif int(y)+1==int(db[x][-1]):
 				tt+="```      ```:green["+db[x][y+1]+"]  \n"
