@@ -8,6 +8,7 @@ import re as reaaa
 import ast,random,csv
 query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
+from PIL import Image
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -217,9 +218,18 @@ elif int(sub[i])==3:
 		db2[i][3]=4
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
-	df=csv.reader(open('./data/Quiz.csv', 'r') )
-	st.write(list(df))
-	from PIL import Image
+	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
+	jila=0
+	for x in df:
+		if x[0]==query["id"][0]:
+			break
+		else:
+			jila+=1
+	if len(df)!=jila:
+		for x in range(0,len(df[jila][1:]),2):
+			image = Image.open(df[jila][1:][x])
+			st.image(image, caption=df[jila][1:][x+1])
+	
 #	image = Image.open('sunrise.jpg')
 #	st.image(image, caption='Sunrise by the mountains')
 	
