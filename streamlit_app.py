@@ -24,19 +24,15 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 if query["id"][0] not in os.environ:
 	os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
-	st.write("quiz from account")
-else:
-	st.write(os.environ[query["id"][0]])
-	yi=reaaa.split("], [",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
-	db=[]
-	dbb=[]
-	for x in yi:
-		dbb.append(str(reaaa.split("', '",reaaa.sub("(^\'|\'$)","",x))))
 	
-	db.append(dbb)
-	("quiz from database")
+	st.write("quiz from account")
 
-
+db=[]
+dbb=[]
+yi=reaaa.split("], [",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
+for x in yi:
+	dbb.append(str(reaaa.split("', '",reaaa.sub("(^\'|\'$)","",x))))
+db.append(dbb)
 
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
