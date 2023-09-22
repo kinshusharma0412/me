@@ -24,24 +24,21 @@ if query["user"][0] ==str(711296045):
 	if st.button(':rainbow[Restart Quiz]'):
 		os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 
-if query["id"][0]+"get" not in os.environ:
-	os.environ[query["id"][0]+"get"]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
-db=[]
-yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"get"))
+if query["id"][0] not in os.environ:
+	os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
+	
+
+
+dbb=[]
+yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
 for x in yi:
 	
-	db.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
+	dbb.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
+db=(dbb)
 
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
-if query["id"][0]+"update" not in os.environ:
-	os.environ[query["id"][0]+"update"]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-db2=[]
-yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"update"))
-for x in yi:
-	
-	db2.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
 
-
+db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 
 ids=[]
 sub=[]
