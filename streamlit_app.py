@@ -25,10 +25,10 @@ if query["id"][0] not in st.secrets:
 	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 
 	
-	st.secrets[idd]=str(db)
+	os.environ[idd]=str(db)
 	st.write("quiz from account")
 else:
-	db=st.secrets[query["id"][0]]
+	db=os.environ[query["id"][0]]
 	st.write("quiz from database")
 db=ast.literal_eval(db)
 
