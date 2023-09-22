@@ -19,12 +19,12 @@ hide_streamlit_style = """
             #
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
+if "count" not in os.environ:
+	os.environ["count"]=str(1)
+else:
+	os.environ["count"]=str(int(os.environ["count"])+1)
 if query["user"][0] ==str(711296045):
-	if "count" not in os.environ:
-		os.environ["count"]=str(1)
-	else:
-		os.environ["count"]=str(int(os.environ["count"])+1)
+	
 	st.write(os.environ["count"])
 	if st.button(':rainbow[Restart Quiz]'):
 		os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
@@ -43,20 +43,27 @@ db=(dbb)
 
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
-db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+
+def id_sub(db2):
+	ids=[]
+	sub=[]
+	for x in db2:
+		ids.append(x[1])
+		sub.append(x[3])
+	i=0
+	for x in ids:
+		if str(query["user"][0]) ==str(x):
+			break
+		i+=1
+	return ids,sub,i
+	
 
 ids=[]
 sub=[]
 
-for x in db2:
-	ids.append(x[1])
-	sub.append(x[3])
 	
-i=0
-for x in ids:
-	if str(query["user"][0]) ==str(x):
-		break
-	i+=1
+		
+	
 
 N = len(db)*30
 if i>len(sub)-1:
@@ -153,9 +160,11 @@ if int(sub[i])==0:
 	st.write("Thanks for Attempting Quiz")
 	#st.button("Reset", type="primary")
 	if submt:
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+		
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
-		
+		ids,sub,i=id_sub(db2)
 		for x in range(len(db)):
 			
 			
@@ -194,9 +203,10 @@ if int(sub[i])==0:
 		
 			if secs<1:
 				ph.write("Times Up!!")
-				
+				db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 				db2[i][2]=str(secs)
 				db2[i][3]=1
+				ids,sub,i=id_sub(db2)
 				for x in range(len(db)):
 					try:
 						db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
@@ -206,7 +216,9 @@ if int(sub[i])==0:
 				st.experimental_rerun()
 elif int(sub[i])==2:
 	if "name" in query.keys():
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		path=unquote_plus(query["name"][0])
+		ids,sub,i=id_sub(db2)
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
@@ -214,8 +226,9 @@ elif int(sub[i])==2:
 	else:
 		path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 		if path:
-			
+			db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 			db2.append([path,query["user"][0],N,0])
+			ids,sub,i=id_sub(db2)
 			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 			os.environ[query["id"][0]+query["user"][0]]=str(N)
 			st.experimental_rerun()
@@ -228,16 +241,22 @@ elif int(sub[i])==1:
 		bt2=st.button(':rainbow[Rank List]')
 
 	if bt1:
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=3
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 	if bt2:
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=4
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 elif int(sub[i])==3:
 	if st.button(':rainbow[Rank List]'):
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=4
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
@@ -302,11 +321,15 @@ elif int(sub[i])==3:
 	
 elif int(sub[i])==4:
 	if st.button(':rainbow[View your Answer key]'):
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=3
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()	
 	elif st.button(':rainbow[Review]'):
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=5
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()	
 	marks={}
@@ -378,11 +401,15 @@ elif int(sub[i])==5:
 		bt2=st.button(':rainbow[Rank List]')
 
 	if bt1:
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=3
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 	if bt2:
+		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		db2[i][3]=4
+		ids,sub,i=id_sub(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 
