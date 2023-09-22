@@ -251,10 +251,11 @@ elif int(sub[i])==1:
 		bt1=st.button(':rainbow[View your Answer key]')
 	with col2:
 		bt2=st.button(':rainbow[Rank List]')
+	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+	ids,sub,i=id_sub(db2)
 
 	if bt1:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
+		
 		db2[i][3]=3
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
@@ -262,8 +263,7 @@ elif int(sub[i])==1:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.rerun()
 	if bt2:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
+		
 		db2[i][3]=4
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
@@ -339,17 +339,15 @@ elif int(sub[i])==3:
 		
 	
 elif int(sub[i])==4:
+	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+	ids,sub,i=id_sub(db2)
 	if st.button(':rainbow[View your Answer key]'):
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
 		db2[i][3]=3
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.rerun()	
 	elif st.button(':rainbow[Review]'):
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
 		db2[i][3]=5
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
@@ -417,6 +415,8 @@ elif int(sub[i])==4:
 	st.markdown(df.to_html(), unsafe_allow_html=True)
 	
 elif int(sub[i])==5:
+	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+	ids,sub,i=id_sub(db2)
 	col1,col2 = st.columns([1,1])
 	with col1:
 		bt1=st.button(':rainbow[View your Answer key]')
@@ -424,16 +424,14 @@ elif int(sub[i])==5:
 		bt2=st.button(':rainbow[Rank List]')
 
 	if bt1:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
+		
 		db2[i][3]=3
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.rerun()
 	if bt2:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		ids,sub,i=id_sub(db2)
+		
 		db2[i][3]=4
 		ids,sub,i=id_sub(db2)
 		os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
