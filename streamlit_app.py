@@ -70,8 +70,8 @@ if query["id"][0]+query["user"][0]+"ids" not in os.environ or query["id"][0]+que
 	os.environ[query["id"][0]+query["user"][0]+"i"]=str(i)
 else:
 	
-	ids=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"ids"]
-	sub=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"sub"]
+	ids=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"ids"])
+	sub=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"sub"])
 	i=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"i"])
 	st.write(ids, sub,i)
 	
