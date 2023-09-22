@@ -227,7 +227,10 @@ elif int(sub[i])==3:
 			jila+=1
 	if len(df)!=jila:
 		for x in range(0,len(df[jila][1:]),2):
-			image = Image.open(df[jila][1:][x])
+			try:
+				image = Image.open(df[jila][1:][x])
+			except:
+				image=df[jila][1:][x]
 			st.image(image, caption=df[jila][1:][x+1])
 	
 #	image = Image.open('sunrise.jpg')
