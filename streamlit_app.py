@@ -27,7 +27,13 @@ if query["id"][0] not in os.environ:
 	st.write("quiz from account")
 else:
 	st.write(os.environ[query["id"][0]])
-	db=json.loads(os.environ[query["id"][0]])
+	yi=re.split("], [",re.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
+	db=[]
+	dbb=[]
+	for x in yi:
+		dbb.append(str(re.split("', '",re.sub("(^\'|\'$)","",x))))
+	
+	db.append(dbb)
 	("quiz from database")
 
 
