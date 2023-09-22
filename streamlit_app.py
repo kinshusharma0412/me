@@ -21,6 +21,11 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 if query["user"][0] ==str(711296045):
+	if "count" not in os.environ:
+		os.environ["count"]=1
+	else:
+		os.environ["count"]+=1
+	st.write(os.environ["count"])
 	if st.button(':rainbow[Restart Quiz]'):
 		os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 
