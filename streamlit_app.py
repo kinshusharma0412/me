@@ -19,8 +19,16 @@ hide_streamlit_style = """
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 print(query)
-db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+
+if query["id"][0] not in st.secrets.keys():
+	st.secrets[query["id"][0]]=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+else:
+	db=st.secrets[query["id"][0]]
+	
+else:
+	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
+
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 
 ids=[]
