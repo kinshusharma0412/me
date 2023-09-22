@@ -218,7 +218,7 @@ elif int(sub[i])==3:
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
 	df=csv.reader(open('./data/Quiz.csv', 'r') )
-	st.write((df))
+	st.write(list(df))
 	from PIL import Image
 #	image = Image.open('sunrise.jpg')
 #	st.image(image, caption='Sunrise by the mountains')
