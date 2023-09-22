@@ -25,7 +25,7 @@ else:
 	os.environ["count"]=str(int(os.environ["count"])+1)
 if query["user"][0] ==str(711296045):
 	
-	st.write(os.environ["count"])
+	
 	if st.button(':rainbow[Restart Quiz]'):
 		os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 
@@ -69,11 +69,10 @@ if query["id"][0]+query["user"][0]+"ids" not in os.environ or query["id"][0]+que
 	os.environ[query["id"][0]+query["user"][0]+"sub"]=str(sub)
 	os.environ[query["id"][0]+query["user"][0]+"i"]=str(i)
 else:
-	
 	ids=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"ids"])
 	sub=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"sub"])
 	i=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"i"])
-	st.write(ids, sub,i)
+	
 	
 i=int(i)
 
