@@ -20,8 +20,8 @@ hide_streamlit_style = """
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 idd=str(query["id"][0])
-st.write(idd)
-st.write(st.secrets)
+
+
 file_path="./data/data.json"
 with open(file_path, "r", encoding="utf-8") as f:
 	db1=json.load(f)
@@ -36,7 +36,7 @@ else:
 	st.write("quiz from database")
 db=db1[query["id"][0]]
 
-    json.dump(data, f, ensure_ascii=False)
+
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
