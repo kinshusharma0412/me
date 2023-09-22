@@ -9,6 +9,7 @@ import ast,random,csv
 query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 from PIL import Image
+import json
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -19,17 +20,23 @@ hide_streamlit_style = """
             #
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 idd=str(query["id"][0])
+st.write(idd)
 st.write(st.secrets)
-st.write(st.secrets)
-if query["id"][0] not in st.secrets:
-	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
-	st.secrets[idd]=(db)
+file_path="./data/data.json"
+with open(file_path, "r", encoding="utf-8") as f:
+	db1=json.load(f)
+if query["id"][0] not in db1.keys():
+	db1[query["id"][0]]=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+	
+	with open(file_path, "w", encoding="utf-8") as f:
+		json.dump(db1, f, ensure_ascii=False)
 	st.write("quiz from account")
 else:
-	db=st.secrets[query["id"][0]]
+	
 	st.write("quiz from database")
-db=(db)
+db=db1[query["id"][0]]
 
+    json.dump(data, f, ensure_ascii=False)
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
