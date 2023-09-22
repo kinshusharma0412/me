@@ -1,2 +1,3 @@
 *.pickle
 .streamlit
+./credentia.json
