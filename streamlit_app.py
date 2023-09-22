@@ -182,7 +182,7 @@ if int(sub[i])==0:
 				db2[i].append("")
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		
-		st.experimental_rerun()
+		st.rerun()
 		
 	
 	
@@ -222,7 +222,7 @@ if int(sub[i])==0:
 					except Exception as e:
 						db2[i].append("")
 				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-				st.experimental_rerun()
+				st.rerun()
 elif int(sub[i])==2:
 	if "name" in query.keys():
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
@@ -231,7 +231,7 @@ elif int(sub[i])==2:
 		db2.append([path,query["user"][0],N,0])
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
-		st.experimental_rerun()
+		st.rerun()
 	else:
 		path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
 		if path:
@@ -240,7 +240,7 @@ elif int(sub[i])==2:
 			ids,sub,i=id_sub(db2)
 			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 			os.environ[query["id"][0]+query["user"][0]]=str(N)
-			st.experimental_rerun()
+			st.rerun()
 elif int(sub[i])==1:
 	st.write("Test submission sucessful 🥳🥳🥳")
 	col1,col2 = st.columns([1,1])
@@ -256,14 +256,14 @@ elif int(sub[i])==1:
 		
 
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+		st.rerun()
 	if bt2:
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		ids,sub,i=id_sub(db2)
 		db2[i][3]=4
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+		st.rerun()
 elif int(sub[i])==3:
 	if st.button(':rainbow[Rank List]'):
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
@@ -271,7 +271,7 @@ elif int(sub[i])==3:
 		db2[i][3]=4
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+		st.rerun()
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
 	jila=0
 	for x in df:
@@ -339,14 +339,14 @@ elif int(sub[i])==4:
 		db2[i][3]=3
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()	
+		st.rerun()	
 	elif st.button(':rainbow[Review]'):
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		ids,sub,i=id_sub(db2)
 		db2[i][3]=5
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()	
+		st.rerun()	
 	marks={}
 	for x in range(len(db2)):
 		mark=0
@@ -421,14 +421,14 @@ elif int(sub[i])==5:
 		db2[i][3]=3
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+		st.rerun()
 	if bt2:
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		ids,sub,i=id_sub(db2)
 		db2[i][3]=4
 		
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-		st.experimental_rerun()
+		st.rerun()
 
 	marsk={}
 	mark=0
