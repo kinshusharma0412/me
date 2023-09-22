@@ -242,27 +242,33 @@ elif int(sub[i])==3:
 		tt=""
 		
 		for y in range(len(db[x][1:-3])):
-			if db[x][y+1]=="":
-				pass
-			elif str(db2[i][x+4])=="":
-				if int(y)+1==int(db[x][-1]):
+			try:
+				if db[x][y+1]=="":
+					pass
+				elif str(db2[i][x+4])=="":
+					if int(y)+1==int(db[x][-1]):
+						tt+="```      ```:green["+db[x][y+1]+"]  \n"
+					else:
+						tt+="```   ```"+db[x][y+1]+"  \n"
+				elif str(db2[i][x+4])==str(y+1):
+					if str(db2[i][x+4])==str(db[x][-1]):
+						tt+="```      ```:green["+db[x][y+1]+"]```      ```+4  \n"
+					else:
+						tt+="```      ```:red["+db[x][y+1]+"]```      ```-1  \n"
+				elif int(y)+1==int(db[x][-1]):
 					tt+="```      ```:green["+db[x][y+1]+"]  \n"
 				else:
 					tt+="```   ```"+db[x][y+1]+"  \n"
-			elif str(db2[i][x+4])==str(y+1):
-				if str(db2[i][x+4])==str(db[x][-1]):
-					tt+="```      ```:green["+db[x][y+1]+"]```      ```+4  \n"
-				else:
-					tt+="```      ```:red["+db[x][y+1]+"]```      ```-1  \n"
-			elif int(y)+1==int(db[x][-1]):
-				tt+="```      ```:green["+db[x][y+1]+"]  \n"
-			else:
-				tt+="```   ```"+db[x][y+1]+"  \n"
-		if str(db2[i][x+4])==str(0) or str(db2[i][x+4])=="":
-			tt+="```      ```:red[Skip]  \n"
-		st.write(tt)
-		
-		st.write("   :rainbow["+db[x][11]+"]")
+			except:
+				pass
+		try:
+			if str(db2[i][x+4])==str(0) or str(db2[i][x+4])=="":
+				tt+="```      ```:red[Skip]  \n"
+			st.write(tt)
+			
+			st.write("   :rainbow["+db[x][11]+"]")
+		except:
+			pass
 	
 elif int(sub[i])==4:
 	if st.button(':rainbow[View your Answer key]'):
