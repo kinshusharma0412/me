@@ -217,6 +217,11 @@ elif int(sub[i])==3:
 		db2[i][3]=4
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 		st.experimental_rerun()
+	df=pd.read_csv("./data/Quiz.csv")
+	st.write(df)
+	from PIL import Image
+#	image = Image.open('sunrise.jpg')
+#	st.image(image, caption='Sunrise by the mountains')
 	
 	for x in range(len(db)):
 		st.write(":blue[Q"+str(x+1)+". "+db[x][0]+"]")
