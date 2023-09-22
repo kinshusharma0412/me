@@ -62,7 +62,14 @@ ids=[]
 sub=[]
 
 	
-		
+if query["id"][0]+query["user"][0]+"sub" not in os.environ:
+	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+	ids,sub,i=id_sub(db2)
+	os.environ[query["id"][0]+query["user"][0]+"sub"]=str(ids,sub,i)
+else:
+	ids,sub,i=ast.literal_eval(os.environ[query["id"][0]+query["user"][0]+"sub"])
+	st.write(ids,sub,i)
+	
 	
 
 N = len(db)*30
