@@ -22,11 +22,12 @@ print(query)
 
 if query["id"][0] not in st.secrets.keys():
 	st.secrets[query["id"][0]]=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+	st.write("quiz from account")
 else:
 	db=st.secrets[query["id"][0]]
+	st.write("quiz from database")
 	
-else:
-	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
+
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
