@@ -29,7 +29,7 @@ if query["id"][0] not in os.environ:
 
 db=[]
 dbb=[]
-yi=reaaa.split("], [",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
+yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
 for x in yi:
 	dbb.append(str(reaaa.split("', '",reaaa.sub("(^\'|\'$)","",x))))
 db.append(dbb)
