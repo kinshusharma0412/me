@@ -231,7 +231,7 @@ elif int(sub[i])==3:
 				image = Image.open(df[jila][1:][x])
 			except:
 				image=df[jila][1:][x]
-				st.write(image)
+				
 			st.image(image, caption=df[jila][1:][x+1])
 	
 #	image = Image.open('sunrise.jpg')
