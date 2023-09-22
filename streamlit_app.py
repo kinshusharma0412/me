@@ -32,7 +32,7 @@ dbb=[]
 yi=reaaa.split("\], \[",(os.environ[query["id"][0]]))
 for x in yi:
 	x
-	dbb.append(str(reaaa.split("', '",(x))))
+	dbb.append(str(reaaa.split("\', \'",(x))))
 db.append(dbb)
 
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
