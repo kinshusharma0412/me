@@ -34,7 +34,7 @@ for x in yi:
 	
 	dbb.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
 db=(dbb)
-db
+
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
 db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
