@@ -27,13 +27,13 @@ if query["id"][0] not in os.environ:
 	
 	st.write("quiz from account")
 
-db=[]
+
 dbb=[]
 yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]]))
 for x in yi:
 	
 	dbb.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
-db.append(dbb)
+db=(dbb)
 db
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 
