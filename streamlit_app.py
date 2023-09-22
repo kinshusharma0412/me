@@ -27,7 +27,6 @@ if query["user"][0] ==str(711296045):
 if query["id"][0] not in os.environ:
 	os.environ[query["id"][0]]=str(Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N"))
 	
-	st.write("quiz from account")
 
 
 dbb=[]
