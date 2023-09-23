@@ -51,9 +51,10 @@ else:
 cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
 if (query["id"][0]+"db2" not in os.environ):
 	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-	
+	if db2=[]:
+		db2=[[]]
 	os.environ[query["id"][0]+"db2"]=str(db2)
-	st.write("new db2 "+str(db2))
+	
 else:
 	db2=[]
 	yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"db2"]))
@@ -65,11 +66,11 @@ else:
 if query["user"][0] ==str(711296045):
 	if st.button(':rainbow[Restart Quiz]'):
 		db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
-		if db==[]:
-			db=[[]]
 		os.environ[query["id"][0]+"db"]=str(db)
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		st.write(str(db2))
+		if db==[]:
+			db=[[]]
+		
 		os.environ[query["id"][0]+"db2"]=str(db2)
 		st.write("Restart successfully")
 
@@ -77,9 +78,9 @@ if query["user"][0] ==str(711296045):
 
 ids=[]
 sub=[]
-st.write(os.environ[query["id"][0]+"db2"])
 
-if len(db2)==0:
+
+if len(db2[0])==0 :
 	ids.append(query["user"][0])
 	sub.append(2)
 else:
