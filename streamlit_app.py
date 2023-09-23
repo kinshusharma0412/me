@@ -1,3 +1,12 @@
+from pymongo import MongoClient
+import dns
+import os, random
+from  urllib.parse import unquote_plus,quote_plus
+#import dns.resolver
+#dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
+#dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
+# as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
+cm=MongoClient('mongodb+srv://soojhboojh01bot:'+quote_plus('Kinbin@247')+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 import streamlit as st
 
 import streamlit as st
@@ -38,101 +47,60 @@ hide_streamlit_style = """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-print(query)
+db=cm["Live_Quiz"]["db"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
 
-if (query["id"][0]+"db" not in os.environ):
-	db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
-	os.environ[query["id"][0]+"db"]=str(db)
-else:
-	db=[]
-	yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"db"]))
-	for x in yi:
-		db.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
-cell2=xlsxwriter.utility.xl_col_to_name(len(db)+3)
-if (query["id"][0]+"db2" not in os.environ):
-	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-	if db2==[]:
-		db2=[[]]
-	
-	os.environ[query["id"][0]+"db2"]=str(db2)
-	
-else:
-	db2=[]
-	
-	if os.environ[query["id"][0]+"db2"]=="[]":
-		db2=[[]]
-	else:
-		yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"db2"]))
-		for x in yi:
-			db2.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
+if query["user"][0]+"s" not in os.environ:
+	os.environ[query["user"][0]+"s"]="2"
 
-if query["user"][0] ==str(711296045):
-	if st.button(':rainbow[Restart Quiz]'):
-		db=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet1!A:N")
-		os.environ[query["id"][0]+"db"]=str(db)
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		if db2==[]:
-			db2=[[]]
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write("Restart successfully")
-
-
-
-ids=[]
-sub=[]
-st.write(db2)
-if len(db2)==0 :
-	ids.append(query["user"][0])
-	sub.append(2)
-elif len(db2[0])==0 :
-	ids.append(query["user"][0])
-	sub.append(2)
-else:
+def get(db2):
+	i=0
 	for x in db2:
 		ids.append(x[1])
-		sub.append(x[3])
-
-	
-
-i=0
-
-for x in ids:
-
-	if str(query["user"][0]) ==str(x):
-
-		break
-
-	i+=1
-
-
-
-N = len(db)*30
-
-if i>len(sub)-1:
-
-	sub.append(2)
-st.write(sub,i)
-if int(sub[i])==0:
-	ph = st.empty()#st.container()
-
-	
-
-	if query["id"][0]+query["user"][0] not in os.environ:
+	for x in db2:
+		if x[1]==query["user"][0]:
+			break
+		i+=1
+	return ids,i
+if int(os.environ[query["user"][0]+"s"])==2:
+	if "name" in query.keys():
+		path=unquote_plus(query["name"][0])
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db2.append([path,query["user"][0],N,0])
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="0"
 
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 
-	
+		st.experimental_rerun()
 
+	_="""else:
+
+		path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
+
+		if path:
+
+			
+
+			db2.append([path,query["user"][0],N,0])
+
+			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+
+			os.environ[query["id"][0]+query["user"][0]]=str(N)
+
+			st.experimental_rerun()"""
+elif int(os.environ[query["user"][0]+"s"])==0:
+	#st.set_page_config()
+	ph = st.empty()#st.container()
+	if query["id"][0]+query["user"][0] not in os.environ:
+		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	ids=[]
-
-	for x in db2:
-
-		ids.append(x[1])
-
-	
-
-	
-
+	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	ids,i=get(db2)
 	btn2=[]
 
 	
@@ -153,17 +121,7 @@ if int(sub[i])==0:
 
 		y=reaaa.split("\.",j)
 
-		st.session_state["q"]=random.randint(3, 999)
-
-		_="""st.session_state[j]=True
-
-		for x in range(len(db[int(y[0])-1][1:-3])):
-
-			if db[int(y[0])-1][1:-3][x]!="":
-
-				if str(x+1)!=y[1]:
-
-					st.session_state[y[0]+"."+str(x+1)]=False"""
+		
 
 		temp3[y[0]]=y[1]
 
@@ -290,12 +248,11 @@ if int(sub[i])==0:
 	#st.button("Reset", type="primary")
 
 	if submt:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		if db2==[]:
-			db2[0]=[]
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
-
 		db2[i][3]=1
+		
 
 		
 
@@ -312,45 +269,14 @@ if int(sub[i])==0:
 			except Exception as e:
 
 				db2[i].append("")
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-
-		
-
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="1"
 		st.experimental_rerun()
-
-		
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-		
-
-	
-
-	
-
-	
-
-		
-
-		
-
-		
-
 	if int(os.environ[query["id"][0]+query["user"][0]])>0:
 
 		for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
@@ -374,67 +300,30 @@ if int(sub[i])==0:
 		
 
 			if secs<1:
-
+				db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+				ids,i=get(db2)
 				ph.write("Times Up!!")
-
-				db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-				
 				db2[i][2]=str(secs)
-
 				db2[i][3]=1
-
 				for x in range(len(db)):
-
 					try:
-
 						db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
-
 					except Exception as e:
-
 						db2[i].append("")
-				os.environ[query["id"][0]+"db2"]=str(db2)
-				Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+				myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+				if myquery1:
+					newvalues1={ "$set": {x:db2}}
+					cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+				else:
+					cm["Live_Quiz"]["db2"].insert_one({x:db2})
+				os.environ[query["user"][0]+"s"]="1"
 
 				st.experimental_rerun()
 
-elif int(sub[i])==2:
 
-	if "name" in query.keys():
 
-		path=unquote_plus(query["name"][0])
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
-		db2.append([path,str(query["user"][0]),str(N),str(0)])
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=0
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+elif int(os.environ[query["user"][0]+"s"])==1:
 
-		os.environ[query["id"][0]+query["user"][0]]=str(N)
-
-		st.experimental_rerun()
-
-	else:
-
-		path = st.text_input(':rainbow[𝙔𝙤𝙪𝙧 𝙉𝙖𝙢𝙚]')
-
-		if path:
-
-			db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-			
-			db2.append([path,str(query["user"][0]),str(N),str(0)])
-			os.environ[query["id"][0]+"db2"]=str(db2)
-			st.write(os.environ[query["id"][0]+"db2"])
-			sub[i]=0
-			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-
-			os.environ[query["id"][0]+query["user"][0]]=str(N)
-
-			st.experimental_rerun()
-
-elif int(sub[i])==1:
-
-	
 	st.write("Test submission sucessful 🥳🥳🥳")
 
 	col1,col2 = st.columns([1,1])
@@ -447,46 +336,50 @@ elif int(sub[i])==1:
 
 		bt2=st.button(':rainbow[Rank List]')
 
-	
 
 
 	if bt1:
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=3
-		
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="3"
 		st.experimental_rerun()
 
 	if bt2:
-
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=4
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="4"
+		
 
 		st.experimental_rerun()
 
-elif int(sub[i])==3:
+elif int(os.environ[query["user"][0]+"s"])==3:
 
-	
 	if st.button(':rainbow[Rank List]'):
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=4
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
-
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="4"
 		st.experimental_rerun()
 
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
@@ -609,29 +502,34 @@ elif int(sub[i])==3:
 
 	
 
-elif int(sub[i])==4:
+elif int(os.environ[query["user"][0]+"s"])==4:
 
 	if st.button(':rainbow[View your Answer key]'):
-
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=3
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="3"
 
 		st.experimental_rerun()	
 
 	elif st.button(':rainbow[Review]'):
 
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=5
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="5"
 
 		st.experimental_rerun()	
 
@@ -757,7 +655,7 @@ elif int(sub[i])==4:
 
 	
 
-elif int(sub[i])==5:
+elif int(os.environ[query["user"][0]+"s"])==5:
 
 	col1,col2 = st.columns([1,1])
 
@@ -772,26 +670,31 @@ elif int(sub[i])==5:
 
 
 	if bt1:
-
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=3
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="3"
 
 		st.experimental_rerun()
 
 	if bt2:
 
-		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
 		db2[i][3]=4
-		os.environ[query["id"][0]+"db2"]=str(db2)
-		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=db2[i][3]
-		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+		myquery1=cm["Live_Quiz"]["db2"].find_one({x:{"$type":"array"}})
+		if myquery1:
+			newvalues1={ "$set": {x:db2}}
+			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+		else:
+			cm["Live_Quiz"]["db2"].insert_one({x:db2})
+		os.environ[query["user"][0]+"s"]="4"
 
 		st.experimental_rerun()
 
