@@ -453,7 +453,10 @@ elif int(sub[i])==1:
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		
 		db2[i][3]=3
+		
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=3
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()
