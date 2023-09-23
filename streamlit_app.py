@@ -67,7 +67,7 @@ ids=[]
 sub=[]
 
 	
-if [query["id"][0]+"ids"] not in os.environ or [query["id"][0]+"sub"] not in os.environ or query["id"][0]+query["user"][0]+"i" not in os.environ:
+if query["id"][0]+"ids" not in os.environ or query["id"][0]+"sub" not in os.environ or query["id"][0]+query["user"][0]+"i" not in os.environ:
 	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 	ids,sub,i=id_sub(db2)
 	os.environ[query["id"][0]+"ids"]=str(ids)
