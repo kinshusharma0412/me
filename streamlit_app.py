@@ -53,6 +53,7 @@ if (query["id"][0]+"db2" not in os.environ):
 	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 	if db2==[]:
 		db2=[[]]
+	st.write("new db2 "str(db2))
 	os.environ[query["id"][0]+"db2"]=str(db2)
 	
 else:
@@ -79,7 +80,7 @@ ids=[]
 sub=[]
 st.write(str(db2))
 
-if len(db2[0])==0 :
+if len(db2[1])==0 :
 	ids.append(query["user"][0])
 	sub.append(2)
 else:
