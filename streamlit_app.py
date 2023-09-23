@@ -268,7 +268,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	st.write("Thanks for Attempting Quiz")
 
 	#st.button("Reset", type="primary")
-	path=
+	
 	if submt:
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		db2=db22[query["id"][0]]
