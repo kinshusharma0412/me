@@ -409,7 +409,7 @@ elif int(sub[i])==2:
 		path=unquote_plus(query["name"][0])
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 		
-		db2.append([path,query["user"][0],N,0])
+		db2.append([path,str(query["user"][0]),str(N),str(0)])
 		os.environ[query["id"][0]+"db2"]=str(db2)
 		st.write(os.environ[query["id"][0]+"db2"])
 		sub[i]=0
@@ -427,7 +427,7 @@ elif int(sub[i])==2:
 
 			db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 			
-			db2.append([path,query["user"][0],N,0])
+			db2.append([path,str(query["user"][0]),str(N),str(0)])
 			os.environ[query["id"][0]+"db2"]=str(db2)
 			st.write(os.environ[query["id"][0]+"db2"])
 			sub[i]=0
