@@ -318,6 +318,8 @@ if int(sub[i])==0:
 
 				db2[i].append("")
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		
@@ -409,6 +411,8 @@ elif int(sub[i])==2:
 		
 		db2.append([path,query["user"][0],N,0])
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=0
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
@@ -425,6 +429,8 @@ elif int(sub[i])==2:
 			
 			db2.append([path,query["user"][0],N,0])
 			os.environ[query["id"][0]+"db2"]=str(db2)
+			st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=0
 			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 			os.environ[query["id"][0]+query["user"][0]]=str(N)
@@ -456,7 +462,7 @@ elif int(sub[i])==1:
 		
 		os.environ[query["id"][0]+"db2"]=str(db2)
 		st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=3
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()
@@ -467,6 +473,8 @@ elif int(sub[i])==1:
 		
 		db2[i][3]=4
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
@@ -480,6 +488,8 @@ elif int(sub[i])==3:
 		
 		db2[i][3]=4
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()
@@ -612,6 +622,8 @@ elif int(sub[i])==4:
 		
 		db2[i][3]=3
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()	
@@ -622,6 +634,8 @@ elif int(sub[i])==4:
 		
 		db2[i][3]=5
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()	
@@ -768,6 +782,8 @@ elif int(sub[i])==5:
 		
 		db2[i][3]=3
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()
@@ -778,6 +794,8 @@ elif int(sub[i])==5:
 		
 		db2[i][3]=4
 		os.environ[query["id"][0]+"db2"]=str(db2)
+		st.write(os.environ[query["id"][0]+"db2"])
+		sub[i]=db2[i][3]
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		st.experimental_rerun()
