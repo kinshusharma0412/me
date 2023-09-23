@@ -48,7 +48,7 @@ hide_streamlit_style = """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 db=cm["Live_Quiz"]["db"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
-
+N=len(db)*30
 if query["user"][0]+"s" not in os.environ:
 	os.environ[query["user"][0]+"s"]="2"
 
