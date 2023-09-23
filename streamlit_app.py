@@ -58,6 +58,7 @@ if (query["id"][0]+"db2" not in os.environ):
 	
 else:
 	db2=[]
+	st.write("env db2 "+str(os.environ[query["id"][0]+"db2"]))
 	yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"db2"]))
 	for x in yi:
 		db2.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
