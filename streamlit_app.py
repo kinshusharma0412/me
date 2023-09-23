@@ -65,7 +65,8 @@ def get(db2):
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 	
 	try:
-		db2=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"][query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		if str(db2[i][3])!=0:
 			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
@@ -80,6 +81,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 		ids,i=get(db2)
 		db2.append([path,query["user"][0],N,0])
 		db22[query["id"][0]]=db2
+		st.write(db22)
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
