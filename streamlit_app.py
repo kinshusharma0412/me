@@ -75,7 +75,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 		ids,i=get(db2)
 		if str(db2[i][3])!=0:
 			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
-			st.experimental_rerun()
+			st.rerun()
 	except Exception as e:
 		st.write(e)
 
@@ -97,7 +97,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 
-		st.experimental_rerun()
+		st.rerun()
 
 	_="""else:
 
@@ -113,7 +113,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 
 			os.environ[query["id"][0]+query["user"][0]]=str(N)
 
-			st.experimental_rerun()"""
+			st.rerun()"""
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	#st.set_page_config()
 	
@@ -302,7 +302,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="1"
-		st.experimental_rerun()
+		st.rerun()
 	if int(os.environ[query["id"][0]+query["user"][0]])>0:
 
 		for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
@@ -347,7 +347,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 				os.environ[query["id"][0]+query["user"][0]+"s"]="1"
 
-				st.experimental_rerun()
+				st.rerun()
 
 
 
@@ -382,7 +382,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
-		st.experimental_rerun()
+		st.rerun()
 
 	if bt2:
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
@@ -401,7 +401,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 		
 
-		st.experimental_rerun()
+		st.rerun()
 
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
@@ -419,7 +419,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
-		st.experimental_rerun()
+		st.rerun()
 
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
 
@@ -559,7 +559,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
-		st.experimental_rerun()	
+		st.rerun()	
 
 	elif st.button(':rainbow[Review]'):
 
@@ -577,7 +577,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="5"
 
-		st.experimental_rerun()	
+		st.rerun()	
 
 	marks={}
 	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
@@ -732,7 +732,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
-		st.experimental_rerun()
+		st.rerun()
 
 	if bt2:
 
@@ -750,7 +750,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 
-		st.experimental_rerun()
+		st.rerun()
 
 
 
