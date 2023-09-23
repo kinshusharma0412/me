@@ -54,6 +54,7 @@ if query["user"][0]+"s" not in os.environ:
 
 def get(db2):
 	i=0
+	ids=[]
 	for x in db2:
 		ids.append(x[1])
 	for x in db2:
@@ -354,7 +355,7 @@ elif int(os.environ[query["user"][0]+"s"])==1:
 
 	if bt2:
 		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
-		st.write(db2)
+		
 		ids,i=get(db2)
 		db2[i][3]=4
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
