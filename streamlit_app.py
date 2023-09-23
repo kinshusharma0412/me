@@ -69,17 +69,13 @@ if query["user"][0] ==str(711296045):
 
 
 ids=[]
-
 sub=[]
-
-
 if len(db2)==1 and len(db2[0])==0:
 	ids.append(query["user"][0])
 	sub.append(2)
 else:
 	for x in db2:
 		ids.append(x[1])
-	
 		sub.append(x[3])
 
 	
