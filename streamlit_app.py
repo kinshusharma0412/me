@@ -57,6 +57,8 @@ else:
 	yi=reaaa.split("\], \[",reaaa.sub("(^\[\[|\]\]$)","",os.environ[query["id"][0]+"db2"]))
 	for x in yi:
 		db2.append(reaaa.split("\', \'",reaaa.sub("(^\'|\'$)","",x)))
+	if db2=="[['']]":
+		db2=[[]]
 
 if query["user"][0] ==str(711296045):
 	if st.button(':rainbow[Restart Quiz]'):
@@ -70,7 +72,7 @@ if query["user"][0] ==str(711296045):
 
 ids=[]
 sub=[]
-st.write(str(db))
+st.write(os.environ[query["id"][0]+"db2"])
 st.write(str(db2))
 if len(db2)==1 and len(db2[0])==0:
 	ids.append(query["user"][0])
