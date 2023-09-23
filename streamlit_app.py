@@ -111,7 +111,7 @@ N = len(db)*30
 if i>len(sub)-1:
 
 	sub.append(2)
-st.write(sub)
+st.write(sub,i)
 if int(sub[i])==0:
 	ph = st.empty()#st.container()
 
