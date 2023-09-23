@@ -53,12 +53,12 @@ if (query["id"][0]+"db2" not in os.environ):
 	db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 	if db2==[]:
 		db2=[[]]
-	st.write("new db2 "+str(db2))
+	
 	os.environ[query["id"][0]+"db2"]=str(db2)
 	
 else:
 	db2=[]
-	st.write("env db2 "+str(os.environ[query["id"][0]+"db2"]))
+	
 	if os.environ[query["id"][0]+"db2"]=="[]":
 		db2=[[]]
 	else:
@@ -80,7 +80,7 @@ if query["user"][0] ==str(711296045):
 
 ids=[]
 sub=[]
-st.write(str(db2))
+
 if len(db2)==0 :
 	ids.append(query["user"][0])
 	sub.append(2)
@@ -296,7 +296,8 @@ if int(sub[i])==0:
 
 	if submt:
 		db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
-		os.environ[query["id"][0]+"db2"]=str(db2)
+		if db2==[]:
+			db2[0]=[]
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 
 		db2[i][3]=1
@@ -316,7 +317,7 @@ if int(sub[i])==0:
 			except Exception as e:
 
 				db2[i].append("")
-
+		os.environ[query["id"][0]+"db2"]=str(db2)
 		Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 		
