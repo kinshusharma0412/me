@@ -461,7 +461,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	ids,i=get(db2)
 	for x in range(len(db)):
 
-		st.write(":blue[Q"+str(x+1)+". "+db[x][0]+"]")
+		st.markdown(":blue[Q"+str(x+1)+". "+reaaa.sub("\n","<br/>",db[x][0])+"]",unsafe_allow_html=True)
 
 		tt=""
 
@@ -529,7 +529,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 			tt+="```      ```:red[Skip]  \n"
 
-		st.write(tt)
+		st.markdown(tt,unsafe_allow_html=True)
 
 		
 
