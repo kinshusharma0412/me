@@ -99,7 +99,7 @@ elif int(os.environ[query["user"][0]+"s"])==0:
 	ph = st.empty()#st.container()
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
-	ids=[]
+	
 	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
 	ids,i=get(db2)
 	btn2=[]
