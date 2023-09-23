@@ -423,7 +423,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
 
 	jila=0
-	st.write(df)
+	
 	for x in df:
 
 		if x[0]==query["id"][0]:
@@ -434,7 +434,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 			jila+=1
 
-	if len(df)!=jila:
+	if len(df)!=jila :
 
 		for x in range(0,len(df[jila][1:]),2):
 
