@@ -28,8 +28,12 @@ query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 
 from PIL import Image
-st.write(os.environ[query["id"][0]+query["user"][0]+"s"])
+try:
+	st.write(os.environ[query["id"][0]+query["user"][0]+"s"])
+except:
+	pass
 hide_streamlit_style = """
+
 
             <style>
 
