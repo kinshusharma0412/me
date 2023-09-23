@@ -70,6 +70,7 @@ if query["user"][0] ==str(711296045):
 
 ids=[]
 sub=[]
+st.write(str(db))
 st.write(str(db2))
 if len(db2)==1 and len(db2[0])==0:
 	ids.append(query["user"][0])
