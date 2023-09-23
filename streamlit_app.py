@@ -63,6 +63,16 @@ def get(db2):
 		i+=1
 	return ids,i
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
+	
+	try:
+		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		ids,i=get(db2)
+		if str(db2[i][3])!=0:
+			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
+			st.experimental_rerun()
+	except:
+		pass
+
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
 		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
@@ -96,6 +106,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 			st.experimental_rerun()"""
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	#st.set_page_config()
+	
 	ph = st.empty()#st.container()
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
