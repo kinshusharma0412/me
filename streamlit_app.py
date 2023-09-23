@@ -406,8 +406,7 @@ elif int(sub[i])==2:
 
 		if path:
 
-			
-db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
+			db2=Drive_OCR("").google_spreadsheet_get(query["id"][0],"Sheet2!A:"+cell2)
 			os.environ[query["id"][0]+"db2"]=str(db2)
 			db2.append([path,query["user"][0],N,0])
 
