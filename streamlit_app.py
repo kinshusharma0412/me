@@ -430,7 +430,7 @@ elif int(sub[i])==2:
 			db2.append([path,query["user"][0],N,0])
 			os.environ[query["id"][0]+"db2"]=str(db2)
 			st.write(os.environ[query["id"][0]+"db2"])
-		sub[i]=0
+			sub[i]=0
 			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
 			os.environ[query["id"][0]+query["user"][0]]=str(N)
