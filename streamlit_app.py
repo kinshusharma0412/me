@@ -536,7 +536,8 @@ elif int(os.environ[query["user"][0]+"s"])==4:
 		st.experimental_rerun()	
 
 	marks={}
-
+	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	ids,i=get(db2)
 	for x in range(len(db2)):
 
 		mark=0
