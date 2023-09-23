@@ -111,13 +111,8 @@ N = len(db)*30
 if i>len(sub)-1:
 
 	sub.append(2)
-
+st.write(sub)
 if int(sub[i])==0:
-
-	#st.set_page_config()
-
-	
-
 	ph = st.empty()#st.container()
 
 	
