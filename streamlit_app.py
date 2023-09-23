@@ -71,12 +71,13 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 	try:
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		db2=db22[query["id"][0]]
+		
 		ids,i=get(db2)
 		if str(db2[i][3])!=0:
 			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
 			st.experimental_rerun()
-	except:
-		pass
+	except Exception as e:
+		st.write(e)
 
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
