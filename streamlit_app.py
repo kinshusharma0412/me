@@ -535,7 +535,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 			
 
-		st.markdown("   :rainbow["+db[x][11]+"]")
+		st.markdown("   :rainbow["+reaaa.sub("\n","  \n",db[x][11])+"]")
 
 		
 
