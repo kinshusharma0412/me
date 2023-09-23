@@ -47,7 +47,7 @@ hide_streamlit_style = """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-db=cm["Live_Quiz"]["db"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
 N=len(db)*30
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
@@ -65,7 +65,7 @@ def get(db2):
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 	
 	try:
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db2=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"][query["id"][0]]
 		ids,i=get(db2)
 		if str(db2[i][3])!=0:
 			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
@@ -75,14 +75,17 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
+		ids,i=get(db2)
 		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="0"
 
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
@@ -111,7 +114,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
-	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+	db2=db22[query["id"][0]]
 	ids,i=get(db2)
 	btn2=[]
 
@@ -260,7 +264,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	#st.button("Reset", type="primary")
 
 	if submt:
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
@@ -281,12 +286,14 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			except Exception as e:
 
 				db2[i].append("")
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="1"
 		st.experimental_rerun()
 	if int(os.environ[query["id"][0]+query["user"][0]])>0:
@@ -312,7 +319,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 
 			if secs<1:
-				db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+				db2=db22[query["id"][0]]
 				ids,i=get(db2)
 				ph.write("Times Up!!")
 				db2[i][2]=str(secs)
@@ -322,12 +330,14 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 						db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
 						db2[i].append("")
+				db2.append([path,query["user"][0],N,0])
+				db22[query["id"][0]]=db2
 				myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 				if myquery1:
-					newvalues1={ "$set": {query["id"][0]:db2}}
-					cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+					newvalues1={ "$set": {"db2":db22}}
+					cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 				else:
-					cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 				os.environ[query["id"][0]+query["user"][0]+"s"]="1"
 
 				st.experimental_rerun()
@@ -352,29 +362,35 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 
 	if bt1:
 		
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=3
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 		st.experimental_rerun()
 
 	if bt2:
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		
 		ids,i=get(db2)
 		db2[i][3]=4
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 		
 
@@ -383,15 +399,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 	if st.button(':rainbow[Rank List]'):
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=4
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 		st.experimental_rerun()
 
@@ -431,7 +450,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 #	st.image(image, caption='Sunrise by the mountains')
 
-	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+	db2=db22[query["id"][0]]
 	ids,i=get(db2)
 	for x in range(len(db)):
 
@@ -518,36 +538,43 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 	if st.button(':rainbow[View your Answer key]'):
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=3
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
 		st.experimental_rerun()	
 
 	elif st.button(':rainbow[Review]'):
 
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=5
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="5"
 
 		st.experimental_rerun()	
 
 	marks={}
-	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+	db2=db22[query["id"][0]]
 	ids,i=get(db2)
 	for x in range(len(db2)):
 
@@ -684,30 +711,36 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 
 	if bt1:
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=3
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
 		st.experimental_rerun()
 
 	if bt2:
 
-		db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		db2[i][3]=4
+		db2.append([path,query["user"][0],N,0])
+		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})
 		if myquery1:
-			newvalues1={ "$set": {query["id"][0]:db2}}
-			cm["Live_Quiz"]["db2"].update_one(myquery1,newvalues1)
+			newvalues1={ "$set": {"db2":db22}}
+			cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)
 		else:
-			cm["Live_Quiz"]["db2"].insert_one({query["id"][0]:db2})
+			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 
 		st.experimental_rerun()
