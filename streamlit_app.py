@@ -420,8 +420,8 @@ elif int(os.environ[query["user"][0]+"s"])==3:
 
 #	st.image(image, caption='Sunrise by the mountains')
 
-	
-
+	db2=cm["Live_Quiz"]["db2"].find_one({query["id"][0]:{"$type":"array"}})[query["id"][0]]
+	ids,i=get(db2)
 	for x in range(len(db)):
 
 		st.write(":blue[Q"+str(x+1)+". "+db[x][0]+"]")
