@@ -31,6 +31,7 @@ if query["user"][0] ==str(711296045):
 		os.environ[query["id"][0]+"sub"]=str(sub)
 		for x in range(len(ids)):
 			os.environ[query["id"][0]+str(ids[x])+"i"]=str(x)
+		st.write("Restart successfully")
 		
 
 if query["id"][0] not in os.environ:
