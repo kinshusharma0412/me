@@ -33,7 +33,7 @@ from  urllib.parse import unquote_plus
 
 from PIL import Image
 try:
-	pass#st.write(os.environ[query["id"][0]+query["user"][0]+"s"])
+	st.write(os.environ[query["id"][0]+query["user"][0]+"s"])
 except:
 	pass
 hide_streamlit_style = """
