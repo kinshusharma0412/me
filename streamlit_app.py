@@ -85,7 +85,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 			
 			st.rerun()
 	except Exception as e:
-		st.write(e)
+		print(e)
 
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
