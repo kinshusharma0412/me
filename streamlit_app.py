@@ -57,7 +57,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
 cm.close()
-N=len(db)*30
+N=len(db)*25
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
 
