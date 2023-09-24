@@ -57,7 +57,7 @@ cm.close()
 N=len(db)*25
 if query["id"][0]+query["user"][0]+"c" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"c"]="0"
-os.environ[query["id"][0]+query["user"][0]+"c"]=str(int(query["id"][0]+query["user"][0]+"c")+1)
+os.environ[query["id"][0]+query["user"][0]+"c"]=str(int(os.environ[query["id"][0]+query["user"][0]+"c"])+1)
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
 try:
