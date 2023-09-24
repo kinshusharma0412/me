@@ -615,7 +615,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="5"
 
-		st.rerun()	
+		st.rerun()
 
 	marks={}
 	scm()
