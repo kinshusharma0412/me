@@ -1,5 +1,5 @@
 import streamlit as st
-import time
+import time,os
 
 if "sc" not in os.environ:
 	os.environ["sc"]="0"
