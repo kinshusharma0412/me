@@ -51,9 +51,9 @@ hide_streamlit_style = """
             #
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
+st.write(
 db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
-cm.close()
+cm.close(os.environ[query["id"][0]+query["user"][0]+"sc"])
 N=len(db)*25
 if query["id"][0]+query["user"][0]+"sc" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"sc"]="0"
