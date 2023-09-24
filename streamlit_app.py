@@ -32,10 +32,7 @@ query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 
 from PIL import Image
-try:
-	st.write(os.environ[query["id"][0]+query["user"][0]+"s"])
-except:
-	pass
+
 hide_streamlit_style = """
 
 
@@ -58,9 +55,15 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
 cm.close()
 N=len(db)*25
+if query["id"][0]+query["user"][0]+"c" not in os.environ:
+	os.environ[query["id"][0]+query["user"][0]+"c"]="0"
+os.environ[query["id"][0]+query["user"][0]+"c"]=str(int(query["id"][0]+query["user"][0]+"c")+1)
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
-
+try:
+	st.write(os.environ[query["id"][0]+query["user"][0]+"s"],os.environ[query["id"][0]+query["user"][0]+"c"])
+except:
+	pass
 def get(db2):
 	i=0
 	ids=[]
