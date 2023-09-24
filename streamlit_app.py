@@ -110,7 +110,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 
-		st.rerun()
+		
 
 	_="""else:
 
@@ -320,7 +320,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="1"
-		st.rerun()
+		
 	if int(os.environ[query["id"][0]+query["user"][0]])>0:
 
 		for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
@@ -407,7 +407,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
-		st.rerun()
+		
 
 	if bt2:
 		scm()
@@ -429,7 +429,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 		
 
-		st.rerun()
+		
 
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
@@ -451,7 +451,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
-		st.rerun()
+		
 
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
 
@@ -595,7 +595,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
-		st.rerun()	
+		
 
 	elif st.button(':rainbow[Review]'):
 		scm()
@@ -615,7 +615,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="5"
 
-		st.rerun()
+		
 
 	marks={}
 	scm()
@@ -775,7 +775,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
 
-		st.rerun()
+		
 
 	if bt2:
 		scm()
@@ -795,7 +795,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 			cm.close()
 		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
 
-		st.rerun()
+		
 
 
 
