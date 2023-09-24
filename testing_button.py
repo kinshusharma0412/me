@@ -13,5 +13,6 @@ if st.button('Say hello'):
 else:
     st.write('Goodbye')
     
-time.sleep()
+time.sleep(5)
+st.write("sleep for 5 sec")
     
