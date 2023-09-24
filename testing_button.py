@@ -10,6 +10,7 @@ st.write(os.environ["sc"])
 st.button("Reset", type="primary")
 if st.button('Say hello'):
     st.write('Why hello there')
+    st.rerun()	
 else:
     st.write('Goodbye')
     
