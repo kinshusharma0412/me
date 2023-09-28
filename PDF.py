@@ -12,28 +12,6 @@ import site,glob
 
 site.addsitedir(r"...pathToPDFTron\PDFNetWrappersWin32\PDFNetC\Lib")
 from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
-import shlex
-import sys
-st.write(sys.path)
-os.system("""cd /home/adminuser/venv/lib/python3.9/site-packages/
-ls
-""")
-
-		
-	
-	
-
-
-    
-    
-    	
-    
-    
-        
-
-
-
-
 os.system("python3 -m pip install apryse-sdk --extra-index-url=https://pypi.apryse.com" )
 from apryse_sdk import *
 
