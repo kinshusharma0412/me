@@ -8,3 +8,11 @@ xlsxwriter
 Pillow
 pymongo
 git+https://github.com/rthalley/dnspython
+fpdf
+pypdf2
+img2pdf
+pdfkit
+pandas
+openpyxl
+reportlab
+PDFNetPython3
