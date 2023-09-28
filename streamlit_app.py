@@ -6,11 +6,8 @@ from  urllib.parse import unquote_plus,quote_plus
 #dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 #dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
 # as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
-@st.cache_resource
-def init_connection():
-    return MongoClient('mongodb+srv://'+st.secrets["username"]+':'+quote_plus(st.secrets["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 
-cm = init_connection()
+
 
 import streamlit as st
 
@@ -33,6 +30,11 @@ query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 
 from PIL import Image
+
+@st.cache_resource
+def init_connection():
+    return MongoClient('mongodb+srv://'+st.secrets["username"]+':'+quote_plus(st.secrets["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+cm = init_connection()
 
 hide_streamlit_style = """
 
