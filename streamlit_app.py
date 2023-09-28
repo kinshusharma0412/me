@@ -24,6 +24,15 @@ import time,os, string,xlsxwriter
 import re as reaaa
 
 import ast,random,csv
+from datetime import datetime
+
+def get_datetime():
+    return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+if 'last_update' not in st.session_state:
+    st.session_state.last_update = get_datetime()
+
+text = st.empty()
 
 query=st.experimental_get_query_params()
 
@@ -882,3 +891,12 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 	chart_data = pd.DataFrame(data,columns=["AVERAGE Score",str(db2[i][0])])
 
 	st.line_chart(chart_data,use_container_width=True)
+
+
+
+while "last_update" in st.session_state:
+    st.session_state.last_update = get_datetime()
+    text.write(f"last_update: {st.session_state.last_update}")
+    time.sleep(1)
+
+print("Exit because browser closed...")
