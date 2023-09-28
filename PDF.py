@@ -34,7 +34,7 @@ t = st.text_area("this is only for site creater")
 
 
 
-os.system("/home/adminuser/venv/lib/python*/site-packages/python3 -m pip install apryse-sdk --extra-index-url=https://pypi.apryse.com" )
+os.system("/home/adminuser/venv/lib/python3.9/site-packages/python3 -m pip install apryse-sdk --extra-index-url=https://pypi.apryse.com" )
 from apryse_sdk import *
 
 on = st.empty()
