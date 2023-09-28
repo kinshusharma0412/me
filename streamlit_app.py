@@ -29,10 +29,7 @@ from datetime import datetime
 def get_datetime():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-if 'last_update' not in st.session_state:
-    st.session_state.last_update = get_datetime()
 
-text = st.empty()
 
 query=st.experimental_get_query_params()
 
@@ -893,8 +890,4 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 
 
-while "last_update" in st.session_state:
-    text.write(f"last_update: {st.session_state.last_update}")
-    time.sleep(1)
-cm.close()
-print("Exit because browser closed...")
+
