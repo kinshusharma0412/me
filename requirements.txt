@@ -16,4 +16,3 @@ pandas
 openpyxl
 reportlab
 PDFNetPython3
-tabula-py

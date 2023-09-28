@@ -5,7 +5,7 @@ from PIL import Image
 import glob,img2pdf
 from PyPDF2 import PdfWriter, PdfReader,PdfMerger, PdfReader
 from random import randint
-import tabula
+
 import pdfkit
 import pandas as pd
 import site,glob
