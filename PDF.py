@@ -15,9 +15,9 @@ from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
 import shlex
 import sys
 st.write(sys.path)
-import subprocess
-t = st.text_area("this is only for site creater")
-
+os.system("""cd /home/adminuser/venv/lib/python3.9/site-packages/
+ls
+""")
 
 		
 	
