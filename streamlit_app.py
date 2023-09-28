@@ -30,7 +30,7 @@ query=st.experimental_get_query_params()
 from  urllib.parse import unquote_plus
 
 from PIL import Image
-st.write(st.secrets["username"])
+st.write(st.secrets.db_mango["username"])
 @st.cache_resource
 def init_connection():
 	return MongoClient('mongodb+srv://soojhboojh01bot:Kinbin%40247@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
