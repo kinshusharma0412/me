@@ -72,8 +72,7 @@ if query["id"][0]+query["user"][0]+"sc" not in os.environ:
 con=os.environ[query["id"][0]+query["user"][0]+"sc"]
 os.environ[query["id"][0]+query["user"][0]+"sc"]=str(int(con)+1)
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
-	st.markdown("loading test...", unsafe_allow_html=True)
-	time.sleep(5)
+	
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
 
 def get(db2):
@@ -895,7 +894,6 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 
 while "last_update" in st.session_state:
-    st.session_state.last_update = get_datetime()
     text.write(f"last_update: {st.session_state.last_update}")
     time.sleep(1)
 
