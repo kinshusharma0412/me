@@ -896,5 +896,5 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 while "last_update" in st.session_state:
     text.write(f"last_update: {st.session_state.last_update}")
     time.sleep(1)
-
+cm.close()
 print("Exit because browser closed...")
