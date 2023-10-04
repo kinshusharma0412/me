@@ -32,7 +32,7 @@ def get_datetime():
 
 
 query=st.experimental_get_query_params()
-
+st.write(query)
 from  urllib.parse import unquote_plus
 
 from PIL import Image
