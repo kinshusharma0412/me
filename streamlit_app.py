@@ -77,11 +77,11 @@ N=len(db)*50
 if query["id"][0]+query["user"][0]+"sc" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"sc"]="0"
 con=os.environ[query["id"][0]+query["user"][0]+"sc"]
-os.environ[query["id"][0]+query["user"][0]+"sc"]=str(int(con)+1)
+os.environ[query["id"][0]+query["user"][0]+"sc"]=str(int(con)+1) 
 if query["id"][0]+query["user"][0]+"s" not in os.environ:
 	
 	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
-
+st.write(os.environ)
 def get(db2):
 	i=0
 	ids=[]
