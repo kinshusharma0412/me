@@ -353,7 +353,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 				
 
-			time.sleep(1)
+			
+			if secs%15!=0:
+				time.sleep(1)
 
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
 			if secs%15==0:
