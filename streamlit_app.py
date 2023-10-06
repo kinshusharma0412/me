@@ -78,10 +78,6 @@ if query["id"][0]+query["user"][0]+"sc" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"sc"]="0"
 con=os.environ[query["id"][0]+query["user"][0]+"sc"]
 os.environ[query["id"][0]+query["user"][0]+"sc"]=str(int(con)+1) 
-if query["id"][0]+query["user"][0]+"s" not in os.environ:
-	
-	os.environ[query["id"][0]+query["user"][0]+"s"]="2"
-st.write(os.environ)
 def get(db2):
 	i=0
 	ids=[]
@@ -92,6 +88,20 @@ def get(db2):
 			break
 		i+=1
 	return ids,i
+if query["id"][0]+query["user"][0]+"s" not in os.environ:
+	try:
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		db2=db22[query["id"][0]]
+		ids,i=get(db2)
+		os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
+		var={}
+		for x in range(len(db2[i][3:])):
+			var[str(x+1)]=db2[i][3:][x]			
+		os.environ[query["user"][0]+query["id"][0]]=str(var)
+	except:
+		os.environ[query["id"][0]+query["user"][0]+"s"]="2"
+st.write(os.environ)
+
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 	
 	try:
