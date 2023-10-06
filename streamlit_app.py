@@ -32,7 +32,7 @@ def get_datetime():
 async def save_data(x):
 	styl = f"""
 
-<h1 style="position: fixed;up: 30rem;right: 0rem;">Save</h1>"""
+<h1 style="position: fixed;up: 40rem;right: 0rem;">Save</h1>"""
 	ph2.markdown(styl, unsafe_allow_html=True)
 	await asyncio.sleep(x)
 	ph2.empty()
