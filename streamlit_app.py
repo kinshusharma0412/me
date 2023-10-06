@@ -359,10 +359,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			if secs%15==0:
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-				
 				db2=db22[query["id"][0]]
 				ids,i=get(db2)
-				ph.write("Times Up!!")
 				db2[i][2]=str(secs)
 				
 				for x in range(len(db)):
@@ -377,7 +375,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				if myquery1:
 					newvalues1={ "$set": {"db2":db22}}
 					cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)	
-					asyncio.run(save_data(5))
+					asyncio.run(save_data(10))
 				else:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 
