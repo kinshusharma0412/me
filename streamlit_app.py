@@ -95,6 +95,7 @@ if query["id"][0]+query["user"][0]+"s" not in os.environ:
 		ids,i=get(db2)
 		os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
 		os.environ[query["id"][0]+query["user"][0]]=str(db2[i][2])
+		st.write(len(db2[i][3:]))
 		var={}
 		for x in range(len(db2[i][3:])):
 			var[str(x+1)]=db2[i][3:][x]			
