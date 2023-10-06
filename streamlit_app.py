@@ -325,8 +325,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 
 		for x in range(len(db)):
-			if len(db2[i][3+x])<len(db)+1:
-				db2[i][3+x].append("")
+			if len(db2[i])<len(db)+5:
+				db2[i].append("")
 		for x in range(len(db)):
 			try:
 				db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
@@ -375,7 +375,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				
 				for x in range(len(db)):
 					if len(db2[i])<len(db)+5:
-						db2[i][4+x].append("")
+						db2[i].append("")
 				for x in range(len(db)):
 					try:
 						db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
@@ -405,7 +405,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				db2[i][3]=1
 				for x in range(len(db)):
 					if len(db2[i])<len(db)+5:
-						db2[i][4+x].append("")
+						db2[i].append("")
 				for x in range(len(db)):
 					try:
 						db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
