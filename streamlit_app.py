@@ -94,6 +94,7 @@ if query["id"][0]+query["user"][0]+"s" not in os.environ:
 		db2=db22[query["id"][0]]
 		ids,i=get(db2)
 		os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
+		os.environ[query["id"][0]+query["user"][0]]=str(db2[i][2])
 		var={}
 		for x in range(len(db2[i][3:])):
 			var[str(x+1)]=db2[i][3:][x]			
@@ -857,6 +858,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 	db2=db22[query["id"][0]]
+	ids,i=get(db2)
 	for y in range(len(db2)):
 		
 		mask1=[]
