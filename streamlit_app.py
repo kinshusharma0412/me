@@ -60,8 +60,11 @@ hide_streamlit_style = """
             #
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-
-db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
+try:
+	db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
+except:
+	st.write("please open our site only in @soojhboojh_01bot in telegram")
+	st.stop()
 
 N=len(db)*50
 if query["id"][0]+query["user"][0]+"sc" not in os.environ:
@@ -154,9 +157,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	def click_button(j):
 
 		if query["user"][0]+query["id"][0] not in os.environ:
-
 			temp3={}
-
 		else:
 
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
@@ -812,10 +813,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 	useR=[]
 
-	
-
+	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+	db2=db22[query["id"][0]]
 	for y in range(len(db2)):
-
+		
 		mask1=[]
 
 		mark=0
