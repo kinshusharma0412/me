@@ -141,6 +141,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	#st.set_page_config()
 	
 	ph = st.empty()#st.container()
+	ph2=st.empty()
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
@@ -348,6 +349,35 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			time.sleep(1)
 
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
+			if secs%15==0:
+				
+				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+				
+				db2=db22[query["id"][0]]
+				ids,i=get(db2)
+				ph.write("Times Up!!")
+				db2[i][2]=str(secs)
+				
+				for x in range(len(db)):
+					try:
+						db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+					except Exception as e:
+						db2[i].append("")
+				
+				db22[query["id"][0]]=db2
+				
+				myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
+				if myquery1:
+					newvalues1={ "$set": {"db2":db22}}
+					cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)	
+					styl = f"""
+
+<h1 style="position: fixed;up: 20rem;right: 0rem;">Save</h1>"""
+					ph2.markdown(styl, unsafe_allow_html=True)
+					asyncio.sleep(1)
+					ph2.empty()
+				else:
+					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 
 		
 
