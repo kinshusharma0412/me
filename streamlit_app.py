@@ -102,7 +102,7 @@ if query["id"][0]+query["user"][0]+"s" not in os.environ:
 		os.environ[query["user"][0]+query["id"][0]]=str(varr)
 	except:
 		os.environ[query["id"][0]+query["user"][0]+"s"]="2"
-
+st.write(os.environ)
 
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 	
