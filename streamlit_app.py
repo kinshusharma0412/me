@@ -374,7 +374,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 <h1 style="position: fixed;up: 20rem;right: 0rem;">Save</h1>"""
 					ph2.markdown(styl, unsafe_allow_html=True)
-					asyncio.sleep(1)
+					asyncio.run(asyncio.sleep(5))
 					ph2.empty()
 				else:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
