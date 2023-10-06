@@ -375,7 +375,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				if myquery1:
 					newvalues1={ "$set": {"db2":db22}}
 					cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)	
-					asyncio.run(save_data(10))
+					asyncio.run(save_data(1))
 				else:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 
