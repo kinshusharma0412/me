@@ -379,7 +379,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				
 				for x in range(len(db)):
 					try:
-						db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						try:
+							db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						except Exception as e:
+							db2[i].append(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
 						db2[i].append("")
 				
