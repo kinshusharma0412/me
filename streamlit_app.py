@@ -329,7 +329,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				db2[i].append("")
 		for x in range(len(db)):
 			try:
-				db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+				db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 			except Exception as e:
 				print(e)
 		
@@ -378,7 +378,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 						db2[i].append("")
 				for x in range(len(db)):
 					try:
-						db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
 						print(e)
 				
@@ -408,7 +408,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 						db2[i].append("")
 				for x in range(len(db)):
 					try:
-						db2[i][3+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
 						print(e)
 				
