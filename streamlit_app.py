@@ -29,7 +29,14 @@ from datetime import datetime
 def get_datetime():
     return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+async def save_data(x):
+	styl = f"""
 
+<h1 style="position: fixed;up: 20rem;right: 0rem;">Save</h1>"""
+	ph2.markdown(styl, unsafe_allow_html=True)
+	await asyncio.sleep(x)
+	ph2.empty()
+	
 
 query=st.experimental_get_query_params()
 
@@ -370,12 +377,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				if myquery1:
 					newvalues1={ "$set": {"db2":db22}}
 					cm["Live_Quiz"]["db"].update_one(myquery1,newvalues1)	
-					styl = f"""
-
-<h1 style="position: fixed;up: 20rem;right: 0rem;">Save</h1>"""
-					ph2.markdown(styl, unsafe_allow_html=True)
-					asyncio.run(asyncio.sleep(5))
-					ph2.empty()
+					asyncio.run(save_data(5))
 				else:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 
