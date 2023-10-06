@@ -6,7 +6,7 @@ from  urllib.parse import unquote_plus,quote_plus
 #dns.resolver.default_resolver=dns.resolver.Resolver(configure=False)
 #dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
 # as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
-
+import asyncio 
 
 
 import streamlit as st
