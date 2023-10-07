@@ -683,16 +683,16 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		#st.write(db2[x])
 
-		for y in range(len(db2[x][-len(db):])):
+		for y in range(len(db2[x][-len(db)-1:])):
 
 			try:
-				if str(db2[x][-len(db):][y])=="" or str(db2[x][y+4])=="0" :
+				if str(db2[x][-len(db)-1:][y])=="" or str(db2[x][y+4])=="0" :
 					pass
-				elif str(db2[x][-len(db):][y])==str(db[x][-1]):
+				elif str(db2[x][-len(db)-1:][y])==str(db[x][-1]):
 					mark+=4
 				else:
 					mark-=1
-				st.write(db2[x][-len(db):][y])
+				st.write(db2[x][-len(db)-1:][y])
 			except:
 				pass	
 
