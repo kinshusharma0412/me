@@ -686,30 +686,15 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 		for y in range(len(db2[x][-len(db):])):
 
 			try:
-
-				
-
-				if str(db2[x][-len(db):][y]) =="":
-
+				if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
 					pass
-
-				elif str(db2[x][-len(db):][y]) == str(db[y][-1]):
-
+				elif str(db2[y][x+4])==str(db[x][-1]):
 					mark+=4
-
-				elif str(db2[x][-len(db):][y])=="0":
-
-					pass
-
 				else:
-
 					mark-=1
+			except:
+				pass	
 
-			except Exception as e:
-
-				st.write("line215"+str(e))
-
-			#st.write(mark)
 
 		
 
