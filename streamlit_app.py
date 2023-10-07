@@ -692,7 +692,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 					mark+=4
 				else:
 					mark-=1
-				st.write(marks)
+				st.write(mark)
 			except:
 				pass	
 
