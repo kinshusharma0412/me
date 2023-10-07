@@ -686,9 +686,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 		for y in range(len(db2[x][-len(db):])):
 
 			try:
-				if str(db2[y][x+4])=="" or str(db2[y][x+4])=="0" :
+				if str(db2[x][y+4])=="" or str(db2[x][y+4])=="0" :
 					pass
-				elif str(db2[y][x+4])==str(db[x][-1]):
+				elif str(db2[x][y+4])==str(db[x][-1]):
 					mark+=4
 				else:
 					mark-=1
