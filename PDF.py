@@ -31,7 +31,7 @@ opts.add_argument("--headless")
 browser = webdriver.Firefox(options=opts)
 ob = Screenshot.Screenshot()
 browser.get('http://example.com')
-driver.save_screenshot("ss.png")
+
 _="""
 element = driver.find_element(By.XPATH, "//img[@title='Donate via PayPal']")
 hide_elements = ['class=position-relative js-header-wrapper ']
