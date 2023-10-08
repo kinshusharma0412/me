@@ -77,7 +77,7 @@ st.write(driver.page_source)"""
 
 
 from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
-os.system("python3 -m pip install apryse-sdk --extra-index-url=https://pypi.apryse.com")
+
 
 on = st.empty()
 bttn=st.empty()
