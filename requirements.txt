@@ -21,6 +21,5 @@ pytest>=7.1.2
 folium>=0.13
 pytest-playwright
 pytest-rerunfailures
-streamlit
 seleniumbase
 webdriver-manager
