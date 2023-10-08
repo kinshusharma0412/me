@@ -51,9 +51,18 @@ def my():
 				driver.get(text)
 				name=id_generator()+'.png'
 				img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
-				st.image(name)
-				st.write(driver.page_source)
-				option=st.empty()
+				image_e=st.empty()
+				image_e.image(name)
+				page_s=st.empty()
+				page_s.write(driver.page_source)
+				finder=st.text_input(':rainbow[scrap using xpath]')
+				if finder:
+					element = driver.find_element(By.XPATH, finder)
+					name=id_generator()+'.png'
+					img_url = ob.get_element(driver, element, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
+					image_e.image(name)
+					login_form = driver.find_element(By.XPATH, finder)
+					page_s.write(login_form)
 		
 with st.container():
 	my()
