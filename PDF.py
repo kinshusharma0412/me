@@ -28,9 +28,9 @@ from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
 opts = FirefoxOptions()
 opts.add_argument("--headless")
-browser = webdriver.Firefox(options=opts)
+driver = webdriver.Firefox(options=opts)
 ob = Screenshot.Screenshot()
-browser.get('http://example.com')
+driver.get('http://example.com')
 
 _="""
 element = driver.find_element(By.XPATH, "//img[@title='Donate via PayPal']")
