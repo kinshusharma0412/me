@@ -33,7 +33,7 @@ driver = webdriver.Firefox(options=opts)
 def id_generator(size=10, chars=string.ascii_lowercase):
 	return ''.join(random.choice(chars) for _ in range(size))
 
-@st.cache_resource
+
 def my():
 	text=st.text_input(':rainbow[Your URL]')
 	if text:
