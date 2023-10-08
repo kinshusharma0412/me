@@ -55,16 +55,9 @@ def my():
 				st.write(driver.page_source)
 				option=st.empty()
 		
-option=st.empty()				
-def my1():
-	option = option.selectbox(
-   "what you want to that site",
-   ("click on somthing", "upload a file", "open a new url"),
-   index=None,
-   placeholder="Select contact method...",)
 with st.container():
 	my()
-	my1()
+	
 
 
 
