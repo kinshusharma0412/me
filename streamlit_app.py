@@ -429,9 +429,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 
 elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
-
+	st.balloons()
 	st.write("Test submission sucessful 🥳🥳🥳")
-
 	col1,col2 = st.columns([1,1])
 
 	with col1:
