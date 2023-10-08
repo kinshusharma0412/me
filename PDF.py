@@ -69,13 +69,10 @@ if st.button('Start Selenium run'):
     st.info('Successful finished. Selenium log file is shown below...')
     show_selenium_log()
 
-site.addsitedir(r"...pathToPDFTron\PDFNetWrappersWin32\PDFNetC\Lib")
+
 from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
 os.system("python3 -m pip install apryse-sdk --extra-index-url=https://pypi.apryse.com")
-try:
-	from apryse_sdk import *
-except Exception as e:
-	st.write(e)
+
 on = st.empty()
 bttn=st.empty()
 onn= st.empty()
@@ -285,32 +282,3 @@ elif onn.toggle('Excle to PDF feature'):
 		file = open(name[:-5]+".pdf","rb")
 		st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-5]+".pdf",mime="application/octet-stream")
 
-elif onn1.toggle('PDF compressor feature un-complite now'):
-# Read pdf into a list of DataFrame
-	st.write("This feature can Compress your PDF file")
-	place_holder=st.empty()
-	with place_holder.form(key="form2"):
-		uploaded_files = st.file_uploader("Choose a .PDF file (multiple files are not accepted)", accept_multiple_files=False)
-		line=st.empty()
-		submit_button = st.empty()
-		if uploaded_files:
-			name="./"+uploaded_files.name
-			with open(name, "wb") as file:
-				file.write(uploaded_files.getvalue())
-			
-	if submit_button.form_submit_button(label="Submit your choice"):
-		name="./"+uploaded_files.name
-		PDFNet.Initialize("demo:1695835217274:7c183fec03000000008c0a8a3abd11c6896a9c7310aa9139d5d1481dd0")
-		
-		doc = PDFDoc(name)
-		doc.InitSecurityHandler()
-		Optimizer.Optimize(doc)
-		doc.Save('compressed_'+name, SDFDoc.e_linearized)
-		files.download('compressed_'+name)
-		doc.Close()
-		st.download_button(label="Download your compress PDF",data=file.read(),file_name='compressed '+name,mime="application/octet-stream")
-		
-    
-		
-		
-			
