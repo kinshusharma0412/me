@@ -35,32 +35,24 @@ def id_generator(size=10, chars=string.ascii_lowercase):
 
 
 def my():
-	text=st.text_input(':rainbow[Your URL]')
+	text=st.text_input(':rainbow[Your URL]',key="url")
 	if text:
 		ob = Screenshot.Screenshot()
 		driver.get(text)
 		name=id_generator()+'.png'
+		page_s=st.empty()
+		image_e=st.empty()
 		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
-		text=st.text_input(':rainbow[Your URL]')
-		st.image(name)
-		driver.page_source
-		if text:	
-			driver.get(text)
-			finder=st.text_input(':rainbow[scrap using xpath]')
+		finder=st.text_input(':rainbow[scrap using xpath]')
+		image_e.image(name)
+		page_s.write(driver.page_source)
+		if finder:
+			element = driver.find_element(By.XPATH, finder)
 			name=id_generator()+'.png'
-			img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
-			image_e=st.empty()
+			img_url = ob.get_element(driver, element, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
 			image_e.image(name)
-			
-			page_s=st.empty()
-			page_s.write(driver.page_source)
-			if finder:
-				element = driver.find_element(By.XPATH, finder)
-				name=id_generator()+'.png'
-				img_url = ob.get_element(driver, element, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
-				image_e.image(name)
-				login_form = driver.find_element(By.XPATH, finder)
-				page_s.write(login_form)
+			login_form = driver.find_element(By.XPATH, finder)
+			page_s.write(login_form)
 		
 with st.container():
 	my()
