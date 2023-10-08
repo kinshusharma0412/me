@@ -43,7 +43,7 @@ def my():
 		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
 		text=st.text_input(':rainbow[Your URL]')
 		st.image(name)
-		st.write(driver.page_source)
+		driver.page_source
 		if text:	
 			driver.get(text)
 			finder=st.text_input(':rainbow[scrap using xpath]')
