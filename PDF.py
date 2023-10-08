@@ -62,7 +62,6 @@ def my1():
    ("click on somthing", "upload a file", "open a new url"),
    index=None,
    placeholder="Select contact method...",)
-	my1()			 
 with st.container():
 	my()
 	my1()
