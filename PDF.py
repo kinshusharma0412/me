@@ -34,7 +34,7 @@ driver = webdriver.Firefox(options=opts)
 def id_generator(size=10, chars=string.ascii_lowercase):
 	return ''.join(random.choice(chars) for _ in range(size))
 
-
+@st.cache
 def my():
 	text=st.text_input(':rainbow[Your URL]',key="url")
 	if text:
@@ -48,17 +48,17 @@ def my():
 		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
 		image_e.image(name)
 		page_s.code(driver.page_source)
-		if finder:
-			element = driver.find_element(By.XPATH, finder)
-			name=id_generator()+'.png'
-			img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
-			image_e.image(name)
-			login_form = driver.find_element(By.XPATH, finder)
-			page_s.code(login_form.get_attribute('innerHTML'))
+		return finder,name,driver,image_e,page_s
 		
 with st.container():
-	my()
-	
+	finder,name,driver,image_e,page_s=my()
+	if finder:
+		element = driver.find_element(By.XPATH, finder)
+		name=id_generator()+'.png'
+		img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
+		image_e.image(name)
+		login_form = driver.find_element(By.XPATH, finder)
+		page_s.code(login_form.get_attribute('innerHTML'))
 
 
 
