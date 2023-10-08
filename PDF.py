@@ -6,7 +6,7 @@ import glob,img2pdf
 from PyPDF2 import PdfWriter, PdfReader,PdfMerger, PdfReader
 from random import randint
 from PIL import Image
-from Screenshot import Screenshot_clipping
+from Screenshot import Screenshot
 import pdfkit
 import pandas as pd
 import site,glob
@@ -29,9 +29,18 @@ from selenium.webdriver import FirefoxOptions
 opts = FirefoxOptions()
 opts.add_argument("--headless")
 browser = webdriver.Firefox(options=opts)
-
+ob = Screenshot.Screenshot()
 browser.get('http://example.com')
 driver.save_screenshot("ss.png")
+_="""
+element = driver.find_element(By.XPATH, "//img[@title='Donate via PayPal']")
+hide_elements = ['class=position-relative js-header-wrapper ']
+img_url = ob.full_screenshot(driver, save_path=r'.', image_name='myimage.png',
+                                          hide_elements=hide_elements)"""
+img_url = ob.get_element(driver, element, save_path=r'.', image_name='paypal.png')
+print(img_url)
+img_url = ob.full_screenshot(driver, save_path=r'.', image_name='ss.png', is_load_at_runtime=True,
+                                          load_wait_time=3)
 st.image("ss.png")
 
 
