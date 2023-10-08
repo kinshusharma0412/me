@@ -51,7 +51,7 @@ def my():
 		if finder:
 			element = driver.find_element(By.XPATH, finder)
 			name=id_generator()+'.png'
-			img_url = ob.get_element(driver, element, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
+			img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
 			image_e.image(name)
 			login_form = driver.find_element(By.XPATH, finder)
 			page_s.code(login_form)
