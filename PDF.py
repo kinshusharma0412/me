@@ -25,6 +25,7 @@ def installff():
 
 _ = installff()
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver import FirefoxOptions
 opts = FirefoxOptions()
 opts.add_argument("--headless")
