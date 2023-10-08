@@ -47,13 +47,15 @@ def my():
 		if option=="open a new url":
 			text=st.text_input(':rainbow[Your URL]')
 			if text:
+				
 				ob = Screenshot.Screenshot()
 				driver.get(text)
+				finder=st.text_input(':rainbow[scrap using xpath]')
 				name=id_generator()+'.png'
 				img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
 				image_e=st.empty()
 				image_e.image(name)
-				finder=st.text_input(':rainbow[scrap using xpath]')
+				
 				page_s=st.empty()
 				page_s.write(driver.page_source)
 				if finder:
