@@ -54,7 +54,7 @@ def my():
 			img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
 			image_e.image(name)
 			login_form = driver.find_element(By.XPATH, finder)
-			page_s.code(login_form.page_source)
+			page_s.code(login_form.get_attribute('innerHTML'))
 		
 with st.container():
 	my()
