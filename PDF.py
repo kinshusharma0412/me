@@ -13,7 +13,7 @@ import site,glob
 import os
 import streamlit as st
 import os, sys
-import os
+import os,random,string
 
 import streamlit as st
 import os, sys
@@ -29,8 +29,46 @@ from selenium.webdriver import FirefoxOptions
 opts = FirefoxOptions()
 opts.add_argument("--headless")
 driver = webdriver.Firefox(options=opts)
-ob = Screenshot.Screenshot()
-driver.get('http://example.com')
+
+def id_generator(size=10, chars=string.ascii_lowercase):
+	return ''.join(random.choice(chars) for _ in range(size))
+@st.cache_resource
+def my():
+	text=st.text_input(':rainbow[Your URL]')
+	if text:
+		ob = Screenshot.Screenshot()
+		driver.get(text)
+		name=id_generator()+'.png'
+		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
+		st.image(name)
+		st.write(driver.page_source)
+		option=st.empty()
+		if option=="open a new url":
+			text=st.text_input(':rainbow[Your URL]')
+			if text:
+				ob = Screenshot.Screenshot()
+				driver.get(text)
+				name=id_generator()+'.png'
+				img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
+				st.image(name)
+				st.write(driver.page_source)
+				option=st.empty()
+		
+				
+def my1():
+	option = option.selectbox(
+   "what you want to that site",
+   ("click on somthing", "upload a file", "open a new url"),
+   index=None,
+   placeholder="Select contact method...",)
+   my1():
+   
+			 
+with st.container():
+	my()
+	my1()
+
+
 
 _="""
 element = driver.find_element(By.XPATH, "//img[@title='Donate via PayPal']")
@@ -38,13 +76,13 @@ hide_elements = ['class=position-relative js-header-wrapper ']
 img_url = ob.full_screenshot(driver, save_path=r'.', image_name='myimage.png',
                                           hide_elements=hide_elements)
 img_url = ob.get_element(driver, element, save_path=r'.', image_name='paypal.png')
-print(img_url)"""
+print(img_url)
 img_url = ob.full_screenshot(driver, save_path=r'.', image_name='ss.png', is_load_at_runtime=True,
                                           load_wait_time=3)
 st.image("ss.png")
 
 
-st.write(driver.page_source)
+st.write(driver.page_source)"""
 
 
 from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
