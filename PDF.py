@@ -44,7 +44,7 @@ img_url = ob.full_screenshot(driver, save_path=r'.', image_name='ss.png', is_loa
 st.image("ss.png")
 
 
-st.write(browser.page_source)
+st.write(driver.page_source)
 
 
 from PDFNetPython3 import PDFDoc, Optimizer, SDFDoc
