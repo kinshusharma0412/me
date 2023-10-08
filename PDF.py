@@ -41,8 +41,9 @@ def my():
 		driver.get(text)
 		name=id_generator()+'.png'
 		finder=st.text_input(':rainbow[scrap using xpath]')
-		page_s=st.empty()
 		image_e=st.empty()
+		page_s=st.empty()
+		
 		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
 		image_e.image(name)
 		page_s.write(driver.page_source)
