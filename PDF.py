@@ -5,7 +5,8 @@ from PIL import Image
 import glob,img2pdf
 from PyPDF2 import PdfWriter, PdfReader,PdfMerger, PdfReader
 from random import randint
-
+from PIL import Image
+from Screenshot import Screenshot_clipping
 import pdfkit
 import pandas as pd
 import site,glob
@@ -30,6 +31,10 @@ opts.add_argument("--headless")
 browser = webdriver.Firefox(options=opts)
 
 browser.get('http://example.com')
+driver.save_screenshot("ss.png")
+st.image("ss.png")
+
+
 st.write(browser.page_source)
 
 
