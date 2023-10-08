@@ -36,9 +36,9 @@ _="""
 element = driver.find_element(By.XPATH, "//img[@title='Donate via PayPal']")
 hide_elements = ['class=position-relative js-header-wrapper ']
 img_url = ob.full_screenshot(driver, save_path=r'.', image_name='myimage.png',
-                                          hide_elements=hide_elements)"""
+                                          hide_elements=hide_elements)
 img_url = ob.get_element(driver, element, save_path=r'.', image_name='paypal.png')
-print(img_url)
+print(img_url)"""
 img_url = ob.full_screenshot(driver, save_path=r'.', image_name='ss.png', is_load_at_runtime=True,
                                           load_wait_time=3)
 st.image("ss.png")
