@@ -18,47 +18,7 @@ import os,random,string
 import streamlit as st
 import os, sys
 
-@st.cache_resource
-def installff():
-  os.system('sbase install geckodriver')
-  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
-_ = installff()
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver import FirefoxOptions
-opts = FirefoxOptions()
-opts.add_argument("--headless")
-driver = webdriver.Firefox(options=opts)
-
-def id_generator(size=10, chars=string.ascii_lowercase):
-	return ''.join(random.choice(chars) for _ in range(size))
-
-
-def my():
-	text=st.text_input(':rainbow[Your URL]',key="url")
-	if text:
-		ob = Screenshot.Screenshot()
-		driver.get(text)
-		name='ss.png'
-		finder=st.text_input(':rainbow[scrap using xpath]')
-		image_e=st.empty()
-		page_s=st.empty()
-		
-		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
-		image_e.image(name)
-		page_s.code(driver.page_source)
-		return finder,name,driver,image_e,page_s
-		
-with st.container():
-	finder,name,driver,image_e,page_s=my()
-	if finder:
-		element = driver.find_element(By.XPATH, finder)
-		name=id_generator()+'.png'
-		img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
-		image_e.image(name)
-		login_form = driver.find_element(By.XPATH, finder)
-		page_s.code(login_form.get_attribute('innerHTML'))
 
 
 
@@ -289,3 +249,44 @@ elif onn.toggle('Excle to PDF feature'):
 		file = open(name[:-5]+".pdf","rb")
 		st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-5]+".pdf",mime="application/octet-stream")
 
+@st.cache_resource
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+
+_ = installff()
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver import FirefoxOptions
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+driver = webdriver.Firefox(options=opts)
+
+def id_generator(size=10, chars=string.ascii_lowercase):
+	return ''.join(random.choice(chars) for _ in range(size))
+
+
+def my():
+	text=st.text_input(':rainbow[Your URL]',key="url")
+	if text:
+		ob = Screenshot.Screenshot()
+		driver.get(text)
+		name='ss.png'
+		finder=st.text_input(':rainbow[scrap using xpath]')
+		image_e=st.empty()
+		page_s=st.empty()
+		
+		img_url = ob.full_screenshot(driver, save_path=r'.', image_name=name, is_load_at_runtime=True,load_wait_time=3)
+		image_e.image(name)
+		page_s.code(driver.page_source)
+		return finder,name,driver,image_e,page_s
+		
+with st.container():
+	finder,name,driver,image_e,page_s=my()
+	if finder:
+		element = driver.find_element(By.XPATH, finder)
+		name=id_generator()+'.png'
+		img_url = ob.get_element(driver, element, save_path=r'.', image_name=name)
+		image_e.image(name)
+		login_form = driver.find_element(By.XPATH, finder)
+		page_s.code(login_form.get_attribute('innerHTML'))
