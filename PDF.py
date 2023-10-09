@@ -34,13 +34,13 @@ driver = webdriver.Firefox(options=opts)
 def id_generator(size=10, chars=string.ascii_lowercase):
 	return ''.join(random.choice(chars) for _ in range(size))
 
-@st.cache
+
 def my():
 	text=st.text_input(':rainbow[Your URL]',key="url")
 	if text:
 		ob = Screenshot.Screenshot()
 		driver.get(text)
-		name=id_generator()+'.png'
+		name='ss.png'
 		finder=st.text_input(':rainbow[scrap using xpath]')
 		image_e=st.empty()
 		page_s=st.empty()
