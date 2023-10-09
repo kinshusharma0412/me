@@ -48,7 +48,7 @@ from PIL import Image
 def init_connection():
 	return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 cm = init_connection()
-
+st.title('🤷  Soojh Boojh Quiz ❓')
 
 
 
