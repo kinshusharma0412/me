@@ -49,6 +49,9 @@ def init_connection():
 	return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 cm = init_connection()
 
+
+st.set_page_config(page_title="Soojh Boojh Quiz", page_icon="🤷❓", layout="centered", initial_sidebar_state="auto", menu_items=None)
+
 hide_streamlit_style = """
 
 
