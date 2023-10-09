@@ -1,7 +1,5 @@
 streamlit
-selenium==4.9.1
-seleniumbase
-webdriver-manager
+
 apscheduler
 google-api-python-client
 google-auth-httplib2
