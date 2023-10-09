@@ -11,7 +11,7 @@ import asyncio
 
 import streamlit as st
 
-import streamlit as st
+st.set_page_config(page_title="Soojh Boojh Quiz", page_icon="🤷❓", layout="centered", initial_sidebar_state="auto", menu_items=None)
 
 import pandas as pd
 
@@ -50,7 +50,7 @@ def init_connection():
 cm = init_connection()
 
 
-st.set_page_config(page_title="Soojh Boojh Quiz", page_icon="🤷❓", layout="centered", initial_sidebar_state="auto", menu_items=None)
+
 
 hide_streamlit_style = """
 
