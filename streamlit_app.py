@@ -574,29 +574,29 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 					if int(y)+1==int(db[x][-1]):
 
-						tt+="```      ```:green["+db[x][y+1]+"]  \n"
+						tt+="```      ```:green["+reaaa.sub("\n","<br/>",db[x][y+1])+"]  \n"
 
 					else:
 
-						tt+="```   ```"+db[x][y+1]+"  \n"
+						tt+="```   ```"+reaaa.sub("\n","<br/>",db[x][y+1])+"  \n"
 
 				elif str(db2[i][x+4])==str(y+1):
 
 					if str(db2[i][x+4])==str(db[x][-1]):
 
-						tt+="```      ```:green["+db[x][y+1]+"]```      ```+4  \n"
+						tt+="```      ```:green["+reaaa.sub("\n","<br/>",db[x][y+1])+"]```      ```+4  \n"
 
 					else:
 
-						tt+="```      ```:red["+db[x][y+1]+"]```      ```-1  \n"
+						tt+="```      ```:red["+reaaa.sub("\n","<br/>",db[x][y+1])+"]```      ```-1  \n"
 
 				elif int(y)+1==int(db[x][-1]):
 
-					tt+="```      ```:green["+db[x][y+1]+"]  \n"
+					tt+="```      ```:green["+reaaa.sub("\n","<br/>",db[x][y+1])+"]  \n"
 
 				else:
 
-					tt+="```   ```"+db[x][y+1]+"  \n"
+					tt+="```   ```"+reaaa.sub("\n","<br/>",db[x][y+1])+"  \n"
 
 					
 
@@ -604,11 +604,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 			elif int(y)+1==int(db[x][-1]):
 
-				tt+="```      ```:green["+db[x][y+1]+"]  \n"
+				tt+="```      ```:green["+reaaa.sub("\n","<br/>",db[x][y+1])+"]  \n"
 
 			else:
 
-				tt+="```   ```"+db[x][y+1]+"  \n"
+				tt+="```   ```"+reaaa.sub("\n","<br/>",db[x][y+1])+"  \n"
 
 			
 
