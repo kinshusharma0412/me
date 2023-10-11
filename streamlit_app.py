@@ -324,6 +324,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 		db2=db22[query["id"][0]]
 		ids,i=get(db2)
+		print(os.environ[query["id"][0]+query["user"][0]])
 		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
 		db2[i][3]=1
 		
