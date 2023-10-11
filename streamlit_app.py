@@ -421,6 +421,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				
 				db2=db22[query["id"][0]]
 				ids,i=get(db2)
+				try:
+					_=db2[i]
+				except:
+					db2.append([unquote_plus(query["name"][0]),query["user"][0],str(secs),0])
+				ids,i=get(db2)
 				ph.write("Times Up!!")
 				db2[i][2]=str(secs)
 				db2[i][3]=1
