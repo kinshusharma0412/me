@@ -373,12 +373,13 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				time.sleep(1)
 
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
-			st.write(os.environ[query["id"][0]+query["user"][0]])
+			st.write(db2[i])
 			if secs%15==0:
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 				db2=db22[query["id"][0]]
 				ids,i=get(db2)
+				
 				db2[i][2]=str(secs)
 				
 				for x in range(len(db)):
