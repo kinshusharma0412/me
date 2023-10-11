@@ -131,7 +131,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		db2=db22[query["id"][0]]
-		ids,i=get(db2)
+		
 		db2.append([path,query["user"][0],N,0])
 		db22[query["id"][0]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
@@ -376,7 +376,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 			db2=db22[query["id"][0]]
 			ids,i=get(db2)
-			st.write(db2)
+			st.write(db2[i])
 			if secs%15==0:
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
