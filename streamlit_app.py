@@ -393,7 +393,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 					db2.append([unquote_plus(query["name"][0]),query["user"][0],str(secs),0])
 				ids,i=get(db2)
 				db2[i][2]=str(secs)
-				
+				st.write(db2[i])
 				for x in range(len(db)):
 					if len(db2[i])<len(db)+5:
 						db2[i].append("")
