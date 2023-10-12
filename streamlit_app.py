@@ -60,7 +60,7 @@ hide_streamlit_style = """
 
 
             <style>
-            button {text-align: left;}
+            
 
             #MainMenu {visibility: hidden;}
 
@@ -691,6 +691,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 		#st.write(db2[x])
 
 		for y in range(len(db2[x][-len(db)-1:])):
+			st.write(db2[x][-len(db)-1:][y],db[y][-1])
 
 			try:
 				if str(db2[x][-len(db)-1:][y])=="" or str(db2[x][y+4])=="0" :
