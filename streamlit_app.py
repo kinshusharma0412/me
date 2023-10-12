@@ -379,7 +379,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
 			
-			if secs%15==0:
+			if False:
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 				db2=db22[query["id"][0]]
@@ -398,7 +398,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 					try:
 						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
-						print("line 404 "+str(e))
+						print("line 400 "+str(e))
 				
 				db22[query["id"][0]]=db2
 				
