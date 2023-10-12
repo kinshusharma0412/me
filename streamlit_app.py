@@ -152,7 +152,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
-	
+	btn2=[]
 
 	
 
