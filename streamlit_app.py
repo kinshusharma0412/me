@@ -153,18 +153,12 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
 	btn2=[]
-
-	
-
-	
-
 	def click_button(j):
-
 		if query["user"][0]+query["id"][0] not in os.environ:
 			temp3={}
 		else:
-
 			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
+		st.write(j)
 
 		
 
