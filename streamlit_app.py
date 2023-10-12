@@ -124,7 +124,7 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 			
 			st.rerun()
 	except Exception as e:
-		print(e)
+		print("line 127 "+str(e))
 
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
@@ -343,7 +343,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			try:
 				db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 			except Exception as e:
-				print(e)
+				print("line 346 "+str(e))
 		
 		db22[query["id"][0]]=db2
 		
@@ -401,7 +401,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 					try:
 						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
-						print(e)
+						print("line 404 "+str(e))
 				
 				db22[query["id"][0]]=db2
 				
@@ -436,7 +436,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 					try:
 						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
 					except Exception as e:
-						print(e)
+						print("line 439 "+str(e))
 				
 				db22[query["id"][0]]=db2
 				
