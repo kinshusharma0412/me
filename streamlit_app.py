@@ -101,31 +101,13 @@ if query["id"][0]+query["user"][0]+"s" not in os.environ:
 		ids,i=get(db2)
 		os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
 		os.environ[query["id"][0]+query["user"][0]]=str(db2[i][2])
-		st.write(len(db2[i][3:]))
-		varr={}
-		for x in range(len(db2[i][4:])):
-			varr[str(x+1)]=db2[i][4:][x]			
-		os.environ[query["user"][0]+query["id"][0]]=str(varr)
+		
+		
 	except:
 		os.environ[query["id"][0]+query["user"][0]+"s"]="2"
 
 
 if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
-	
-	try:
-		
-		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		
-		db2=db22[query["id"][0]]
-		
-		ids,i=get(db2)
-		if str(db2[i][3])!=0:
-			os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
-			
-			st.rerun()
-	except Exception as e:
-		print("line 127 "+str(e))
-
 	if "name" in query.keys():
 		path=unquote_plus(query["name"][0])
 		
@@ -170,11 +152,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	if query["id"][0]+query["user"][0] not in os.environ:
 		os.environ[query["id"][0]+query["user"][0]]=str(N)
 	
-	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 	
-	db2=db22[query["id"][0]]
-	ids,i=get(db2)
-	btn2=[]
 
 	
 
