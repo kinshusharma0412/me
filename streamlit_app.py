@@ -352,7 +352,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 				styl = f"""
 
-<h1 style="position: fixed;up: 0rem;right: 0rem;">{mm:02d}:{ss:02d}</h1>"""
+<h1 style="position: fixed;up: 0rem;right: 0rem;z-index:5;">{mm:02d}:{ss:02d}</h1>"""
 
 				ph.markdown(styl, unsafe_allow_html=True)
 
