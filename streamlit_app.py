@@ -74,7 +74,7 @@ hide_streamlit_style = """
             #
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-@st.cache_resource
+@st.cache_data
 def Reloading_Question_Bank(data):
 	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][data]
 
