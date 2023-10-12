@@ -75,11 +75,11 @@ hide_streamlit_style = """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 @st.cache_resource
-def dbbb(data):
+def Reloading_Question_Bank(data):
 	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][data]
 
 try:
-	db=dbbb(query["id"][0])
+	db=Reloading_Question_Bank(query["id"][0])
 except:
 	st.write("please open our site only in @soojhboojh_01bot in telegram")
 	st.stop()
