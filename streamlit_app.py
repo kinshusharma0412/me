@@ -60,16 +60,17 @@ hide_streamlit_style = """
 
 
             <style>
-
-            #MainMenu {visibility: hidden;}
-
-            footer {visibility: hidden;}
             button {
     height: auto;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
-    width: 50%;
+    width: 3em;
 }
+
+            #MainMenu {visibility: hidden;}
+
+            footer {visibility: hidden;}
+            
 
             </style>
             
