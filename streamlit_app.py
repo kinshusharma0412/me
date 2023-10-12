@@ -47,6 +47,7 @@ from PIL import Image
 @st.cache_resource
 def init_connection():
 	return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+
 cm = init_connection()
 try:
 	st.title(unquote_plus(query["qname"][0]))
@@ -73,8 +74,12 @@ hide_streamlit_style = """
             #
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+@st.cache_resource
+def dbbb():
+	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
+
 try:
-	db=cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"][query["id"][0]]
+	db=dbbb()
 except:
 	st.write("please open our site only in @soojhboojh_01bot in telegram")
 	st.stop()
