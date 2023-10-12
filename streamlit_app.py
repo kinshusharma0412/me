@@ -542,7 +542,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 #	st.image(image, caption='Sunrise by the mountains')
 	
-	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+	@st.cache_data
+	def Reloading_Your_Answer_Key(data):
+		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
+		return db22
+	db22=Reloading_Your_Answer_Key(query["id"][0])
 	
 	db2=db22[query["id"][0]]
 	ids,i=get(db2)
