@@ -68,6 +68,7 @@ hide_streamlit_style = """
     height: auto;
     padding-top: 10px !important;
     padding-bottom: 10px !important;
+    width: 50%;
 }
 
             </style>
