@@ -60,12 +60,7 @@ hide_streamlit_style = """
 
 
             <style>
-            button {
-    height: auto;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    width: 3em;
-}
+            button {text-align: left;}
 
             #MainMenu {visibility: hidden;}
 
