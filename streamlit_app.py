@@ -801,7 +801,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 	df=df.apply(highlight_rows, axis = 1)
 
-	st.markdown(df.to_html(render_links=True), unsafe_allow_html=True)
+	st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 	
 
