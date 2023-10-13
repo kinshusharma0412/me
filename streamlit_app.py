@@ -769,7 +769,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		ti=f"{mm:02d}:{ss:02d}"
 
-		tab.append([new_result2[x]["Sr."]+". ",'<a target="_top" href="?name='+quote_plus(new_result2[x]["Name"])+'&user='+new_result2[x]["id"]+'">'+new_result2[x]["Name"]+'</a>',ti,new_result2[x]["Marks"]])
+		tab.append([new_result2[x]["Sr."]+". ",'<a target="_top" href="?embed=true&embed_options=dark_theme&qname='+query["qname"][0]+'&id='+query["id"][0]+'&name='+quote_plus(new_result2[x]["Name"])+'&user='+new_result2[x]["id"]+'">'+new_result2[x]["Name"]+'</a>',ti,new_result2[x]["Marks"]])
 		
 
 	
