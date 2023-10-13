@@ -721,7 +721,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		
 
-		marks[db2[x][1]]={"Name":dict(name=db2[x][0],url="www.google.com"),"Marks":mark,"Time":int(db2[x][2])}
+		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
 
 	
 
@@ -769,7 +769,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		ti=f"{mm:02d}:{ss:02d}"
 
-		tab.append([new_result2[x]["Sr."]+". ",new_result2[x]["Name"],ti,new_result2[x]["Marks"]])
+		tab.append([new_result2[x]["Sr."]+". ",dict(name=new_result2[x]["Name"],url="www.google.com"),ti,new_result2[x]["Marks"]])
 
 	
 
