@@ -694,7 +694,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		if len(db2[x])!=len(db)+4:
 			if len(db2[x])!=4:
-				usse.append(db2[0])
+				usse.append(db2[x][0])
 		if len(usse)>0:
 			ttt=""
 			for ussee in usse:
