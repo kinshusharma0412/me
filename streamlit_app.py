@@ -171,7 +171,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 		if int(y[0])>len(db):
 			pass
-		except:
+		else:
 			temp3[y[0]]=y[1]
 
 		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
