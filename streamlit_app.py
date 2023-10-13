@@ -688,7 +688,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		mark=0
 
-		#st.write(db2[x])
+		st.write(db2[x][0])
 
 		for y in range(len(db2[x][-len(db)-1:])):
 			st.write(db2[x][-len(db)-1:][y],db[y][-1])
