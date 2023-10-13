@@ -82,7 +82,7 @@ def Reloading_Question_Bank(data):
 	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"]
 
 try:
-	db=Reloading_Question_Bank("1")[query["id"][0]]
+	db=Reloading_Question_Bank(query["id"][0])[query["id"][0]]
 except:
 	st.write("please open our site only in @soojhboojh_01bot in telegram")
 	st.stop()
