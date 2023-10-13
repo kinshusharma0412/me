@@ -804,7 +804,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 	df=df.apply(highlight_rows, axis = 1)
 
 	st.markdown(df.to_html(escape=False, index=False), unsafe_allow_html=True)
-	styl = f"""<script>
+	styl = """<script>
 function newwin(user,name) {              
  if ('URLSearchParams' in window) {
     var searchParams = new URLSearchParams(window.location.search);
