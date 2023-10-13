@@ -687,20 +687,24 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 	
 	db2=db22[query["id"][0]]
 	ids,i=get(db2)
+	usse=[]
 	for x in range(len(db2)):
-
-		mark=0
-		usse=[]
-
 		if len(db2[x])!=len(db)+4:
 			if len(db2[x])!=4:
 				usse.append(db2[x][0])
-		if len(usse)>0:
-			ttt=""
-			for ussee in usse:
-				ttt=ttt+", "+ussee
-			st.write("निम्न विद्यार्थी के रिजल्ट काउंट में गड़बड़ी है कृप्या View your answer key 🗝️ पर जाए और जो instruction दिए गए है उनके अनुसार रिपोर्ट करे हमे।")
-			st.write(ttt[2:])
+	if len(usse)>0:
+		ttt=""
+		for ussee in usse:
+			ttt=ttt+", "+ussee
+		st.write("निम्न विद्यार्थी के रिजल्ट काउंट में गड़बड़ी है कृप्या View your answer key 🗝️ पर जाए और जो instruction दिए गए है उनके अनुसार रिपोर्ट करे हमे।")
+		st.write(ttt[2:])
+	for x in range(len(db2)):
+
+		mark=0
+		
+
+		
+		
 				
 
 		for y in range(len(db2[x][-len(db)-1:])):
