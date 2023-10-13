@@ -721,7 +721,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		
 
-		marks[db2[x][1]]={"Name":db2[x][0],"Marks":mark,"Time":int(db2[x][2])}
+		marks[db2[x][1]]={"Name":dict(name=db2[x][0],url="www.google.com"),"Marks":mark,"Time":int(db2[x][2])}
 
 	
 
@@ -801,7 +801,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 	df=df.apply(highlight_rows, axis = 1)
 
-	st.markdown(df.to_html(), unsafe_allow_html=True)
+	st.markdown(df.to_html(render_links=True), unsafe_allow_html=True)
 
 	
 
