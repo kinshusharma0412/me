@@ -553,6 +553,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	
 	db2=db22[query["id"][0]]
 	ids,i=get(db2)
+	if len(db2[i])!=len(db)+4:
+		if len(db2[i])!=4:
+			st.write(db2[i][0] + " user आप चेक कीजिए की आपने जो ऑप्शंस सिलेक्ट किए और जो सिलेक्ट हुई आंसर की में उनमें कुछ डिफरेंट है।जिस क्वेश्चन में ऐसा हुआ है उसकी pic share कर दीजिए और आपने क्या लगाया था और क्या लग गया है ये भी बता देना।ये error बहुत समय से है।जैसे ही आप लोग कोपरेट करोगे तभी ये सॉल्व होगा वरना। बताना आपको bot में add comments करके।")
 	for x in range(len(db)):
 
 		st.markdown(":blue[Q"+str(x+1)+". "+reaaa.sub("\n","<br/>",db[x][0])+"]",unsafe_allow_html=True)
@@ -688,14 +691,16 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		mark=0
 
-		
+		if len(db2[x])!=len(db)+4:
+			if len(db2[x])!=4:
+				st.write(db2[x][0] + " user आप चेक कीजिए की आपने जो ऑप्शंस सिलेक्ट किए और जो सिलेक्ट हुई आंसर की में उनमें कुछ डिफरेंट है।जिस क्वेश्चन में ऐसा हुआ है उसकी pic share कर दीजिए और आपने क्या लगाया था और क्या लग गया है ये भी बता देना।ये error बहुत समय से है।जैसे ही आप लोग कोपरेट करोगे तभी ये सॉल्व होगा वरना। बताना आपको bot में add comments करके।")
 
 		for y in range(len(db2[x][-len(db)-1:])):
 			
 
 			try:
 				if db2[x][0]=="MOHIT SHARMA":
-					st.write(db2[x][-len(db):][y],db[y][-1])
+					pass#st.write(db2[x][-len(db):][y],db[y][-1])
 				if str(db2[x][-len(db):][y])=="" or str(db2[x][y+4])=="0" :
 					pass
 				elif str(db2[x][-len(db):][y])==str(db[y][-1]):
