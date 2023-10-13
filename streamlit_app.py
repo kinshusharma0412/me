@@ -815,7 +815,7 @@ function newwin(user,name) {
 }
 </script>
 """
-	ph2.markdown(styl, unsafe_allow_html=True)
+	st.markdown(styl, unsafe_allow_html=True)
 
 	
 
