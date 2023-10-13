@@ -769,7 +769,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		ti=f"{mm:02d}:{ss:02d}"
 
-		tab.append([new_result2[x]["Sr."]+". ",dict(name=new_result2[x]["Name"],url="www.google.com"),ti,new_result2[x]["Marks"]])
+		tab.append([new_result2[x]["Sr."]+". ",'<a target="_blank" href="'+'www.google.com'+'">'+new_result2[x]["Name"]+'</a>'ti,new_result2[x]["Marks"]])
+		
 
 	
 
@@ -798,6 +799,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 
 	df = df.style.hide(axis="index")
+	
 
 	df=df.apply(highlight_rows, axis = 1)
 
