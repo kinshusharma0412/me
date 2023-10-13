@@ -695,10 +695,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 			try:
 				if db2[x][0]=="Nishant Kumar":
-					st.write(db2[x][-len(db)-1:][y],db[y][-1])
-				if str(db2[x][-len(db)-1:][y])=="" or str(db2[x][y+4])=="0" :
+					st.write(db2[x][-len(db):][y],db[y][-1])
+				if str(db2[x][-len(db):][y])=="" or str(db2[x][y+4])=="0" :
 					pass
-				elif str(db2[x][-len(db)-1:][y])==str(db[y][-1]):
+				elif str(db2[x][-len(db):][y])==str(db[y][-1]):
 					mark+=4
 				else:
 					mark-=1
