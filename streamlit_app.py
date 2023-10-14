@@ -77,8 +77,9 @@ hide_streamlit_style = """
             #
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
-@st.cache_data
+@st.cache_data(ttl="1h30m")
 def Reloading_Question_Bank(data):
+	
 	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"]
 
 try:
@@ -540,7 +541,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 #	st.image(image, caption='Sunrise by the mountains')
 	
-	@st.cache_data
+	@st.cache_data(ttl="1d")
 	def Reloading_Your_Answer_Key(data):
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		return db22
