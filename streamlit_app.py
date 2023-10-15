@@ -199,7 +199,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				counter+=1
 			ttt+="<br>"
 		z=[]
+		st.write(os.environ[query["user"][0]+query["id"][0]])
 		for y in range(5):
+			
 			if counter<=len(db):
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])!="0":
