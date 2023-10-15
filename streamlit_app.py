@@ -183,9 +183,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
 		ttt=""
+		
 		for x in range(len(db)//5):
 			for y in range(5):
-				ttt+='<button type="button">'+str(counter)+'</button>'
+				ttt+='<button type="button">'+'{:0'+len(str(len(db)))+'}'.format(counter)+'</button>'
 				counter+=1
 			ttt+="<br>"
 		z=[]
