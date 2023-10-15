@@ -214,6 +214,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		java="""
 <script>
 function queCounter(n_element:int){
+alert("hi");
     var buttons = window.parent.document.getElementsByClassName("stButton");
     alert(buttons);
     var button = buttons[{n_element}].getElementsByTagName("button")[0];
