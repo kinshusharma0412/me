@@ -215,6 +215,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 <script>
 function queCounter(n_element:int){
     var buttons = window.parent.document.getElementsByClassName("stButton");
+    alert(buttons)
     var button = buttons[{n_element}].getElementsByTagName("button")[0];
 
     element.scrollIntoView({button: "smooth"});
