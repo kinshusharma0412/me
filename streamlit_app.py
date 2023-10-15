@@ -188,29 +188,36 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			for y in range(5):
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 					
 				
 				
 				counter+=1
 			ttt+="<br>"
 		z=[]
-		st.write(os.environ[query["user"][0]+query["id"][0]])
+		
 		for y in range(5):
 			
 			if counter<=len(db):
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" on_change=sub>'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
+		ttt=ttt+"""
+<script>
+
+    var element = document.getElementById("end-of-chat");
+    element.scrollIntoView({behavior: "smooth"});
+</script>
+		"""
 		st.markdown(ttt,unsafe_allow_html=True)
 			
 
