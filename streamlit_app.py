@@ -181,8 +181,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
 	with st.sidebar:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
-		for x in range(len(db)):
-			pass
+		counter=1
+		for x in range(len(db)//5):
+			for y in st.beta_columns([1,1,1,1,1]):
+				y.button(str(counter))
+				counter+=1
+		z=[]
+		for x in range(len(db)-len(db)//5)*5):
+			z.append(1)
+		for y in st.beta_columns(z):
+			y.button(str(counter))
+			counter+=1
+			
 
 	for x in range(len(db)):
 
