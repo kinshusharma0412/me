@@ -180,8 +180,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
 	with st.sidebar:
+		st.write("Green Button : selected Option<br/>Red Button : Skip Option<br/>With no color Button : selected Option")
 		for x in range(len(db)):
-			st.write("Green Button : selected Option<br/>Red Button : Skip Option<br/>With no color Button : selected Option")
+			pass
 
 	for x in range(len(db)):
 
