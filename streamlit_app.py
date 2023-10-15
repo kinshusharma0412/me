@@ -201,7 +201,14 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		z=[]
 		for y in range(5):
 			if counter<=len(db):
-				ttt+='<button type="button">'+str(counter)+'</button>'
+				try:
+					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])!="0":
+						ttt+='<button type="button" style="width: 20%; background-color: green;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					else:
+						ttt+='<button type="button" style="width: 20%; background-color: red;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+				except Exception as e:
+					st.write(e)
+					ttt+='<button type="button" style="width: 20%; background-color: white;">'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
 		st.markdown(ttt,unsafe_allow_html=True)
 			
