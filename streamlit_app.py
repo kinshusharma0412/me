@@ -211,7 +211,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				except:
 					ttt+='<button type="button" style="width: 20%; background-color: white;" on_change="queCounter('+str(counter)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
-		ttt=ttt+"""
+		java="""
 <script>
 function queCounter(n_element:int){
     var buttons = window.parent.document.getElementsByClassName("stButton");
@@ -222,7 +222,7 @@ function queCounter(n_element:int){
 </script>
 		"""
 		st.markdown(ttt,unsafe_allow_html=True)
-			
+		st.components.v1.html(java)
 
 	for x in range(len(db)):
 
