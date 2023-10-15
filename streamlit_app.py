@@ -189,8 +189,8 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				counter+=1
 		z=[]
 		for y in st.columns((1,1,1,1,1)):
-			if counter<=len(db)
-			y.button(str(counter))
+			if counter<=len(db):
+				y.button(str(counter))
 			counter+=1
 			
 
