@@ -186,7 +186,16 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 		for x in range(len(db)//5):
 			for y in range(5):
-				ttt+='<button type="button" style="width: 20%; background-color: #4CAF50;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+				try:
+					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])!="0":
+						ttt+='<button type="button" style="width: 20%; background-color: green;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					else:
+						ttt+='<button type="button" style="width: 20%; background-color: red;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+				except:
+					ttt+='<button type="button" style="width: 20%; background-color: white;">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					
+				
+				
 				counter+=1
 			ttt+="<br>"
 		z=[]
