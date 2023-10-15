@@ -182,12 +182,25 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	with st.sidebar:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
-		button_text = "foo", "bar", "foo"
-		pairs = zip(button_text, st.columns(len(button_text)))
+		colms = st.columns((1, 2, 2, 1, 1))
+		fields = ["№", 'email', 'uid', 'verified', "action"]
+		for col, field_name in zip(colms, fields):
+		# header
+			col.write(field_name)
 		
-		for i, (text, col) in enumerate(pairs):
-			if col.button(text, key=f"{text}-{i}"):
-				col.write(f"{text}-{i} clicked")
+		for x, email in enumerate(user_table['email']):
+			col1, col2, col3, col4, col5 = st.columns((1, 2, 2, 1, 1))
+			col1.write(x)  # index
+			col2.write(user_table['email'][x])  # email
+			col3.write(user_table['uid'][x])  # unique ID
+			col4.write(user_table['verified'][x])   # email status
+			disable_status = user_table['disabled'][x]  # flexible type of button
+			button_type = "Unblock" if disable_status else "Block"
+			button_phold = col5.empty()  # create a placeholder
+			do_action = button_phold.button(button_type, key=x)
+		if do_action:
+			pass # do some action with row's data
+			button_phold.empty()
 		for x in range(len(db)//5):
 			for y in st.columns([1,1,1,1,1]):
 				y.button(str(counter))
