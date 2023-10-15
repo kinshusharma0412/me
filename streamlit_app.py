@@ -182,7 +182,12 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	with st.sidebar:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
-		st.columns([1,1,1,1,1])[3].button("3")
+		button_text = "foo", "bar", "foo"
+		pairs = zip(button_text, st.columns(len(button_text)))
+		
+		for i, (text, col) in enumerate(pairs):
+			if col.button(text, key=f"{text}-{i}"):
+				col.write(f"{text}-{i} clicked")
 		for x in range(len(db)//5):
 			for y in st.columns([1,1,1,1,1]):
 				y.button(str(counter))
