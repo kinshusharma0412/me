@@ -179,6 +179,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	_="""if query["user"][0]+query["id"][0] in os.environ:
 
 		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
+	with st.sidebar:
+		for x in range(len(db)):
+			st.write("Green Button : selected Option<br/>Red Button : Skip Option<br/>With no color Button : selected Option")
 
 	for x in range(len(db)):
 
@@ -187,6 +190,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 
 		st.write("["+str(x+1)+"/"+str(len(db))+"] "+db[x][0])
+		
 
 		for y in range(len(db[x][1:-3])):
 
