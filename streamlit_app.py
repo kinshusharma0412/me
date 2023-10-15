@@ -187,7 +187,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				y.button(str(counter))
 				counter+=1
 		z=[]
-		for x in range(len(db)-len(db)//5)*5):
+		for x in range(len(db)-(len(db)//5)*5):
 			z.append(1)
 		for y in st.beta_columns(z):
 			y.button(str(counter))
