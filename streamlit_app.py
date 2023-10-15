@@ -183,7 +183,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
 		colms = st.columns((1, 2, 2, 1, 1))
-		fields = ["№", 'email', 'uid', 'verified', "action"]
+		fields = ["h", 'email', 'uid', 'verified', "action"]
 		for col, field_name in zip(colms, fields):
 		# header
 			col.write(field_name)
