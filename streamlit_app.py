@@ -186,7 +186,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		
 		for x in range(len(db)//5):
 			for y in range(5):
-				ttt+='<button type="button" style="width: 50%; background-color: #4CAF50;">'+str(counter).zfill(len(str(len(db))))+'</button>'.format(counter)
+				ttt+='<button type="button" style="width: 20%; background-color: #4CAF50;">'+str(counter).zfill(len(str(len(db))))+'</button>'.format(counter)
 				counter+=1
 			ttt+="<br>"
 		z=[]
