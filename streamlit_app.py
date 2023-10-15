@@ -182,16 +182,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 	with st.sidebar:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
-		
+		ttt=""
 		for x in range(len(db)//5):
-			for y in st.columns((1,1,1,1,1)):
-				y.button(str(counter))
+			for y in range(5):
+				ttt+='<button type="button">'+str(counter)+'</button>'
 				counter+=1
+			ttt+="<br>"
 		z=[]
-		for y in st.columns((1,1,1,1,1)):
+		for y in range(5):
 			if counter<=len(db):
-				y.button(str(counter))
+				ttt+='<button type="button">'+str(counter)+'</button>'
 			counter+=1
+		st.markdown(ttt,unsafe_allow_html=True)
 			
 
 	for x in range(len(db)):
