@@ -241,10 +241,11 @@ element.scrollIntoView({button: "smooth"});}
 </script>
 		"""
 		#st.components.v1.html(ttt+javav)
-		st.markdown(ttt,unsafe_allow_html=True)
+		#st.markdown(ttt,unsafe_allow_html=True)
 		my_js = """alert("Hola mundo");
 function queCounter(n_element) {
-  alert("hi");
+var buttons = window.parent.document.getElementsByClassName("stButton");
+  alert(buttons);
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		st.components.v1.html(ttt+my_html)
