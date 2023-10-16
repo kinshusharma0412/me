@@ -215,17 +215,6 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				except:
 					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
-		javav="""
-<script>
-alert("byy");
-function queCounter(n_element:int){
-alert("hi");
-var buttons = window.parent.document.getElementsByClassName("stButton");
-alert(buttons);
-var button = buttons[{n_element}].getElementsByTagName("button")[0];
-element.scrollIntoView({button: "smooth",block: 'center',inline: 'center'});}
-</script>
-		"""
 		#st.components.v1.html(ttt+javav)
 		#st.markdown(ttt,unsafe_allow_html=True)
 		#.parentElement.parentElement.innerHTML
@@ -238,7 +227,7 @@ var button = buttons[n_element];
   button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
-		st.components.v1.html(ttt+my_html)
+		st.markdown(ttt+my_html)
 		
 
 	for x in range(len(db)):
