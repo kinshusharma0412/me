@@ -183,9 +183,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
 		ttt=""
-		
+		with st.container():
+			for x in range(len(db)//5):
+				for y in st.columns(5):
+					with y:
+						st.button(str(counter).zfill(len(str(len(db)))))
+			
 		for x in range(len(db)//5):
+			
+				
+			
 			for y in range(5):
+				
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
 						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
