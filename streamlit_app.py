@@ -223,7 +223,7 @@ alert("hi");
 var buttons = window.parent.document.getElementsByClassName("stButton");
 alert(buttons);
 var button = buttons[{n_element}].getElementsByTagName("button")[0];
-element.scrollIntoView({button: "smooth"});}
+element.scrollIntoView({button: "smooth",block: 'center',inline: 'center'});}
 </script>
 		"""
 		#st.components.v1.html(ttt+javav)
