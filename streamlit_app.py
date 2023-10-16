@@ -218,7 +218,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		#st.components.v1.html(ttt+javav)
 		#st.markdown(ttt,unsafe_allow_html=True)
 		#.parentElement.parentElement.innerHTML
-		#alert(button.innerHTML);
+		#alert(button.innerHTML);components.v1.html
 		my_js = """
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
@@ -227,7 +227,7 @@ var button = buttons[n_element];
   button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
-		st.markdown(ttt+my_html)
+		st.markdown(ttt+my_html,unsafe_allow_html=True)
 		
 
 	for x in range(len(db)):
