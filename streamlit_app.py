@@ -222,9 +222,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		my_js = """
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
-var button = buttons[n_element];
-  
-  button.scrollIntoView({ behavior: "smooth"});
+var button = buttons[n_element]; button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		st.markdown(ttt+my_html,unsafe_allow_html=True)
