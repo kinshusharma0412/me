@@ -180,7 +180,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 
 		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
 	with st.sidebar:
-		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
+		st.markdown(":green[Green Button : Attempted Option]<br/>:red[Red Button : Skiped Option]<br/>White Button : Unread Option", unsafe_allow_html=True)
 		counter=1
 		ttt=""
 		
