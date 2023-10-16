@@ -245,8 +245,8 @@ element.scrollIntoView({button: "smooth"});}
 		my_js = """
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stButton");
-var button = buttons[0].innerHTML;
-  alert(n_element);
+var button = buttons[parseInt(n_element)].innerHTML;
+  alert();
   
 }"""
 		my_html = f"""<script>{my_js}</script>"""
