@@ -187,7 +187,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			for x in range(len(db)//5):
 				for y in st.columns(5):
 					with y:
-						st.button(str(counter).zfill(len(str(len(db)))))
+						st.button(str(counter).zfill(len(str(len(db)))),key=str(counter))
 			
 		for x in range(len(db)//5):
 			
