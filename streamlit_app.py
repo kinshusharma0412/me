@@ -247,7 +247,7 @@ function queCounter(n_element) {
   alert("hi");
 }"""
 		my_html = f"""<script>{my_js}</script>"""
-		st.components.v1.html(my_html)
+		st.components.v1.html(ttt+my_html)
 		
 
 	for x in range(len(db)):
