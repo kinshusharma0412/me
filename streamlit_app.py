@@ -223,7 +223,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
-button.scrollIntoView({ behavior: "smooth"});
+window.scrollTo({
+  top: button.top+30,
+  left: 0,
+  behavior: 'smooth'
+});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		if len(db)%5==0:
