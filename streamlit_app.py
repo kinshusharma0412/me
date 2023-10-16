@@ -183,12 +183,12 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		st.markdown(":green[Green Button : selected Option]<br/>:red[Red Button : Skip Option]<br/>With no color Button : unread Option", unsafe_allow_html=True)
 		counter=1
 		ttt=""
-		st.container():
-		col1, col2 = st.columns(2)
-		with col1:
-			 st.button('Predict sentiment')
-		with col2:
-			 st.button('Predict Price')
+		with st.container():
+			col1, col2 = st.columns(2)
+			with col1:
+				 st.button('Predict sentiment')
+			with col2:
+				 st.button('Predict Price')
 		with st.container():
 			for x in range(len(db)//5):
 				for y in st.columns(5):
