@@ -234,7 +234,11 @@ function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
   alert(button.innerHTML);
-  element.scrollIntoView({button: "smooth"});
+  element.scroll({ 
+  top: element.clientHeight / 2, 
+  left: element.clientWidth / 2, 
+  behavior: "smooth" 
+};
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		st.components.v1.html(ttt+my_html)
