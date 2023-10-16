@@ -229,11 +229,12 @@ element.scrollIntoView({button: "smooth"});}
 		#st.components.v1.html(ttt+javav)
 		#st.markdown(ttt,unsafe_allow_html=True)
 		#.parentElement.parentElement.innerHTML
+		#alert(button.innerHTML);
 		my_js = """
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
-  alert(button.innerHTML);
+  
   button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
