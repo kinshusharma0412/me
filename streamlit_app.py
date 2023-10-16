@@ -223,7 +223,7 @@ element.scrollIntoView({button: "smooth"});}
 </script>
 		"""
 		st.components.v1.html(ttt+javav)
-		st.markdown(ttt,unsafe_allow_html=True)
+		st.markdown(ttt+javav,unsafe_allow_html=True)
 		
 
 	for x in range(len(db)):
