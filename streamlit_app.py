@@ -230,7 +230,7 @@ element.scrollIntoView({button: "smooth"});}
 		#st.markdown(ttt,unsafe_allow_html=True)
 		my_js = """
 function queCounter(n_element) {
-var buttons = window.parent.document.getElementsByClassName("stButton");
+var buttons = window.parent.document.getElementsByClassName("stWrite");
 var button = buttons[n_element].innerHTML;
   alert(button);
   
