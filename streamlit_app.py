@@ -225,7 +225,7 @@ var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element]; button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
-		st.markdown(ttt+my_html,unsafe_allow_html=True)
+		st.components.v1.html(ttt+my_html)
 		
 
 	for x in range(len(db)):
