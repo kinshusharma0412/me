@@ -243,10 +243,7 @@ element.scrollIntoView({button: "smooth"});}
 		#st.components.v1.html(ttt+javav)
 		st.markdown(ttt,unsafe_allow_html=True)
 		my_js = """alert("Hola mundo");
-function queCounter(n_element:int) {
-  alert("hi");
-  
-}"""
+"""
 		my_html = f"<script>{my_js}</script>"
 		st.components.v1.html(my_html)
 		
