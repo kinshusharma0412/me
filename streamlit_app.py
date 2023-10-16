@@ -224,7 +224,7 @@ function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
 button.scrollIntoView({ behavior: "smooth"});
-alert(document.documentElement.scrollTop);
+alert(button.top);
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		if len(db)%5==0:
