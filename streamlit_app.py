@@ -214,8 +214,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		java="""
 <script>
 function queCounter(n_element:int){
-alert("hi");
-}
+alert("hi");}
 </script>
 		"""
 		st.markdown(ttt,unsafe_allow_html=True)
