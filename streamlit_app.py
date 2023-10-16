@@ -213,12 +213,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			counter+=1
 		java="""
 <script>
+alert("byy");
 function queCounter(n_element:int){
-alert("hi");}
+alert("hi");
+var buttons = window.parent.document.getElementsByClassName("stButton");
+alert(buttons);
+var button = buttons[{n_element}].getElementsByTagName("button")[0];
+element.scrollIntoView({button: "smooth"});}
 </script>
 		"""
-		st.markdown(ttt,unsafe_allow_html=True)
 		st.components.v1.html(java)
+		st.markdown(ttt,unsafe_allow_html=True)
+		
 
 	for x in range(len(db)):
 
