@@ -231,7 +231,7 @@ element.scrollIntoView({button: "smooth"});}
 		my_js = """
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stWrite");
-var button = buttons[n_element].innerHTML;
+var button = buttons[n_element].outerHTML.outerHTML;
   alert(button);
   
 }"""
