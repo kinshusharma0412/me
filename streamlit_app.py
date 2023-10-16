@@ -240,9 +240,12 @@ var button = buttons[{n_element}].getElementsByTagName("button")[0];
 element.scrollIntoView({button: "smooth"});}
 </script>
 		"""
-		st.components.v1.html(ttt+javav)
-		st.markdown(ttt+javav,unsafe_allow_html=True)
-		my_js = """alert("Hola mundo");"""
+		#st.components.v1.html(ttt+javav)
+		st.markdown(ttt,unsafe_allow_html=True)
+		my_js = """function queCounter(n_element:int) {
+  alert("hi");
+  
+}"""
 		my_html = f"<script>{my_js}</script>"
 		st.components.v1.html(my_html)
 		
