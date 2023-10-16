@@ -233,7 +233,7 @@ element.scrollIntoView({button: "smooth"});}
 function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
-  alert(button);
+  alert(button.innerHTML);
   element.scrollIntoView({button: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
