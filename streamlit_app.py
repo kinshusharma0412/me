@@ -192,11 +192,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					
 				
 				
@@ -209,11 +209,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			if counter<=len(db):
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter-1)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
 		javav="""
 <script>
