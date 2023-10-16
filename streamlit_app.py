@@ -224,7 +224,7 @@ function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
 window.scroll({
-  top: button+30,
+  top: button,
   behavior: 'smooth'
 });
 }"""
