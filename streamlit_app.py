@@ -225,7 +225,7 @@ var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
 button.scrollIntoView({ behavior: "smooth"});
 alert("&&&&&");
-window.scrollTo(0, 0);
+body.scrollTop = 0;
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		if len(db)%5==0:
