@@ -192,11 +192,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 				
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					
 				
 				
@@ -209,11 +209,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			if counter<=len(db):
 				try:
 					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
-						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
-						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 				except:
-					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+3)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
+					ttt+='<button type="button" style="width: 20%; background-color: white;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 			counter+=1
 		#st.components.v1.html(ttt+javav)
 		#st.markdown(ttt,unsafe_allow_html=True)
@@ -224,8 +224,8 @@ function queCounter(n_element) {
 var buttons = window.parent.document.getElementsByClassName("stMarkdown");
 var button = buttons[n_element];
 button.scrollIntoView({ behavior: "smooth"});
-alert("&&&&&");
-body.scrollTop = 0;
+
+
 }"""
 		my_html = f"""<script>{my_js}</script>"""
 		if len(db)%5==0:
