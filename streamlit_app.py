@@ -226,7 +226,11 @@ var button = buttons[n_element];
 button.scrollIntoView({ behavior: "smooth"});
 }"""
 		my_html = f"""<script>{my_js}</script>"""
-		st.components.v1.html(ttt+my_html,height=30,scrolling=True)
+		if len(db)%5==0:
+			st.components.v1.html(ttt+my_html,height=30*(len(db)//5),scrolling=True)
+		
+		else:
+			st.components.v1.html(ttt+my_html,height=30*(len(db)//5+1),scrolling=True)
 		
 
 	for x in range(len(db)):
