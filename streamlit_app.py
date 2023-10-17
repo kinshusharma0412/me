@@ -600,15 +600,16 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	@st.cache_data(ttl="1d")
 	def Reloading_Your_Answer_Key(data):
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		return db22
-	db22=Reloading_Your_Answer_Key(query["id"][0]+query["user"][0])
+		db2=db22[query["id"][0]]
+		ids,i=get(db2)
+		return db2[I]
+	db2i=Reloading_Your_Answer_Key(query["id"][0]+query["user"][0])
 	
-	db2=db22[query["id"][0]]
-	ids,i=get(db2)
+	
 	_="""if len(db2[i])!=len(db)+4:
 		if len(db2[i])!=4:
 			st.write("Dear "+db2[i][0] + " आप चेक कीजिए की आपने जो ऑप्शंस सिलेक्ट किए और जो सिलेक्ट हुए है आंसर की में उनमें कुछ डिफरेंस है।जिस क्वेश्चन में ऐसा हुआ है उसकी pic share कर दीजिए और आपने क्या लगाया था और क्या लग गया है ये भी बता देना।ये error बहुत समय से है।जैसे ही आप लोग कोपरेट करोगे तभी ये सॉल्व होगा वरना। बताना आपको bot में add comments करने के बाद स्क्रीनशॉट जिस que के बाद आपने जो आंसर लगाए वो सारे change हो गए।")"""
-	st.write(db2[i])
+	st.write(db2i)
 	for x in range(len(db)):
 
 		st.markdown(":blue[Q"+str(x+1)+". "+reaaa.sub("\n","<br/>",db[x][0])+"]",unsafe_allow_html=True)
@@ -625,9 +626,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 				pass
 
-			elif x+4<len(db2[i]):
+			elif x+4<len(db2i):
 
-				if str(db2[i][x+4])=="":
+				if str(db2i[x+4])=="":
 
 					if int(y)+1==int(db[x][-1]):
 
@@ -637,9 +638,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 						tt+="```   ```"+reaaa.sub("\n","<br/>",db[x][y+1])+"  \n"
 
-				elif str(db2[i][x+4])==str(y+1):
+				elif str(db2i[x+4])==str(y+1):
 
-					if str(db2[i][x+4])==str(db[x][-1]):
+					if str(db2i[x+4])==str(db[x][-1]):
 
 						tt+="```      ```:green["+reaaa.sub("\n","<br/>",db[x][y+1])+"]```      ```+4  \n"
 
@@ -669,9 +670,9 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 			
 
-		if x+4<len(db2[i]):
+		if x+4<len(db2i):
 
-			if str(db2[i][x+4])==str(0) or str(db2[i][x+4])=="":
+			if str(db2i[x+4])==str(0) or str(db2i[x+4])=="":
 
 				tt+="```      ```:red[Skip]  \n"
 
