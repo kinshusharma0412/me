@@ -608,13 +608,14 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	_="""if len(db2[i])!=len(db)+4:
 		if len(db2[i])!=4:
 			st.write("Dear "+db2[i][0] + " आप चेक कीजिए की आपने जो ऑप्शंस सिलेक्ट किए और जो सिलेक्ट हुए है आंसर की में उनमें कुछ डिफरेंस है।जिस क्वेश्चन में ऐसा हुआ है उसकी pic share कर दीजिए और आपने क्या लगाया था और क्या लग गया है ये भी बता देना।ये error बहुत समय से है।जैसे ही आप लोग कोपरेट करोगे तभी ये सॉल्व होगा वरना। बताना आपको bot में add comments करने के बाद स्क्रीनशॉट जिस que के बाद आपने जो आंसर लगाए वो सारे change हो गए।")"""
+	st.write(db2[i])
 	for x in range(len(db)):
 
 		st.markdown(":blue[Q"+str(x+1)+". "+reaaa.sub("\n","<br/>",db[x][0])+"]",unsafe_allow_html=True)
 
 		tt=""
 
-		st.write(db2[i])
+		
 
 		for y in range(len(db[x][1:-3])):
 
