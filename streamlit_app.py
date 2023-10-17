@@ -597,7 +597,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 #	st.image(image, caption='Sunrise by the mountains')
 	
-	@st.cache_data(ttl="1d")
+	@st.cache_data(ttl="1h")
 	def Reloading_Your_Answer_Key(data):
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		return db22
