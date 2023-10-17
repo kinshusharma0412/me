@@ -602,7 +602,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		db2=db22[query["id"][0]]
 		ids,i=get(db2)
-		return db2[I]
+		return db2[i]
 	db2i=Reloading_Your_Answer_Key(query["id"][0]+query["user"][0])
 	
 	
