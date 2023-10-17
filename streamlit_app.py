@@ -618,7 +618,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 		for y in range(len(db[x][1:-3])):
 
-			
+			st.write(db2[i])
 
 			if db[x][y+1]=="":
 
