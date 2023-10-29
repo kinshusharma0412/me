@@ -89,7 +89,7 @@ except:
 	st.stop()
 try:
 	N=len(db)*int(query["n"][0])
-	st.write(str(N))
+	st.write(str(query["n"][0]))
 except:
 	N=len(db)*50
 if query["id"][0]+query["user"][0]+"sc" not in os.environ:
