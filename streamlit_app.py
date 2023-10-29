@@ -87,8 +87,10 @@ try:
 except:
 	st.write("please open our site only in @soojhboojh_01bot in telegram")
 	st.stop()
-
-N=len(db)*50
+try:
+	N=len(db)*int(query["n"][0])
+except:
+	N=len(db)*50
 if query["id"][0]+query["user"][0]+"sc" not in os.environ:
 	os.environ[query["id"][0]+query["user"][0]+"sc"]="0"
 con=os.environ[query["id"][0]+query["user"][0]+"sc"]
