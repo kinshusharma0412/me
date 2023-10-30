@@ -200,12 +200,12 @@ elif onon.toggle('PDF Spliter feature'):
 		if pagen>0:
 			for i in range((len(inputpdf.pages)//pagen)):
 				output = PdfWriter()
-				for x in range((pagen)):
-					output.add_page(inputpdf.pages[x+pagen*i])
+				for x in range(len(inputpdf.pages)//pagen):
+					output.add_page(inputpdf.pages[x+(len(inputpdf.pages)//pagen)*i])
 				with open(name[2:-4]+" %s.pdf" % (i+1), "wb") as outputStream:
 					output.write(outputStream)
 				file = open(name[2:-4]+" %s.pdf" % (i+1),"rb")
-				st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-4]+" %s.pdf" % (i+1),mime="application/octet-stream")
+				st.download_button(label=str(i)+") Page "+str((len(inputpdf.pages)//pagen)*i+1)+" - "+str((len(inputpdf.pages)//pagen)*i+13),data=file.read(),file_name=name[2:-4]+" %s.pdf" % (i+1),mime="application/octet-stream")
 			output = PdfWriter()
 			if (len(inputpdf.pages)//pagen)*pagen!=len(inputpdf.pages):
 				for i in range((len(inputpdf.pages)//pagen)*pagen,len(inputpdf.pages)):
@@ -213,7 +213,7 @@ elif onon.toggle('PDF Spliter feature'):
 				with open(name[2:-4]+" %s.pdf" % ((len(inputpdf.pages)//pagen)+1), "wb") as outputStream:
 					output.write(outputStream)
 				file = open(name[2:-4]+" %s.pdf" % ((len(inputpdf.pages)//pagen)+1),"rb")
-				st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-4]+" %s.pdf" %str(len(inputpdf.pages)//pagen+1),mime="application/octet-stream")
+				st.download_button(label=str(i)+") Page "+str(i+1)+" - "+str(i+13),data=file.read(),file_name=name[2:-4]+" %s.pdf" %str(len(inputpdf.pages)//pagen+1),mime="application/octet-stream")
 
 elif onn.toggle('Excle to PDF feature'):
 # Read pdf into a list of DataFrame
