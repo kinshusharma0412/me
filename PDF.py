@@ -196,7 +196,18 @@ elif onon.toggle('PDF Spliter feature'):
 			inputpdf = PdfReader(open(name, "rb"))
 			
 			pagen = line.slider('Select page number', 0, len(inputpdf.pages), 0)
+			number1 = st.number_input("Starting Page Number", value=1, min_value=1,placeholder="Type a number...")
+			number2 = st.number_input("Last Page Number", value=1,min_value=1, placeholder="Type a number...")
 	if submit_button.form_submit_button(label="Submit your choice"):
+		if number1>0:
+			if number2>number1:
+				output = PdfWriter()
+				for i in range(number1-1,number2-1):
+					output.add_page(inputpdf.pages[i])
+				with open(name[2:-4]+" "+str(number1)+"-"+str(number2)+".pdf", "wb") as outputStream:
+					output.write(outputStream)
+				file = open(name[2:-4]+" "+str(number1)+"-"+str(number2)+".pdf","rb")
+				st.download_button(label=file,data=file.read(),file_name=name[2:-4]+" %s.pdf" % (i+1),mime="application/octet-stream")
 		if pagen>0:
 			for i in range((len(inputpdf.pages)//pagen)):
 				output = PdfWriter()
