@@ -7,7 +7,7 @@ from  urllib.parse import unquote_plus,quote_plus
 #dns.resolver.default_resolver.nameservers=['8.8.8.8'] # this is a google public dns server,  use whatever dns server you like here
 # as a test, dns.resolver.query('www.google.com') should return an answer, not an exception'''
 import asyncio 
-
+from deep_translator import GoogleTranslator
 
 import streamlit as st
 
@@ -1008,6 +1008,6 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 
 	st.line_chart(chart_data,use_container_width=True)
 
-
+#GoogleTranslator(source='auto', target=language).translate()
 
 
