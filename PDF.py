@@ -305,7 +305,7 @@ elif database.toggle('Database'):
 			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
 			if option:
 				st.session_state.list_database=option
-		st.code(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
+		st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
 		
 				
 
