@@ -280,7 +280,7 @@ elif database.toggle('Database'):
 			st.session_state.list_collection=option1
 		else:
 			option1 = st.selectbox('Select a inner database name ',(cm[st.session_state.list_database].list_collection_names()),placeholder=st.session_state.list_database)
-			if option:
+			if option1:
 				st.session_state.list_database=option1
 			st.write(cm[st.session_state.list_database][st.session_state.list_collection])
 
