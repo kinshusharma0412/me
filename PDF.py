@@ -278,7 +278,7 @@ elif database.toggle('Database'):
 			
 	if "list_database" not in st.session_state:
 		options=new
-		option = option.selectbox('Select a database name',range(len(options)),index=None,format_func=lambda x: options[x])
+		option = option.selectbox('Select a database name',range(len(options)),format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
 	else:
