@@ -57,7 +57,7 @@ if 'dow' not in st.session_state:
 
 
 	
-if database.toggle('Image to PDF feature'):
+if on.toggle('Image to PDF feature'):
 	st.write('Activate Image to PDF feature')
 	tm=st.empty()
 	place_holder=st.empty()
