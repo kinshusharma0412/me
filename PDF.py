@@ -269,17 +269,21 @@ elif database.toggle('Database'):
 		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 	cm = init_connection()
 	if "list_database" not in st.session_state:
-		option = st.selectbox('Select a database name ',cm.list_database_names(),index=None,format_func=lambda x: options[x])
+		options=cm.list_database_names()
+		option = st.selectbox('Select a database name ',options,index=None,format_func=lambda x: options[x])
 		st.session_state.list_database=option
 	else:
-		option = st.selectbox('Select a database name ',cm.list_database_names(),index=st.session_state.list_database,format_func=lambda x: options[x])
+		options=cm.list_database_names()
+		option = st.selectbox('Select a database name ',options,index=st.session_state.list_database,format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
 		if "list_collection" not in st.session_state:
-			option1 = st.selectbox('Select a inner database name ',cm[st.session_state.list_database].list_collection_names(),index=None,format_func=lambda x: options[x])
+			options1=cm[options[st.session_state.list_database]].list_collection_names()
+			option1 = st.selectbox('Select a inner database name ',options1,index=None,format_func=lambda x: options1[x])
 			st.session_state.list_collection=option1
 		else:
-			option1 = st.selectbox('Select a inner database name ',cm[st.session_state.list_database].list_collection_names(),index=st.session_state.list_collection,format_func=lambda x: options[x])
+			options1=cm[options[st.session_state.list_database]].list_collection_names()
+			option1 = st.selectbox('Select a inner database name ',options1,index=st.session_state.list_collection,format_func=lambda x: options1[x])
 			if option1:
 				st.session_state.list_database=option1
 			dbname1=cm.list_database_names()[st.session_state.list_database]
