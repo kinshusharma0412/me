@@ -288,7 +288,7 @@ elif database.toggle('Database'):
 			st.session_state.list_database=option
 			
 	if "list_database" in st.session_state:
-		st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]])
+		st.write(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])
 
 
 	
