@@ -302,11 +302,10 @@ elif database.toggle('Database'):
 			if option:
 				st.session_state.select_database=option
 		else:
-			
 			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
 			if option:
 				st.session_state.list_database=option
-		st.markdown(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database]}).keys())[1:], unsafe_allow_html=True)
+		st.markdown(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}), unsafe_allow_html=True)
 		
 				
 
