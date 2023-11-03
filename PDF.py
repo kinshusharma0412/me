@@ -280,6 +280,6 @@ elif database.toggle('Database'):
 			st.write(cm[st.session_state.list_database][st.session_state.list_collection])
 
 
-	st.write(cm)
+	
 	
 
