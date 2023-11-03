@@ -269,7 +269,7 @@ elif database.toggle('Database'):
 		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 	cm = init_connection()
 	if "list_database" not in st.session_state:
-		option = st.selectbox('Select a database name ',(cm.list_database_names()),placeholder="select one")
+		option = st.selectbox('Select a database name ',cm.list_database_names())
 		st.session_state.list_database=option	
 	else:
 		option = st.selectbox('Select a database name ',(cm.list_database_names()), placeholder=st.session_state.list_database)
