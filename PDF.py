@@ -270,6 +270,7 @@ elif database.toggle('Database'):
 	cm = init_connection()
 	if "list_database" not in st.session_state:
 		options=cm.list_database_names()
+		st.write(options)
 		option = st.selectbox('Select a database name ',options,index=None,format_func=lambda x: options[x])
 		st.session_state.list_database=option
 	else:
