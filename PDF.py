@@ -290,9 +290,22 @@ elif database.toggle('Database'):
 	if "list_database" in st.session_state:
 		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
 		text=""
+		new1=["chose a option"]
 		for x in document_names[:]:
 			text+=", ".join(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])+"</br>"
-		st.markdown(text, unsafe_allow_html=True)
+			new1.append(", ".join(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:]))
+		if "select_database" not in st.session_state:
+			options=new1
+			option = option.selectbox('Select a database name',range(len(options)),index=0,format_func=lambda x: options[x])
+			if option:
+				st.session_state.select_database=option
+		else:
+			options=new1
+			option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
+			if option:
+				st.session_state.list_database=option
+		st.markdown(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database]}).keys())[1:], unsafe_allow_html=True)
+		
 				
 
 
