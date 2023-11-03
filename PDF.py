@@ -264,6 +264,7 @@ elif onn.toggle('Excle to PDF feature'):
 		st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-5]+".pdf",mime="application/octet-stream")
 
 elif database.toggle('Database'):
+	st.write(st.session_state)
 	@st.cache_resource
 	def init_connection():
 		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
@@ -287,7 +288,7 @@ elif database.toggle('Database'):
 			option1 = st.selectbox('Select a inner database name ',range(len(options1)),index=st.session_state.list_collection,format_func=lambda x: options1[x])
 			if option1:
 				st.session_state.list_database=option1
-			st.write(st.session_state)
+			
 			dbname1=cm.list_database_names()[st.session_state.list_database]
 			dbname2=cm[dbname1].list_collection_names()[st.session_state.list_collection]
 			st.write(cm[dbname1][dbname2])
