@@ -276,12 +276,12 @@ elif database.toggle('Database'):
 		if option:
 			st.session_state.list_database=option
 		if "list_collection" not in st.session_state:
-			option = st.selectbox('Select a database name ',(cm[st.session_state.list_database].list_collection_names()))
-			st.session_state.list_collection=option
+			option1 = st.selectbox('Select a inner database name ',(cm[st.session_state.list_database].list_collection_names()))
+			st.session_state.list_collection=option1
 		else:
-			option = st.selectbox('Select a database name ',(cm[st.session_state.list_database].list_collection_names()),placeholder=st.session_state.list_database)
+			option1 = st.selectbox('Select a inner database name ',(cm[st.session_state.list_database].list_collection_names()),placeholder=st.session_state.list_database)
 			if option:
-				st.session_state.list_database=option
+				st.session_state.list_database=option1
 			st.write(cm[st.session_state.list_database][st.session_state.list_collection])
 
 
