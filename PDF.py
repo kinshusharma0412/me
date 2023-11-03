@@ -271,10 +271,8 @@ elif database.toggle('Database'):
 	option = st.empty()
 	option1=st.empty()
 	cm = init_connection()
-	db={}
 	new=[]
-	for x in cm.list_database_names():
-		db[x]={}
+	for x in cm.list_database_names():	
 		for y in cm[x].list_collection_names():
 			new.append((x,y))
 			
