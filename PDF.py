@@ -270,6 +270,7 @@ elif database.toggle('Database'):
 		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
 	option = st.empty()
 	option1=st.empty()
+	option2=st.empty()
 	cm = init_connection()
 	new=["chose a option"]
 	for x in cm.list_database_names():	
@@ -297,13 +298,12 @@ elif database.toggle('Database'):
 		options=new1
 		st.write(options)
 		if "select_database" not in st.session_state:
-			
-			option = option.selectbox('Select a database name',(options),index=0,format_func=lambda x: options[x])
+			option = option1.selectbox('Select a database name',range(len(options)),index=0,format_func=lambda x: options[x])
 			if option:
 				st.session_state.select_database=option
 		else:
 			
-			option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
+			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
 			if option:
 				st.session_state.list_database=option
 		st.markdown(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database]}).keys())[1:], unsafe_allow_html=True)
