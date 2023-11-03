@@ -276,17 +276,18 @@ elif database.toggle('Database'):
 	for x in cm.list_database_names():	
 		for y in cm[x].list_collection_names():
 			new.append((x,y))
-			
+	options=new
 	if "list_database" not in st.session_state:
-		options=new
 		option = option.selectbox('Select a database name',range(len(options)),index=0,format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
+			st.rerun()
 	else:
-		options=new
+		
 		option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
+			st.rerun()
 			
 	if "list_database" in st.session_state:
 		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
@@ -301,10 +302,12 @@ elif database.toggle('Database'):
 			option = option1.selectbox('Select a database name',range(len(options)),format_func=lambda x: options[x])
 			if option:
 				st.session_state.select_database=option
+				st.rerun()
 		else:
 			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
 			if option:
 				st.session_state.list_database=option
+				st.rerun()
 		xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
 		st.write(xyz)
 		
