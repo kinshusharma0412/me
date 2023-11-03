@@ -271,30 +271,26 @@ elif database.toggle('Database'):
 	option = st.empty()
 	option1=st.empty()
 	cm = init_connection()
-	if "list_database" not in st.session_state:
-		options=cm.list_database_names()
-		option = option.selectbox('Select a database name ',range(len(options)),format_func=lambda x: options[x])
-		if option:
-			st.session_state.list_database=option
-	if "list_database" in st.session_state:
-		options=cm.list_database_names()
-		option = option.selectbox('Select a database name ',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
-		if option:
-			st.session_state.list_database=option
-		if "list_collection" not in st.session_state:
-			options1=cm[options[st.session_state.list_database]].list_collection_names()
-			option1 = option1.selectbox('Select a inner database name ',range(len(options1)),format_func=lambda x: options1[x])
-			if option1:
-				st.session_state.list_collection=option1
-		else:
-			options1=cm[options[st.session_state.list_database]].list_collection_names()
-			option1 = option1.selectbox('Select a inner database name ',range(len(options1)),index=st.session_state.list_collection,format_func=lambda x: options1[x])
-			if option1:
-				st.session_state.list_database=option1
+	db={}
+	new=[]
+	for x in cm.list_database_names():
+		db[x]={}
+		for y in cm[x].list_collection_names():
+			new.append((x,y))
 			
-			dbname1=cm.list_database_names()[st.session_state.list_database]
-			dbname2=cm[dbname1].list_collection_names()[st.session_state.list_collection]
-			st.write(cm[dbname1][dbname2])
+	if "list_database" not in st.session_state:
+		options=new
+		option = option.selectbox('Select a database name',range(len(options)),format_func=lambda x: options[x])
+		if option:
+			st.session_state.list_database=option
+	else:
+		options=new
+		option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
+		if option:
+			st.session_state.list_database=option
+			
+	if "list_database" not in st.session_state:
+		st.write(cm[dbname1][dbname2])
 
 
 	
