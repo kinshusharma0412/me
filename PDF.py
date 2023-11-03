@@ -287,6 +287,7 @@ elif database.toggle('Database'):
 			option1 = st.selectbox('Select a inner database name ',range(len(options1)),index=st.session_state.list_collection,format_func=lambda x: options1[x])
 			if option1:
 				st.session_state.list_database=option1
+			st.write(st.session_state)
 			dbname1=cm.list_database_names()[st.session_state.list_database]
 			dbname2=cm[dbname1].list_collection_names()[st.session_state.list_collection]
 			st.write(cm[dbname1][dbname2])
