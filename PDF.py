@@ -45,6 +45,7 @@ bttn=st.empty()
 onn= st.empty()
 onon= st.empty()
 onn1= st.empty()
+database= st.empty()
 pdf_path="./@Polls_Quiz.pdf"
 
 if 'img' not in st.session_state:
@@ -56,7 +57,7 @@ if 'dow' not in st.session_state:
 
 
 	
-if on.toggle('Image to PDF feature'):
+if database.toggle('Image to PDF feature'):
 	st.write('Activate Image to PDF feature')
 	tm=st.empty()
 	place_holder=st.empty()
@@ -262,9 +263,23 @@ elif onn.toggle('Excle to PDF feature'):
 		file = open(name[:-5]+".pdf","rb")
 		st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-5]+".pdf",mime="application/octet-stream")
 
-@st.cache_resource
-def init_connection():
-	return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+elif database.toggle('Database'):
+	@st.cache_resource
+	def init_connection():
+		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+	cm = init_connection()
+	if "list_database" not in st.session_state:
+		option = st.selectbox('Select a database name ',(cm.list_database_names()))
+		st.session_state.list_database=option
+	else:
+		
+		if "list_collection" not in st.session_state:
+			option = st.selectbox('Select a database name ',(cm[st.session_state.list_database].list_collection_names()))
+			st.session_state.list_collection=option
+		else:
+			st.write(cm[st.session_state.list_database][st.session_state.list_collection])
 
-cm = init_connection()
-st.write(cm)
+
+	st.write(cm)
+	
+
