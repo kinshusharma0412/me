@@ -289,8 +289,11 @@ elif database.toggle('Database'):
 			
 	if "list_database" in st.session_state:
 		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
+		text=""
 		for x in document_names[:]:
-			st.write(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])
+			text+=", ".join(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])+"</br>"
+		st.markdown(text, unsafe_allow_html=True)
+				
 
 
 	
