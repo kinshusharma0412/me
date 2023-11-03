@@ -288,7 +288,7 @@ elif database.toggle('Database'):
 			st.session_state.list_database=option
 			
 	if "list_database" not in st.session_state:
-		st.write(cm[dbname1][dbname2])
+		st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]])
 
 
 	
