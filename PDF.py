@@ -288,7 +288,9 @@ elif database.toggle('Database'):
 			st.session_state.list_database=option
 			
 	if "list_database" in st.session_state:
-		st.write(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])
+		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
+		for x in document_names[:]:
+			st.write(list(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':x}).keys())[1:])
 
 
 	
