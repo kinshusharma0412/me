@@ -14,7 +14,7 @@ import os
 import streamlit as st
 import os, sys
 import os,random,string
-
+from pymongo import MongoClient
 import streamlit as st
 import os, sys
 
@@ -262,3 +262,9 @@ elif onn.toggle('Excle to PDF feature'):
 		file = open(name[:-5]+".pdf","rb")
 		st.download_button(label="Download PDF",data=file.read(),file_name=name[2:-5]+".pdf",mime="application/octet-stream")
 
+@st.cache_resource
+def init_connection():
+	return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+
+cm = init_connection()
+st.write(cm)
