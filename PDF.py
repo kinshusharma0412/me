@@ -268,26 +268,30 @@ elif database.toggle('Database'):
 	@st.cache_resource
 	def init_connection():
 		return MongoClient('mongodb+srv://'+st.secrets.db_mango["username"]+':'+(st.secrets.db_mango["password"])+'@cluster0.uo8sfvz.mongodb.net/?retryWrites=true&w=majority')
+	option = st.empty()
+	option1=st.empty()
 	cm = init_connection()
 	if "list_database" not in st.session_state:
 		options=cm.list_database_names()
-		st.write(options)
-		option = st.selectbox('Select a database name ',range(len(options)),format_func=lambda x: options[x])
-		if option:
-			st.session_state.list_database=option
-	else:
+		option = option.selectbox('Select a database name ',range(len(options)),format_func=lambda x: options[x])
+		if option
+	
+	
+	if option:
+		st.session_state.list_database=option
+	if "list_database" in st.session_state:
 		options=cm.list_database_names()
-		option = st.selectbox('Select a database name ',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
+		option = option.selectbox('Select a database name ',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
 		if "list_collection" not in st.session_state:
 			options1=cm[options[st.session_state.list_database]].list_collection_names()
-			option1 = st.selectbox('Select a inner database name ',range(len(options1)),format_func=lambda x: options1[x])
+			option1 = option1.selectbox('Select a inner database name ',range(len(options1)),format_func=lambda x: options1[x])
 			if option1:
 				st.session_state.list_collection=option1
 		else:
 			options1=cm[options[st.session_state.list_database]].list_collection_names()
-			option1 = st.selectbox('Select a inner database name ',range(len(options1)),index=st.session_state.list_collection,format_func=lambda x: options1[x])
+			option1 = option1.selectbox('Select a inner database name ',range(len(options1)),index=st.session_state.list_collection,format_func=lambda x: options1[x])
 			if option1:
 				st.session_state.list_database=option1
 			
