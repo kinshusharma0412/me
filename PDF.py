@@ -311,7 +311,7 @@ elif database.toggle('Database'):
 		if "select_database" in st.session_state:
 			xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
 			with st.form("my_form"):
-				title = st.text_input('enter your query')
+				title = option2.text_input('enter your query')
 				submitted = st.form_submit_button("Submit")
 				if submitted:
 					title=title.split("\=\=")
@@ -322,9 +322,9 @@ elif database.toggle('Database'):
 					counter=0
 					for z in title:
 						counter+=1
-						
+						print(z)
 							
-						if reaaa.fullmatch("\d{,}",z) is not None:
+						if reaaa.fullmatch("\d{1,}",z) is not None:
 							data2=data2[int(z)]
 						else:
 							data2=data2[z]
