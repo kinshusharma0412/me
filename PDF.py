@@ -308,12 +308,6 @@ elif database.toggle('Database'):
 			if option!=st.session_state.list_database:
 				st.session_state.list_database=option
 				st.rerun()
-		xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
-		st.write(xyz)
+		if option is not None:
+			xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
 		
-				
-
-
-	
-	
-
