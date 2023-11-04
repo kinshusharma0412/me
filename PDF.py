@@ -285,10 +285,10 @@ elif database.toggle('Database'):
 	else:
 		
 		option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
-		st.write("option is "+str(option))
+		
 		if option!=st.session_state.list_database:
 			st.session_state.list_database=option
-			
+			st.session_state.list_database.pop("select_database")
 			
 	if "list_database" in st.session_state:
 		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
@@ -311,6 +311,7 @@ elif database.toggle('Database'):
 			if option!=st.session_state.list_database:
 				st.session_state.list_database=option
 				st.write(option)
+				
 		if "select_database" in st.session_state:
 			xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
 			with option2.form("my_form"):
