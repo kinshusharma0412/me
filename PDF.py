@@ -314,14 +314,23 @@ elif database.toggle('Database'):
 				title = st.text_input('enter your query')
 				submitted = st.form_submit_button("Submit")
 				if submitted:
-					title=title.split("\>")
+					title=title.split("\=\=")
+					
+					title=title[0].split("\>")
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
+					counter=0
 					for z in title:
-						if re.fullmatch("\d{,}",z) is not None:
+						counter+=1
+						
+							
+						if reaaa.fullmatch("\d{,}",z) is not None:
 							data2=data2[int(z)]
 						else:
 							data2=data2[z]
+						if counter== len(title):
+							pass
+					
 					st.write('You selected:', data2)
 					
 			
