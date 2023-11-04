@@ -281,13 +281,13 @@ elif database.toggle('Database'):
 		option = option.selectbox('Select a database name',range(len(options)),index=0,format_func=lambda x: options[x])
 		if option:
 			st.session_state.list_database=option
-			st.rerun()
+			
 	else:
 		
 		option = option.selectbox('Select a database name',range(len(options)),index=st.session_state.list_database,format_func=lambda x: options[x])
 		if option!=st.session_state.list_database:
 			st.session_state.list_database=option
-			st.rerun()
+			
 			
 	if "list_database" in st.session_state:
 		document_names = [document['_id'] for document in cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find({}, {'_id': 1})]
@@ -302,7 +302,7 @@ elif database.toggle('Database'):
 			option = option1.selectbox('Select a database name',range(len(options)),format_func=lambda x: options[x])
 			if option:
 				st.session_state.select_database=option
-				st.rerun()
+				
 		else:
 			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
 			if option!=st.session_state.list_database:
