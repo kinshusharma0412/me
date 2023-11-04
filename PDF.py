@@ -328,7 +328,7 @@ elif database.toggle('Database'):
 						title=reaaa.split("\=\=",title)[0]
 					else:
 						rep=None
-					title=title.split("\>")
+					title=reaaa.split("\>",title)
 					for z in title:
 						counter+=1
 						st.write(z)
