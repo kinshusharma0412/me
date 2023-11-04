@@ -17,7 +17,7 @@ import os,random,string
 from pymongo import MongoClient
 import streamlit as st
 import os, sys
-
+import re as reaaa
 
 
 
@@ -314,11 +314,14 @@ elif database.toggle('Database'):
 				title = st.text_input('enter your query')
 				submitted = st.form_submit_button("Submit")
 				if submitted:
-					title=split("\.",title)
+					title=titlesplit("\>")
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
 					for z in title:
-						data2=data2[z]
+						if re.fullmatch("\d{,}",z) is not None:
+							data2=data2[int(z)]
+						else:
+							data2=data2[z]
 					st.write('You selected:', data2)
 					
 			
