@@ -314,7 +314,7 @@ elif database.toggle('Database'):
 				title = st.text_input('enter your query')
 				submitted = st.form_submit_button("Submit")
 				if submitted:
-					title=titlesplit("\>")
+					title=title.split("\>")
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
 					for z in title:
