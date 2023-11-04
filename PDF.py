@@ -321,7 +321,7 @@ elif database.toggle('Database'):
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
 					counter=0
-					title=title.split("\=\=")
+					title=reaaa.split("\=\=",title)
 					if len(title)>0:
 						rep=title[1]
 					else:
