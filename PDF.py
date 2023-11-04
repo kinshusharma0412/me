@@ -310,4 +310,6 @@ elif database.toggle('Database'):
 				st.rerun()
 		if option is not None:
 			xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
+			options = st.multiselect('What are your favorite colors',['Green', 'Yellow', 'Red', 'Blue'],['Yellow', 'Red'])
+			st.write('You selected:', options)
 		
