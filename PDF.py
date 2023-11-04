@@ -317,12 +317,16 @@ elif database.toggle('Database'):
 				title = st.text_input('enter your query')
 				submitted = st.form_submit_button("Submit")
 				if submitted:
-					title=title.split("\=\=")
 					
-					title=title[0].split("\>")
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
 					counter=0
+					title=title.split("\=\=")
+					if len(title)>0:
+						rep=title[1]
+					else:
+						rep=None
+					title=title[0].split("\>")
 					for z in title:
 						counter+=1
 						st.write(z)
