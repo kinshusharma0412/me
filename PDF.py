@@ -310,8 +310,18 @@ elif database.toggle('Database'):
 				st.write(option)
 		if "select_database" in st.session_state:
 			xyz=st.write(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
-			xxx=type(cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]}))
-			st.write(xxx)
-			options = st.multiselect("testing?",['Green', 'Yellow', 'Red', 'Blue'],['Yellow', 'Red'])
-			st.write('You selected:', options)
+			with st.form("my_form"):
+				title = st.text_input('enter your query')
+				submitted = st.form_submit_button("Submit")
+				if submitted:
+					title=split("\.",title)
+					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
+					data2=data
+					for z in title:
+						data2=data2[z]
+					st.write('You selected:', data2)
+					
+			
+			
+			
 		
