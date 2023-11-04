@@ -321,12 +321,14 @@ elif database.toggle('Database'):
 					data=cm[new[st.session_state.list_database][0]][new[st.session_state.list_database][1]].find_one({'_id':document_names[st.session_state.select_database-1]})
 					data2=data
 					counter=0
-					title=reaaa.split("\=\=",title)
-					if len(title)>0:
-						rep=title[1]
+					match1=reaaa.match("\=\=",title)
+					if match1 is not None:
+						
+						rep=reaaa.split("\=\=",title)[1]
+						title=reaaa.split("\=\=",title)[0]
 					else:
 						rep=None
-					title=title[0].split("\>")
+					title=title.split("\>")
 					for z in title:
 						counter+=1
 						st.write(z)
