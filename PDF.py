@@ -301,11 +301,13 @@ elif database.toggle('Database'):
 		st.write(options)
 		if "select_database" not in st.session_state:
 			option = option1.selectbox('Select a database name',range(len(options)),format_func=lambda x: options[x])
+			
 			if option:
 				st.session_state.select_database=option
 				
 		else:
 			option = option1.selectbox('Select a database name',range(len(options)),index=st.session_state.select_database,format_func=lambda x: options[x])
+			option=st.session_state.list_database
 			if option!=st.session_state.list_database:
 				st.session_state.list_database=option
 				st.write(option)
@@ -323,7 +325,7 @@ elif database.toggle('Database'):
 					counter=0
 					for z in title:
 						counter+=1
-						print(z)
+						st.write(z)
 							
 						if reaaa.fullmatch("\d{1,}",z) is not None:
 							data2=data2[int(z)]
