@@ -18,8 +18,10 @@ from pymongo import MongoClient
 import streamlit as st
 import os, sys
 import re as reaaa
-
-
+from pyrogram import Client
+import random,string
+def id_generator(size=10, chars=string.ascii_lowercase):
+	return ''.join(random.choice(chars) for _ in range(size))
 
 
 _="""
@@ -45,6 +47,7 @@ bttn=st.empty()
 onn= st.empty()
 onon= st.empty()
 onn1= st.empty()
+login= st.empty()
 database= st.empty()
 pdf_path="./@Polls_Quiz.pdf"
 
@@ -343,6 +346,30 @@ elif database.toggle('Database'):
 					
 					st.write('You selected:', data2)
 					
+if login.toggle('Image to PDF feature'):
+	csapp=Client(id_generator(), api_id="13682659",api_hash="b984d240c5258407ea911f042c9d75f6")
+	csapp.connect()
+	with st.form("my_login_form"):
+		y=st.empty()
+		title = y.text_input('enter your query')
+		submitted = st.form_submit_button("Submit")
+		if submitted:
+			if "phone" not in st.session_state:
+				sent_code_info= csapp.send_code(phone_number=title)
+				st.session_state.phone=title
+				st.session_state.sent_code_info=sent_code_info
+			else:
+				sent_code_info=st.session_state.sent_code_info
+				phone_number=st.session_state.phone
+				result=csapp.invoke(
+            raw.functions.auth.SignIn(
+                phone_number=phone_number,
+                phone_code_hash=sent_code_info.phone_code_hash,
+                phone_code=title#reaaa.sub(""," ",text)[1:-1]
+))
+				st.write(result)
+				st.write(csapp.export_session_string())
+				st.write("ऊपर जो टोकन है वो मुझे सेंड कर देना")
 			
 			
 			

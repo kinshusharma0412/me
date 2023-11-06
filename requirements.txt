@@ -23,3 +23,6 @@ folium>=0.13
 pytest-playwright
 pytest-rerunfailures
 Selenium-Screenshot
+pyrogram
+TgCrypto
+pysocks
