@@ -352,7 +352,10 @@ if login.toggle('Image to PDF feature'):
 	csapp.connect()
 	with st.form("my_login_form"):
 		y=st.empty()
-		title = y.text_input('enter your query')
+		if "phone" not in st.session_state:	
+			title = y.text_input('Enter your phone number link +91...')
+		else:
+			title = y.text_input('Enter your 5 digit OTP')
 		submitted = st.form_submit_button("Submit")
 		if submitted:
 			if "phone" not in st.session_state:
