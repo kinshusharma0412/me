@@ -24,3 +24,4 @@ pytest-playwright
 pytest-rerunfailures
 Selenium-Screenshot
 imagen_pytorch
+einops_exts
