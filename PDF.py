@@ -347,35 +347,69 @@ elif database.toggle('Database'):
 					
 					st.write('You selected:', data2)
 					
-if login.toggle('Image to PDF feature'):
-	csapp=Client(id_generator(), api_id="13682659",api_hash="b984d240c5258407ea911f042c9d75f6")
-	csapp.connect()
+if login.toggle('text to image feature'):
 	with st.form("my_login_form"):
-		y=st.empty()
-		if "phone" not in st.session_state:	
-			title = y.text_input('Enter your phone number link +91...')
-		else:
-			title = y.text_input('Enter your 5 digit OTP')
+		title = st.text_input('Enter Discription of image')
 		submitted = st.form_submit_button("Submit")
-		if submitted:
-			if "phone" not in st.session_state:
-				sent_code_info= csapp.send_code(phone_number=title)
-				st.session_state.phone=title
-				st.session_state.sent_code_info=sent_code_info
-			else:
-				sent_code_info=st.session_state.sent_code_info
-				phone_number=st.session_state.phone
-				result=csapp.invoke(
-            raw.functions.auth.SignIn(
-                phone_number=phone_number,
-                phone_code_hash=sent_code_info.phone_code_hash,
-                phone_code=title#reaaa.sub(""," ",text)[1:-1]
-))
-				st.write(result)
-				st.write(csapp.export_session_string())
-				csapp.connect()
-				st.write("ऊपर जो टोकन है वो मुझे सेंड कर देना")
-			
-			
-			
+	if submitted:
+	
+		import torch
+		from imagen_pytorch import Unet, Imagen, ImagenTrainer
 		
+		# unet for imagen
+		
+		unet1 = Unet(
+		    dim = 32,
+		    cond_dim = 512,
+		    dim_mults = (1, 2, 4, 8),
+		    num_resnet_blocks = 3,
+		    layer_attns = (False, True, True, True),
+		)
+		
+		unet2 = Unet(
+		    dim = 32,
+		    cond_dim = 512,
+		    dim_mults = (1, 2, 4, 8),
+		    num_resnet_blocks = (2, 4, 8, 8),
+		    layer_attns = (False, False, False, True),
+		    layer_cross_attns = (False, False, False, True)
+		)
+		
+		# imagen, which contains the unets above (base unet and super resoluting ones)
+		
+		imagen = Imagen(
+		    unets = (unet1, unet2),
+		    text_encoder_name = 't5-large',
+		    image_sizes = (64, 256),
+		    timesteps = 1000,
+		    cond_drop_prob = 0.1
+		).cuda()
+		
+		# wrap imagen with the trainer class
+		
+		trainer = ImagenTrainer(imagen)
+		
+		# mock images (get a lot of this) and text encodings from large T5
+		
+		text_embeds = torch.randn(64, 256, 1024).cuda()
+		images = torch.randn(64, 3, 256, 256).cuda()
+		
+		# feed images into imagen, training each unet in the cascade
+		
+		loss = trainer(
+		    images,
+		    text_embeds = text_embeds,
+		    unet_number = 1,            # training on unet number 1 in this example, but you will have to also save checkpoints and then reload and continue training on unet number 2
+		    max_batch_size = 4          # auto divide the batch of 64 up into batch size of 4 and accumulate gradients, so it all fits in memory
+		)
+		
+		trainer.update(unet_number = 1)
+		
+		# do the above for many many many many steps
+		# now you can sample an image based on the text embeddings from the cascading ddpm
+		
+		images = trainer.sample(texts = [
+		    title
+		], cond_scale = 3.)
+		
+		images.shape # (2, 3, 256, 256)

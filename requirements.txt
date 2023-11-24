@@ -26,3 +26,4 @@ Selenium-Screenshot
 pyrogram
 TgCrypto
 pysocks
+imagen_pytorch
