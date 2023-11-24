@@ -18,7 +18,7 @@ from pymongo import MongoClient
 import streamlit as st
 import os, sys
 import re as reaaa
-from pyrogram import Client, raw
+
 
 import random,string
 def id_generator(size=10, chars=string.ascii_lowercase):
