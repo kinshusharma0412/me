@@ -39,7 +39,7 @@ async def save_data(x):
 	
 
 query=st.query_params
-
+st.write(str(query))
 from  urllib.parse import unquote_plus
 
 from PIL import Image
