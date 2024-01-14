@@ -38,7 +38,7 @@ async def save_data(x):
 	ph2.empty()
 	
 
-query=st.query_params
+query=st.experimental_get_query_params()
 st.write(str(query))
 from  urllib.parse import unquote_plus
 
