@@ -83,51 +83,51 @@ def Reloading_Question_Bank(data):
 	return cm["Live_Quiz"]["db"].find_one({"db":{"$type":"object"}})["db"]
 
 try:
-	db=Reloading_Question_Bank(query["id"][0])[query["id"][0]]
+	db=Reloading_Question_Bank(query["id"])[query["id"]]
 except:
 	st.write("please open our site only in @soojhboojh_01bot in telegram")
 	st.stop()
 try:
-	N=len(db)*int(query["n"][0])
-	st.write(str(query["n"][0])+" sec for each Question")
+	N=len(db)*int(query["n"])
+	st.write(str(query["n"])+" sec for each Question")
 except:
 	N=len(db)*50
-if query["id"][0]+query["user"][0]+"sc" not in os.environ:
-	os.environ[query["id"][0]+query["user"][0]+"sc"]="0"
-con=os.environ[query["id"][0]+query["user"][0]+"sc"]
-os.environ[query["id"][0]+query["user"][0]+"sc"]=str(int(con)+1) 
+if query["id"]+query["user"]+"sc" not in os.environ:
+	os.environ[query["id"]+query["user"]+"sc"]="0"
+con=os.environ[query["id"]+query["user"]+"sc"]
+os.environ[query["id"]+query["user"]+"sc"]=str(int(con)+1) 
 def get(db2):
 	i=0
 	ids=[]
 	for x in db2:
 		ids.append(x[1])
 	for x in db2:
-		if x[1]==query["user"][0]:
+		if x[1]==query["user"]:
 			break
 		i+=1
 	return ids,i
-if query["id"][0]+query["user"][0]+"s" not in os.environ:
+if query["id"]+query["user"]+"s" not in os.environ:
 	try:
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
-		os.environ[query["id"][0]+query["user"][0]+"s"]=str(db2[i][3])
-		os.environ[query["id"][0]+query["user"][0]]=str(db2[i][2])
+		os.environ[query["id"]+query["user"]+"s"]=str(db2[i][3])
+		os.environ[query["id"]+query["user"]]=str(db2[i][2])
 		
 		
 	except:
-		os.environ[query["id"][0]+query["user"][0]+"s"]="2"
+		os.environ[query["id"]+query["user"]+"s"]="2"
 
 
-if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
+if int(os.environ[query["id"]+query["user"]+"s"])==2:
 	if "name" in query.keys():
-		path=unquote_plus(query["name"][0])
+		path=unquote_plus(query["name"])
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		
-		db2.append([path,query["user"][0],N,0])
-		db22[query["id"][0]]=db2
+		db2.append([path,query["user"],N,0])
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -135,9 +135,9 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 		
-		os.environ[query["id"][0]+query["user"][0]+"s"]="0"
+		os.environ[query["id"]+query["user"]+"s"]="0"
 
-		os.environ[query["id"][0]+query["user"][0]]=str(N)
+		os.environ[query["id"]+query["user"]]=str(N)
 
 		st.rerun()
 
@@ -151,25 +151,25 @@ if int(os.environ[query["id"][0]+query["user"][0]+"s"])==2:
 
 			
 
-			Drive_OCR("").google_spreadsheet_update(query["id"][0],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
+			Drive_OCR("").google_spreadsheet_update(query["id"],"Sheet2!A:"+cell2, "USER_ENTERED",db2)
 
-			os.environ[query["id"][0]+query["user"][0]]=str(N)
+			os.environ[query["id"]+query["user"]]=str(N)
 
 			st.rerun()"""
-elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
+elif int(os.environ[query["id"]+query["user"]+"s"])==0:
 	#st.set_page_config()
 	
 	ph = st.empty()#st.container()
 	ph2=st.empty()
-	if query["id"][0]+query["user"][0] not in os.environ:
-		os.environ[query["id"][0]+query["user"][0]]=str(N)
+	if query["id"]+query["user"] not in os.environ:
+		os.environ[query["id"]+query["user"]]=str(N)
 	
 	btn2=[]
 	def click_button(j):
-		if query["user"][0]+query["id"][0] not in os.environ:
+		if query["user"]+query["id"]not in os.environ:
 			temp3={}
 		else:
-			temp3=ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])
+			temp3=ast.literal_eval(os.environ[query["user"]+query["id"]])
 		y=reaaa.split("\.",j)
 
 		
@@ -178,10 +178,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 		else:
 			temp3[y[0]]=y[1]
 
-		os.environ[query["user"][0]+query["id"][0]]=str(temp3)
-	_="""if query["user"][0]+query["id"][0] in os.environ:
+		os.environ[query["user"]+query["id"]]=str(temp3)
+	_="""if query["user"]+query["id"]in os.environ:
 
-		#st.write(os.environ[query["user"][0]+query["id"][0]])"""
+		#st.write(os.environ[query["user"]+query["id"]])"""
 	with st.sidebar:
 		st.markdown(":green[Green Button : Attempted Option]<br/>:red[Red Button : Skiped Option]<br/>White Button : Unread Option", unsafe_allow_html=True)
 		counter=1
@@ -194,7 +194,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			for y in range(5):
 				
 				try:
-					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
+					if str(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(counter)])!="0":
 						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
 						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
@@ -211,7 +211,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==0:
 			
 			if counter<=len(db):
 				try:
-					if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(counter)])!="0":
+					if str(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(counter)])!="0":
 						ttt+='<button type="button" style="width: 20%; background-color: green;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
 					else:
 						ttt+='<button type="button" style="width: 20%; background-color: red;" onclick="queCounter('+str(counter+2)+')">'+str(counter).zfill(len(str(len(db))))+'</button>'
@@ -259,7 +259,7 @@ button.scrollIntoView({ behavior: "smooth"});
 
 				
 
-				if query["user"][0]+query["id"][0] not in os.environ:
+				if query["user"]+query["id"]not in os.environ:
 
 					temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),use_container_width=True,on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 
@@ -267,7 +267,7 @@ button.scrollIntoView({ behavior: "smooth"});
 
 				else:
 
-					if str(x+1) not in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
+					if str(x+1) not in ast.literal_eval(os.environ[query["user"]+query["id"]]).keys():
 
 						temp2=st.button(db[x][1:-3][y],key=str(x+1)+"."+str(y+1),use_container_width=True,on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 
@@ -275,7 +275,7 @@ button.scrollIntoView({ behavior: "smooth"});
 
 					else:
 
-						if str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(y+1):
+						if str(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(x+1)])==str(y+1):
 
 							temp2=st.button("```      ```:green["+db[x][1:-3][y]+"]",key=str(x+1)+"."+str(y+1),use_container_width=True,on_click=click_button,args=[str(x+1)+"."+str(y+1)])
 
@@ -311,11 +311,11 @@ button.scrollIntoView({ behavior: "smooth"});
 
 		
 
-		if query["user"][0]+query["id"][0]  in os.environ:
+		if query["user"]+query["id"] in os.environ:
 
-			if  str(x+1) in ast.literal_eval(os.environ[query["user"][0]+query["id"][0]]).keys():
+			if  str(x+1) in ast.literal_eval(os.environ[query["user"]+query["id"]]).keys():
 
-				if  str(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(x+1)])==str(0):
+				if  str(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(x+1)])==str(0):
 
 					temp2=st.button("```      ```:green[Skip (optional)]",key=str(x+1)+"."+str(y+1),use_container_width=True,on_click=click_button,args=[str(x+1)+"."+str(0)])
 
@@ -357,15 +357,15 @@ button.scrollIntoView({ behavior: "smooth"});
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 		
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
-		st.write(query["id"][0]+query["user"][0])
+		st.write(query["id"]+query["user"])
 		try:
 			_=db2[i]
 		except:
-			db2.append([unquote_plus(query["name"][0]),query["user"][0],os.environ[query["id"][0]+query["user"][0]],1])
+			db2.append([unquote_plus(query["name"]),query["user"],os.environ[query["id"]+query["user"]],1])
 		ids,i=get(db2)
-		db2[i][2]=os.environ[query["id"][0]+query["user"][0]]
+		db2[i][2]=os.environ[query["id"]+query["user"]]
 		db2[i][3]=1
 		
 
@@ -376,11 +376,11 @@ button.scrollIntoView({ behavior: "smooth"});
 				db2[i].append("")
 		for x in range(len(db)):
 			try:
-				db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+				db2[i][4+x]=(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(1+x)])
 			except Exception as e:
 				print("line 346 "+str(e))
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
@@ -390,11 +390,11 @@ button.scrollIntoView({ behavior: "smooth"});
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="1"
+		os.environ[query["id"]+query["user"]+"s"]="1"
 		st.rerun()
-	if int(os.environ[query["id"][0]+query["user"][0]])>0:
+	if int(os.environ[query["id"]+query["user"]])>0:
 
-		for secs in range(int(os.environ[query["id"][0]+query["user"][0]]),-1,-1):
+		for secs in range(int(os.environ[query["id"]+query["user"]]),-1,-1):
 
 			mm, ss = secs//60, secs%60
 
@@ -412,17 +412,17 @@ button.scrollIntoView({ behavior: "smooth"});
 			if True:
 				time.sleep(1)
 
-			os.environ[query["id"][0]+query["user"][0]]=str(secs-1)
+			os.environ[query["id"]+query["user"]]=str(secs-1)
 			
 			if False:
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-				db2=db22[query["id"][0]]
+				db2=db22[query["id"]]
 				ids,i=get(db2)
 				try:
 					_=db2[i]
 				except:
-					db2.append([unquote_plus(query["name"][0]),query["user"][0],str(secs),0])
+					db2.append([unquote_plus(query["name"]),query["user"],str(secs),0])
 				ids,i=get(db2)
 				db2[i][2]=str(secs)
 				
@@ -431,11 +431,11 @@ button.scrollIntoView({ behavior: "smooth"});
 						db2[i].append("")
 				for x in range(len(db)):
 					try:
-						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(1+x)])
 					except Exception as e:
 						print("line 400 "+str(e))
 				
-				db22[query["id"][0]]=db2
+				db22[query["id"]]=db2
 				
 				myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 				if myquery1:
@@ -451,12 +451,12 @@ button.scrollIntoView({ behavior: "smooth"});
 				
 				db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 				
-				db2=db22[query["id"][0]]
+				db2=db22[query["id"]]
 				ids,i=get(db2)
 				try:
 					_=db2[i]
 				except:
-					db2.append([unquote_plus(query["name"][0]),query["user"][0],str(secs),0])
+					db2.append([unquote_plus(query["name"]),query["user"],str(secs),0])
 				ids,i=get(db2)
 				ph.write("Times Up!!")
 				db2[i][2]=str(secs)
@@ -466,11 +466,11 @@ button.scrollIntoView({ behavior: "smooth"});
 						db2[i].append("")
 				for x in range(len(db)):
 					try:
-						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"][0]+query["id"][0]])[str(1+x)])
+						db2[i][4+x]=(ast.literal_eval(os.environ[query["user"]+query["id"]])[str(1+x)])
 					except Exception as e:
 						print("line 439 "+str(e))
 				
-				db22[query["id"][0]]=db2
+				db22[query["id"]]=db2
 				
 				myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 				if myquery1:
@@ -480,13 +480,13 @@ button.scrollIntoView({ behavior: "smooth"});
 				else:
 					cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 					
-				os.environ[query["id"][0]+query["user"][0]+"s"]="1"
+				os.environ[query["id"]+query["user"]+"s"]="1"
 
 				st.rerun()
 
 
 
-elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
+elif int(os.environ[query["id"]+query["user"]+"s"])==1:
 	st.balloons()
 	st.write("Test submission sucessful 🥳🥳🥳")
 	col1,col2 = st.columns([1,1])
@@ -504,11 +504,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 	if bt1:
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=3
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -517,18 +517,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
+		os.environ[query["id"]+query["user"]+"s"]="3"
 		st.rerun()
 
 	if bt2:
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		
 		ids,i=get(db2)
 		db2[i][3]=4
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -537,21 +537,21 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==1:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
+		os.environ[query["id"]+query["user"]+"s"]="4"
 		
 
 		st.rerun()
 
-elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
+elif int(os.environ[query["id"]+query["user"]+"s"])==3:
 
 	if st.button(':rainbow[Rank List]'):
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=4
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -561,7 +561,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
+		os.environ[query["id"]+query["user"]+"s"]="4"
 		st.rerun()
 
 	df=list(csv.reader(open('./data/Quiz.csv', 'r')))
@@ -570,7 +570,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	
 	for x in df:
 
-		if x[0]==query["id"][0]:
+		if x[0]==query["id"]:
 
 			break
 
@@ -603,10 +603,10 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 	@st.cache_data(ttl="1d")
 	def Reloading_Your_Answer_Key(data):
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		return db2[i]
-	db2i=Reloading_Your_Answer_Key(query["id"][0]+query["user"][0])
+	db2i=Reloading_Your_Answer_Key(query["id"]+query["user"])
 	
 	
 	_="""if len(db2[i])!=len(db)+4:
@@ -696,16 +696,16 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==3:
 
 	
 
-elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
+elif int(os.environ[query["id"]+query["user"]+"s"])==4:
 
 	if st.button(':rainbow[View your Answer key]'):
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=3
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -714,18 +714,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
+		os.environ[query["id"]+query["user"]+"s"]="3"
 
 		st.rerun()	
 
 	elif st.button(':rainbow[Review]'):
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=5
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -734,7 +734,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="5"
+		os.environ[query["id"]+query["user"]+"s"]="5"
 
 		st.rerun()
 
@@ -742,7 +742,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 	
 	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
 	
-	db2=db22[query["id"][0]]
+	db2=db22[query["id"]]
 	ids,i=get(db2)
 	_="""usse=[]
 	for x in range(len(db2)):
@@ -831,7 +831,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 		ti=f"{mm:02d}:{ss:02d}"
 
-		tab.append([new_result2[x]["Sr."]+". ",'<a target="_self" href="?embed=true&embed_options=dark_theme&id='+query["id"][0]+'&name='+quote_plus(new_result2[x]["Name"])+'&user='+new_result2[x]["id"]+'">'+new_result2[x]["Name"]+'</a>',ti,new_result2[x]["Marks"]])
+		tab.append([new_result2[x]["Sr."]+". ",'<a target="_self" href="?embed=true&embed_options=dark_theme&id='+query["id"]+'&name='+quote_plus(new_result2[x]["Name"])+'&user='+new_result2[x]["id"]+'">'+new_result2[x]["Name"]+'</a>',ti,new_result2[x]["Marks"]])
 		
 
 	
@@ -869,7 +869,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==4:
 
 	
 
-elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
+elif int(os.environ[query["id"]+query["user"]+"s"])==5:
 
 	col1,col2 = st.columns([1,1])
 
@@ -886,11 +886,11 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 	if bt1:
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=3
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -899,18 +899,18 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="3"
+		os.environ[query["id"]+query["user"]+"s"]="3"
 
 		st.rerun()
 
 	if bt2:
 		
 		db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-		db2=db22[query["id"][0]]
+		db2=db22[query["id"]]
 		ids,i=get(db2)
 		db2[i][3]=4
 		
-		db22[query["id"][0]]=db2
+		db22[query["id"]]=db2
 		myquery1=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})
 		if myquery1:
 			newvalues1={ "$set": {"db2":db22}}
@@ -919,7 +919,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 		else:
 			cm["Live_Quiz"]["db"].insert_one({"db2":db22})
 			
-		os.environ[query["id"][0]+query["user"][0]+"s"]="4"
+		os.environ[query["id"]+query["user"]+"s"]="4"
 
 		st.rerun()
 
@@ -932,7 +932,7 @@ elif int(os.environ[query["id"][0]+query["user"][0]+"s"])==5:
 	useR=[]
 
 	db22=cm["Live_Quiz"]["db"].find_one({"db2":{"$type":"object"}})["db2"]
-	db2=db22[query["id"][0]]
+	db2=db22[query["id"]]
 	ids,i=get(db2)
 	for y in range(len(db2)):
 		
