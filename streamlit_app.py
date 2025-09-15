@@ -39,7 +39,6 @@ async def save_data(x):
 	
 
 query=st.query_params
-st.write(query)
 from  urllib.parse import unquote_plus
 
 from PIL import Image
@@ -89,7 +88,7 @@ except:
 	st.stop()
 try:
 	N=len(db)*int(query["n"])
-	st.write(str(query["n"])+" sec for each Question")
+	st.write(str(query["n"])+" seconds for EACH QUESTION...")
 except:
 	N=len(db)*50
 if query["id"]+query["user"]+"sc" not in os.environ:
